@@ -5,17 +5,14 @@ import { Clock, Zap, AlertTriangle, CheckCircle, XCircle } from "lucide-react";
 
 export function StorySection() {
     return (
-        <section id="problem" className="py-24 bg-slate-950 relative overflow-hidden">
-            {/* Background Gradients */}
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900/40 via-slate-950 to-slate-950 z-0 pointer-events-none"></div>
-
+        <section id="problem" className="py-24 relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-16 max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">The "Dead Grandfather" Risk</h2>
-                    <p className="text-slate-400 text-lg leading-relaxed">
+                    <h2 className="text-3xl md:text-5xl font-serif text-white mb-6">The "Dead Grandfather" Risk</h2>
+                    <p className="text-slate-400 text-lg font-sans leading-relaxed">
                         In the old way, you find out about the missing heir (the "dead grandfather" on the deed)
-                        <span className="text-rose-500 font-bold"> 28 days</span> into the transaction.
-                        With TitleGuard, you know on <span className="text-emerald-500 font-bold">Day 1</span>.
+                        <span className="text-rose-500 font-medium"> 28 days</span> into the transaction.
+                        With TitleGuard, you know on <span className="text-[#D4AF37] font-medium">Day 1</span>.
                     </p>
                 </div>
 
@@ -23,30 +20,35 @@ export function StorySection() {
                     {/* The Old Way */}
                     <motion.div
                         whileHover={{ y: -5 }}
-                        className="p-8 rounded-3xl border border-white/5 bg-white/5 backdrop-blur-sm"
+                        className="p-8 rounded-sm border border-white/5 bg-white/5 backdrop-blur-sm"
                     >
                         <div className="flex items-center mb-6">
-                            <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center mr-4">
-                                <Clock className="w-6 h-6 text-slate-400" />
+                            <div className="w-12 h-12 rounded-full bg-[#1A1612] flex items-center justify-center mr-4 border border-white/5">
+                                <Clock className="w-6 h-6 text-slate-500" />
                             </div>
-                            <h3 className="text-2xl font-bold text-slate-300">The Old Way</h3>
+                            <h3 className="text-2xl font-serif text-slate-300">The Old Way</h3>
                         </div>
-                        <ul className="space-y-4">
+                        <ul className="space-y-6 font-sans">
                             <li className="flex items-start">
-                                <XCircle className="w-5 h-5 text-rose-500 mt-1 mr-3 flex-shrink-0" />
-                                <span className="text-slate-400">Manual Search: <span className="text-white">45+ Hours</span></span>
+                                <span className="text-rose-500 mr-4 font-serif text-lg">01.</span>
+                                <div>
+                                    <span className="text-slate-400 block text-xs uppercase tracking-widest mb-1">Manual Search</span>
+                                    <span className="text-white">45+ Hours of waiting</span>
+                                </div>
                             </li>
                             <li className="flex items-start">
-                                <XCircle className="w-5 h-5 text-rose-500 mt-1 mr-3 flex-shrink-0" />
-                                <span className="text-slate-400">1-in-8 deals delayed by "Late Discovery"</span>
+                                <span className="text-rose-500 mr-4 font-serif text-lg">02.</span>
+                                <div>
+                                    <span className="text-slate-400 block text-xs uppercase tracking-widest mb-1">Risk Factor</span>
+                                    <span className="text-white">1-in-8 deals delayed</span>
+                                </div>
                             </li>
                             <li className="flex items-start">
-                                <XCircle className="w-5 h-5 text-rose-500 mt-1 mr-3 flex-shrink-0" />
-                                <span className="text-slate-400">Static PDFs that no one reads</span>
-                            </li>
-                            <li className="flex items-start">
-                                <XCircle className="w-5 h-5 text-rose-500 mt-1 mr-3 flex-shrink-0" />
-                                <span className="text-slate-400">Reactive Curative (Fire Drilling)</span>
+                                <span className="text-rose-500 mr-4 font-serif text-lg">03.</span>
+                                <div>
+                                    <span className="text-slate-400 block text-xs uppercase tracking-widest mb-1">Format</span>
+                                    <span className="text-white">Static PDFs</span>
+                                </div>
                             </li>
                         </ul>
                     </motion.div>
@@ -54,33 +56,38 @@ export function StorySection() {
                     {/* TitleGuard New Way */}
                     <motion.div
                         whileHover={{ y: -5 }}
-                        className="p-8 rounded-3xl border border-emerald-500/30 bg-gradient-to-br from-emerald-950/20 to-slate-900/50 backdrop-blur-md relative"
+                        className="p-8 rounded-sm border border-[#D4AF37]/30 bg-[#0a0a0a]/80 backdrop-blur-md relative"
                     >
-                        <div className="absolute -top-4 -right-4 bg-emerald-500 text-slate-950 font-bold px-4 py-1 rounded-full text-xs uppercase tracking-widest shadow-lg shadow-emerald-500/20">
-                            Game Changer
+                        <div className="absolute -top-3 -right-3 bg-[#D4AF37] text-black font-sans font-bold px-4 py-1 text-[10px] uppercase tracking-widest shadow-[0_0_15px_#D4AF37]">
+                            Imperial Standard
                         </div>
                         <div className="flex items-center mb-6">
-                            <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center mr-4">
-                                <Zap className="w-6 h-6 text-emerald-400" />
+                            <div className="w-12 h-12 rounded-full bg-[#D4AF37]/10 flex items-center justify-center mr-4 border border-[#D4AF37]/20">
+                                <Zap className="w-6 h-6 text-[#D4AF37]" />
                             </div>
-                            <h3 className="text-2xl font-bold text-white">TitleGuard AI</h3>
+                            <h3 className="text-2xl font-serif text-white">TitleGuard AI</h3>
                         </div>
-                        <ul className="space-y-4">
+                        <ul className="space-y-6 font-sans">
                             <li className="flex items-start">
-                                <CheckCircle className="w-5 h-5 text-emerald-400 mt-1 mr-3 flex-shrink-0" />
-                                <span className="text-slate-300">AI Analysis: <span className="text-white font-bold">60 Seconds</span></span>
+                                <span className="text-[#D4AF37] mr-4 font-serif text-lg">01.</span>
+                                <div>
+                                    <span className="text-slate-500 block text-xs uppercase tracking-widest mb-1">AI Analysis</span>
+                                    <span className="text-white">60 Seconds</span>
+                                </div>
                             </li>
                             <li className="flex items-start">
-                                <CheckCircle className="w-5 h-5 text-emerald-400 mt-1 mr-3 flex-shrink-0" />
-                                <span className="text-slate-300">Instant "Stoplight Report"</span>
+                                <span className="text-[#D4AF37] mr-4 font-serif text-lg">02.</span>
+                                <div>
+                                    <span className="text-slate-500 block text-xs uppercase tracking-widest mb-1">Deliverable</span>
+                                    <span className="text-white">Instant "Stoplight Report"</span>
+                                </div>
                             </li>
                             <li className="flex items-start">
-                                <CheckCircle className="w-5 h-5 text-emerald-400 mt-1 mr-3 flex-shrink-0" />
-                                <span className="text-slate-300">Proactive Curative Instructions</span>
-                            </li>
-                            <li className="flex items-start">
-                                <CheckCircle className="w-5 h-5 text-emerald-400 mt-1 mr-3 flex-shrink-0" />
-                                <span className="text-slate-300">Zero-Retention Security</span>
+                                <span className="text-[#D4AF37] mr-4 font-serif text-lg">03.</span>
+                                <div>
+                                    <span className="text-slate-500 block text-xs uppercase tracking-widest mb-1">Security</span>
+                                    <span className="text-white">Zero-Retention Architecture</span>
+                                </div>
                             </li>
                         </ul>
                     </motion.div>

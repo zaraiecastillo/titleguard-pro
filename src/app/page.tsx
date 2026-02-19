@@ -69,8 +69,10 @@ export default function Home() {
 
       <SecuritySection />
 
-      <footer className="py-12 bg-slate-950 border-t border-slate-900 text-center text-slate-600 text-sm">
-        <p>&copy; {new Date().getFullYear()} TitleGuard AI. Making Real Estate Frictionless.</p>
+      <footer className="py-12 bg-[#050505] border-t border-white/5 text-center relative z-10">
+        <p className="text-slate-500 text-xs font-sans uppercase tracking-widest">
+          &copy; {new Date().getFullYear()} <span className="text-[#D4AF37]">TitleGuard AI</span>. Imperial Standards.
+        </p>
       </footer>
     </main>
   );

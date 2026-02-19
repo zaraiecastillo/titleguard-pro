@@ -1,0 +1,111 @@
+/* Luxury Cinematic Theme */
+
+/* Grain Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Glassmorphism Utilities */
+.glass-card {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.glass-gold {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    background-color: rgba(5, 5, 5, 0.6);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.05);
+}
+
+.glass-nav {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background-color: rgba(5, 5, 5, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-glow {
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.text-glow-white {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* Data Stream Animation */
+@keyframes dataStream {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+.data-stream-line {
+    position: absolute;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #D4AF37, transparent);
+    opacity: 0.2;
+    animation: dataStream 6s infinite linear;
+}
+
+@keyframes shimmer {
+    100% {
+        left: 200%;
+    }
+}
+
+/* Abstract Double Towers Background */
+.bg-double-towers {
+    background-color: #050505;
+    background-image:
+        /* Gold Data Lines - Left Tower */
+        linear-gradient(to bottom, transparent 0%, rgba(212, 175, 55, 0.1) 50%, transparent 100%),
+        linear-gradient(90deg, transparent 0%, transparent 19%, rgba(212, 175, 55, 0.05) 20%, transparent 21%),
+        linear-gradient(90deg, transparent 0%, transparent 39%, rgba(212, 175, 55, 0.05) 40%, transparent 41%),
+
+        /* Gold Data Lines - Right Tower */
+        linear-gradient(to bottom, transparent 0%, rgba(212, 175, 55, 0.1) 50%, transparent 100%),
+        linear-gradient(90deg, transparent 0%, transparent 59%, rgba(212, 175, 55, 0.05) 60%, transparent 61%),
+        linear-gradient(90deg, transparent 0%, transparent 79%, rgba(212, 175, 55, 0.05) 80%, transparent 81%),
+
+        /* The Towers (Silhouettes) */
+        linear-gradient(90deg,
+            #0a0a0a 0%, #151515 25%,
+            /* Left Tower Body */
+            transparent 25%, transparent 65%,
+            /* Gap */
+            #151515 65%, #0a0a0a 100%
+            /* Right Tower Body */
+        );
+    background-size:
+        100% 100%, 25% 100%, 25% 100%,
+        100% 100%, 25% 100%, 25% 100%,
+        100% 100%;
+    background-position:
+        0 0, 0 0, 10% 0,
+        0 0, 60% 0, 70% 0,
+        0 0;
+}

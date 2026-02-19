@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Playfair_Display, Montserrat } from "next/font/google";
+import Image from "next/image";
 import "./globals.css";
+import "../styles/luxury.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
 });
 
@@ -23,11 +25,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${playfair.variable} ${montserrat.variable} antialiased bg-slate-950 font-sans relative min-h-screen`}
       >
-        {children}
+        {/* Global Background */}
+        <div className="fixed inset-0 z-0">
+          <Image
+            src="/bg-hero-final.png"
+            alt="Cinematic Background"
+            fill
+            quality={100}
+            priority
+            className="object-cover opacity-40 mix-blend-overlay"
+          />
+          <div className="absolute inset-0 bg-[#050505]/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#1A1612]/20" />
+        </div>
+        <div className="relative z-10">
+          {children}
+        </div>
       </body>
     </html>
   );

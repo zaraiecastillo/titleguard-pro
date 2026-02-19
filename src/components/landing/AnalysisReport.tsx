@@ -38,50 +38,55 @@ interface AnalysisReportProps {
 
 export function AnalysisReport({ result }: AnalysisReportProps) {
     return (
-        <section id="report" className="py-12 px-6 bg-slate-950 relative z-20 -mt-24">
+        <section id="report" className="py-24 px-6 md:px-12 relative z-20">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="max-w-6xl mx-auto glass-card rounded-3xl p-8 md:p-12 shadow-2xl border border-emerald-500/30"
+                className="max-w-7xl mx-auto"
             >
-                <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-4">
-                    <h2 className="text-3xl font-bold text-white">Title Intelligence Report</h2>
-                    <div className="text-right">
-                        <p className="text-slate-400 text-sm">Report ID: <span className="font-mono text-emerald-400">{result.report_id.slice(0, 8)}...</span></p>
-                        <p className="text-slate-500 text-xs">{new Date(result.timestamp).toLocaleString()}</p>
+                <div className="flex flex-col md:flex-row items-end justify-between mb-16 border-b border-[#D4AF37]/20 pb-8">
+                    <div>
+                        <span className="text-[#D4AF37] text-xs font-sans uppercase tracking-[0.25em] mb-2 block">Intelligence Stream</span>
+                        <h2 className="text-4xl md:text-5xl font-serif text-white">Preliminary Risk Assessment</h2>
+                    </div>
+                    <div className="text-right mt-6 md:mt-0 font-sans">
+                        <p className="text-slate-500 text-xs uppercase tracking-widest">Report ID</p>
+                        <p className="text-white font-mono text-sm">{result.report_id.slice(0, 8)}</p>
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {/* Column 1: Risk & Vesting */}
-                    <div className="space-y-6 lg:col-span-1">
-                        <RiskGauge score={result.risk_assessment.score} confidence={result.risk_assessment.confidence_rating} />
-
-                        <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
-                            <h3 className="text-xs uppercase tracking-wider text-slate-500 mb-2 font-bold">Analysis Summary</h3>
-                            <p className="text-white font-medium leading-relaxed">{result.risk_assessment.summary}</p>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    {/* Column 1: Risk Gauge & Summary (Width 4) */}
+                    <div className="lg:col-span-4 space-y-12">
+                        <div className="bg-[#0a0a0a] border border-white/5 p-8 relative">
+                            <div className="absolute top-0 right-0 p-4">
+                                <RiskGauge score={result.risk_assessment.score} confidence={result.risk_assessment.confidence_rating} />
+                            </div>
+                            <h3 className="text-xl font-serif text-white mb-6">Executive Summary</h3>
+                            <p className="text-slate-400 font-sans leading-relaxed text-sm">{result.risk_assessment.summary}</p>
                         </div>
 
-                        <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 space-y-4">
-                            <h3 className="text-lg font-semibold text-slate-200 flex items-center">
-                                <ShieldCheck className="w-5 h-5 mr-2 text-emerald-500" /> Vesting Check
+                        <div className="space-y-4">
+                            <h3 className="text-lg font-serif text-white flex items-center">
+                                <ShieldCheck className="w-4 h-4 mr-3 text-[#D4AF37]" /> Vesting Verification
                             </h3>
-                            <div className="space-y-2 text-sm">
-                                <div className="flex justify-between">
-                                    <span className="text-slate-400">Owner on Record:</span>
-                                    <span className="text-white font-mono text-right">{result.vesting_check.owner_on_record}</span>
+                            <div className="border-t border-white/10 pt-4 space-y-3 font-sans text-sm">
+                                <div className="flex justify-between items-center group">
+                                    <span className="text-slate-500 group-hover:text-white transition-colors">Owner on Record</span>
+                                    <span className="text-white font-mono">{result.vesting_check.owner_on_record}</span>
                                 </div>
-                                <div className="flex justify-between">
-                                    <span className="text-slate-400">Match Confirmed:</span>
-                                    <span className={result.vesting_check.match_confirmed ? "text-emerald-400 font-bold" : "text-rose-400 font-bold"}>
-                                        {result.vesting_check.match_confirmed ? "YES" : "NO"}
-                                    </span>
+                                <div className="flex justify-between items-center group">
+                                    <span className="text-slate-500 group-hover:text-white transition-colors">Match Confirmed</span>
+                                    <div className="flex items-center">
+                                        <div className={`w-2 h-2 rounded-full mr-2 ${result.vesting_check.match_confirmed ? "bg-emerald-400 shadow-[0_0_12px_#34d399]" : "bg-rose-500 shadow-[0_0_12px_#f43f5e]"}`}></div>
+                                        <span className="text-white tracking-widest text-xs">{result.vesting_check.match_confirmed ? "MATCH" : "MISMATCH"}</span>
+                                    </div>
                                 </div>
                                 {result.vesting_check.issues.length > 0 && (
-                                    <div className="mt-2 p-3 bg-rose-950/30 rounded border border-rose-900/50 text-rose-300">
+                                    <div className="mt-4 pt-4 border-t border-white/5">
                                         {result.vesting_check.issues.map((issue, i) => (
-                                            <p key={i} className="flex items-start"><X className="w-4 h-4 mr-1 mt-0.5 flex-shrink-0" /> {issue}</p>
+                                            <p key={i} className="text-rose-400 text-xs flex items-center mt-1"><span className="w-1 h-1 bg-rose-500 rounded-full mr-2"></span> {issue}</p>
                                         ))}
                                     </div>
                                 )}
@@ -89,74 +94,57 @@ export function AnalysisReport({ result }: AnalysisReportProps) {
                         </div>
                     </div>
 
-                    {/* Column 2: Open Liens */}
-                    <div className="space-y-6 lg:col-span-1">
-                        <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 h-full">
-                            <h3 className="text-lg font-semibold text-slate-200 flex items-center mb-4">
-                                <ClipboardList className="w-5 h-5 mr-2 text-cyan-400" /> Open Liens / Encumbrances
-                            </h3>
-                            {result.open_liens.length > 0 ? (
-                                <div className="space-y-4">
-                                    {result.open_liens.map((lien, i) => (
-                                        <div key={i} className="p-4 bg-slate-800 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-colors">
-                                            <div className="flex justify-between items-start mb-2">
-                                                <span className="px-2 py-1 bg-cyan-950/50 text-cyan-300 text-xs rounded uppercase font-bold border border-cyan-900">{lien.type}</span>
-                                                <span className={lien.status === "UNRELEASED" ? "text-rose-400 text-xs font-bold bg-rose-950/30 px-2 py-1 rounded" : "text-amber-400 text-xs"}>{lien.status}</span>
+                    {/* Column 2: Liens (Width 4) */}
+                    <div className="lg:col-span-4 border-l border-white/5 pl-0 lg:pl-12">
+                        <h3 className="text-lg font-serif text-white mb-8 flex items-center">
+                            <ClipboardList className="w-4 h-4 mr-3 text-slate-500" /> Encumbrances
+                        </h3>
+                        {result.open_liens.length > 0 ? (
+                            <div className="space-y-8">
+                                {result.open_liens.map((lien, i) => (
+                                    <div key={i} className="group cursor-default">
+                                        <div className="flex justify-between items-baseline mb-2">
+                                            <span className="text-white font-serif text-lg group-hover:text-[#D4AF37] transition-colors">{lien.type}</span>
+                                            <div className={`w-2 h-2 rounded-full ${lien.status === "UNRELEASED" ? "bg-rose-500 shadow-[0_0_12px_#f43f5e]" : "bg-amber-500 shadow-[0_0_12px_#f59e0b]"}`}></div>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-4 text-xs font-sans text-slate-500 border-l border-white/10 pl-4 transition-all group-hover:border-[#D4AF37]">
+                                            <div className="space-y-1">
+                                                <p>Amount</p>
+                                                <p className="text-slate-300 font-mono">${lien.amount?.toLocaleString()}</p>
                                             </div>
-                                            <div className="text-sm text-slate-300 space-y-1">
-                                                <div className="flex justify-between">
-                                                    <span>Amount:</span>
-                                                    <span className="text-white font-mono">${lien.amount?.toLocaleString()}</span>
-                                                </div>
-                                                <div className="flex justify-between">
-                                                    <span>Recorded:</span>
-                                                    <span>{lien.recorded_date}</span>
-                                                </div>
-                                                <div className="flex justify-between">
-                                                    <span>Inst #:</span>
-                                                    <span className="font-mono text-slate-400">{lien.instrument_number}</span>
-                                                </div>
+                                            <div className="space-y-1">
+                                                <p>Recorded</p>
+                                                <p className="text-slate-300">{lien.recorded_date}</p>
                                             </div>
                                         </div>
-                                    ))}
-                                </div>
-                            ) : (
-                                <div className="flex flex-col items-center justify-center h-48 text-slate-500 bg-slate-800/50 rounded-xl">
-                                    <Check className="w-12 h-12 mb-2 opacity-20" />
-                                    <p>No active liens found.</p>
-                                </div>
-                            )}
-                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="h-32 flex items-center text-slate-600 text-sm italic font-serif">No active liens detected.</div>
+                        )}
                     </div>
 
-                    {/* Column 3: Curative Actions */}
-                    <div className="space-y-6 lg:col-span-1">
-                        <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 h-full">
-                            <h3 className="text-lg font-semibold text-slate-200 flex items-center mb-4">
-                                <Hammer className="w-5 h-5 mr-2 text-amber-400" /> Curative Actions
-                            </h3>
-                            {result.curative_actions.length > 0 ? (
-                                <div className="space-y-4">
-                                    {result.curative_actions.map((action, i) => (
-                                        <div key={i} className="p-4 bg-slate-800 rounded-xl border-l-4 border-amber-500">
-                                            <div className="flex items-center justify-between mb-2">
-                                                <span className="text-amber-400 font-bold text-xs uppercase tracking-wide">Action Required</span>
-                                                {action.priority === "HIGH" && (
-                                                    <span className="text-[10px] bg-rose-500 text-white px-2 py-0.5 rounded-full font-bold shadow-lg shadow-rose-900/50">HIGH PRIORITY</span>
-                                                )}
-                                            </div>
-                                            <p className="text-white font-medium mb-2 text-sm">{action.instruction}</p>
-                                            <p className="text-xs text-slate-400 italic bg-white/5 p-2 rounded">"{action.reason}"</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            ) : (
-                                <div className="flex flex-col items-center justify-center h-48 text-slate-500 bg-slate-800/50 rounded-xl">
-                                    <Check className="w-12 h-12 mb-2 opacity-20" />
-                                    <p>No curative actions needed.</p>
-                                </div>
-                            )}
-                        </div>
+                    {/* Column 3: Curative (Width 4) */}
+                    <div className="lg:col-span-4 border-l border-white/5 pl-0 lg:pl-12">
+                        <h3 className="text-lg font-serif text-white mb-8 flex items-center">
+                            <Hammer className="w-4 h-4 mr-3 text-slate-500" /> Curative Strategy
+                        </h3>
+                        {result.curative_actions.length > 0 ? (
+                            <div className="space-y-8">
+                                {result.curative_actions.map((action, i) => (
+                                    <div key={i} className="relative">
+                                        {action.priority === "HIGH" && (
+                                            <span className="absolute -left-4 top-2 w-2 h-2 bg-rose-500 rounded-full shadow-[0_0_12px_#f43f5e]"></span>
+                                        )}
+                                        <p className="text-white text-sm font-medium mb-2 leading-relaxed">{action.instruction}</p>
+                                        <p className="text-slate-500 text-xs italic font-serif pl-4 border-l border-white/5">"{action.reason}"</p>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="h-32 flex items-center text-slate-600 text-sm italic font-serif">Clean title. No action required.</div>
+                        )}
                     </div>
                 </div>
             </motion.div>

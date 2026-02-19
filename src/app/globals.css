@@ -1,25 +1,20 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  --color-slate-950: #020617;
-  --color-emerald-500: #10b981;
-  --color-amber-500: #f59e0b;
-  --color-rose-500: #f43f5e;
-}
+:root {
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-montserrat);
 
-/* Custom Utilities for Glassmorphism */
-@utility glass-card {
-  @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl;
-}
-
-@utility glass-nav {
-  @apply backdrop-blur-md bg-slate-950/70 border-b border-white/5;
-}
-
-@utility text-glow {
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  --color-gold-400: #E6C768;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #B4942B;
 }
 
 body {
-  @apply bg-slate-950 text-slate-50 antialiased;
+  background-color: #050505;
+  /* Deep Obsidian */
+  color: #E0E0E0;
+  background-image: radial-gradient(circle at 50% 0%, #1A1612 0%, #050505 80%);
+  min-height: 100vh;
 }
