@@ -23,6 +23,9 @@ export function Navbar() {
         { name: "Solution", href: "/solution" },
         { name: "Pricing", href: "/pricing" },
         { name: "Security", href: "/security" },
+        { name: "About", href: "/about" },
+        { name: "FAQ", href: "/faq" },
+        { name: "Contact", href: "/contact" },
     ];
 
     return (
