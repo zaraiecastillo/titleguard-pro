@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Montserrat } from "next/font/google";
 import Image from "next/image";
+import { Footer } from "@/components/Footer";
 import "./globals.css";
 import "../styles/luxury.css";
 
@@ -42,9 +43,13 @@ export default function RootLayout({
           <div className="absolute inset-0 bg-[#050505]/70" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#1A1612]/20" />
         </div>
+
+
+
         <div className="relative z-10">
           {children}
         </div>
+        <Footer />
       </body>
     </html>
   );
