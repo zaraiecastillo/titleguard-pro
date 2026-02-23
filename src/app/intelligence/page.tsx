@@ -1,7 +1,7 @@
 "use client";
 
 import { Navbar } from "@/components/Navbar";
-import { Upload, Cpu, FileCheck, ScanLine, Database, Scale, ArrowRight, ShieldAlert, Check, TriangleAlert, CircleX } from "lucide-react";
+import { Upload, Cpu, FileCheck, ScanLine, Database, Scale, ArrowRight, ShieldAlert, Check, TriangleAlert, CircleX, Handshake } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
@@ -70,6 +70,19 @@ export default function IntelligencePage() {
                         </p>
                     </motion.div>
                 </div>
+
+                {/* Partnership Block */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.4, duration: 0.8 }}
+                    className="max-w-4xl mx-auto mb-32 glass-card border border-[#D4AF37]/20 p-6 md:p-8 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 bg-[#D4AF37]/[0.02]"
+                >
+                    <Handshake className="w-10 h-10 text-[#D4AF37] stroke-[1] flex-shrink-0" />
+                    <p className="font-sans italic tracking-wide text-slate-300 text-center md:text-left text-sm md:text-base leading-relaxed">
+                        "Our AI functions as your firm’s Digital Junior Partner. It handles the high-volume optical extraction and statutory cross-referencing, delivering actionable insights to your desk so you can make the final, expert decision."
+                    </p>
+                </motion.div>
 
                 {/* Technical Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">

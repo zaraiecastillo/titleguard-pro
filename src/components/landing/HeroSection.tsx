@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FileUpload } from "@/components/FileUpload";
 import Image from "next/image";
+import { Handshake } from "lucide-react";
 
 interface HeroSectionProps {
     onFileSelect: (file: File) => void;
@@ -50,6 +51,12 @@ export function HeroSection({ onFileSelect, isAnalyzing }: HeroSectionProps) {
                             <span className="text-2xl font-serif text-white">100%</span>
                             <span className="text-xs text-[#D4AF37] uppercase tracking-widest">Zero-Retention</span>
                         </div>
+                    </div>
+
+                    {/* Partnership Narrative */}
+                    <div className="flex items-center space-x-3 pt-6 border-t border-white/5 w-fit">
+                        <Handshake className="w-5 h-5 text-[#D4AF37] stroke-[1.5]" />
+                        <span className="font-sans italic text-sm tracking-wide text-slate-300">The AI partner for the modern real estate firm.</span>
                     </div>
                 </motion.div>
 
