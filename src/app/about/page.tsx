@@ -53,8 +53,8 @@ export default function AboutPage() {
 
                         <div className="mt-16 pt-8 border-t border-white/10 text-center">
                             <h3 className="text-2xl text-[#D4AF37] font-serif mb-2">Our Mission Statement</h3>
-                            <p className="font-sans text-sm tracking-widest uppercase text-slate-400">
-                                To eliminate the friction of real estate transactions through proactive intelligence.
+                            <p className="font-sans text-base md:text-lg tracking-wide text-[#D4AF37]">
+                                "To eliminate the friction of real estate transactions through proactive intelligence."
                             </p>
                         </div>
                     </div>

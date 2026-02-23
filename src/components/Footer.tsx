@@ -44,6 +44,9 @@ export function Footer() {
                             <li><Link href="/security" className="text-slate-400 hover:text-white transition-colors text-sm font-sans">Security Protocol</Link></li>
                             <li><Link href="/faq" className="text-slate-400 hover:text-white transition-colors text-sm font-sans">Knowledge Base</Link></li>
                         </ul>
+                        <div className="pt-2">
+                            <a href="mailto:concierge@titleguard-pro.ai" className="text-[#D4AF37] hover:text-white transition-colors text-sm font-sans">concierge@titleguard-pro.ai</a>
+                        </div>
                     </div>
 
                     {/* Column 4: Newsletter */}

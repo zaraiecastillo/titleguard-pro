@@ -176,7 +176,7 @@ export default function IntelligencePage() {
                                     icon: Check,
                                     color: "text-emerald-500",
                                     bgHover: "hover:bg-emerald-500/5",
-                                    borderColor: "group-hover:border-emerald-500/30",
+                                    borderColor: "group-hover:border-emerald-500/50 group-hover:drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]",
                                     desc: "No title clouds detected. The transaction is cleared for final underwriting."
                                 },
                                 {
@@ -184,7 +184,7 @@ export default function IntelligencePage() {
                                     icon: TriangleAlert,
                                     color: "text-amber-500",
                                     bgHover: "hover:bg-amber-500/5",
-                                    borderColor: "group-hover:border-amber-500/30",
+                                    borderColor: "group-hover:border-amber-500/50 group-hover:drop-shadow-[0_0_15px_rgba(245,158,11,0.3)]",
                                     desc: "Minor discrepancies found (e.g., missing signature, name variance). Requires curative action to proceed."
                                 },
                                 {
@@ -192,7 +192,7 @@ export default function IntelligencePage() {
                                     icon: CircleX,
                                     color: "text-rose-500",
                                     bgHover: "hover:bg-rose-500/5",
-                                    borderColor: "group-hover:border-rose-500/30",
+                                    borderColor: "group-hover:border-rose-500/50 group-hover:drop-shadow-[0_0_15px_rgba(244,63,94,0.3)]",
                                     desc: "Major title defect detected (e.g., unreleased mortgage, probate requirement). Immediate intervention required."
                                 }
                             ].map((item, i) => (

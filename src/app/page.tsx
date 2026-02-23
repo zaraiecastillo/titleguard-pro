@@ -40,7 +40,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 font-sans selection:bg-emerald-500/30 selection:text-emerald-200">
+    <main className="min-h-screen relative overflow-hidden font-sans selection:bg-[#D4AF37]/30 selection:text-white">
       <Navbar />
 
       <HeroSection onFileSelect={handleFileUpload} isAnalyzing={loading} />
@@ -69,11 +69,6 @@ export default function Home() {
 
       <SecuritySection />
 
-      <footer className="py-12 bg-[#050505] border-t border-white/5 text-center relative z-10">
-        <p className="text-slate-500 text-xs font-sans uppercase tracking-widest">
-          &copy; {new Date().getFullYear()} <span className="text-[#D4AF37]">TitleGuard AI</span>. Imperial Standards.
-        </p>
-      </footer>
     </main>
   );
 }
