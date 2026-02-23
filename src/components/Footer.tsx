@@ -5,12 +5,12 @@ import { ShieldCheck, ArrowRight } from "lucide-react";
 
 export function Footer() {
     return (
-        <footer className="bg-[#050505] border-t border-white/5 pt-20 pb-10 relative overflow-hidden">
+        <footer className="bg-[#050505] border-t border-white/5 pt-12 pb-6 relative overflow-hidden">
             {/* Subtle Gradient Glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-[#D4AF37]/5 blur-[100px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
 
                     {/* Column 1: Brand */}
                     <div className="space-y-6 lg:pr-8">
@@ -70,7 +70,7 @@ export function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
                     <p className="text-slate-500 text-xs font-sans">
                         &copy; {new Date().getFullYear()} TitleGuard PRO AI. All rights reserved.
                     </p>
