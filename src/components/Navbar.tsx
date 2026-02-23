@@ -84,13 +84,13 @@ export function Navbar() {
                         animate={{ opacity: 1, clipPath: "circle(150% at top right)" }}
                         exit={{ opacity: 0, clipPath: "circle(0% at top right)" }}
                         transition={{ duration: 0.5, ease: "easeInOut" }}
-                        className="fixed inset-0 z-[100] bg-[#050505]/98 backdrop-blur-xl flex flex-col justify-center items-center"
+                        className="fixed inset-0 z-[100] bg-[#050505]/98 backdrop-blur-xl flex flex-col pt-32 pb-12 items-center overflow-y-auto"
                     >
                         {/* Background Elements */}
                         <div className="absolute inset-0 bg-[url('/bg-hero.png')] opacity-10 bg-cover bg-center pointer-events-none" />
                         <div className="absolute w-full h-full bg-gradient-to-b from-black/80 via-transparent to-black/80 pointer-events-none" />
 
-                        <div className="flex flex-col space-y-8 text-center relative z-10 w-full px-6">
+                        <div className="flex flex-col space-y-6 text-center relative z-10 w-full px-6">
                             {links.map((item, i) => (
                                 <motion.div
                                     key={item.name}
@@ -101,7 +101,7 @@ export function Navbar() {
                                     <Link
                                         href={item.href}
                                         onClick={() => setIsOpen(false)}
-                                        className="text-4xl font-serif text-white hover:text-[#D4AF37] transition-colors block py-2"
+                                        className="text-2xl font-serif text-white hover:text-[#D4AF37] transition-colors block py-2"
                                     >
                                         {item.name}
                                     </Link>
