@@ -1,9 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ShieldCheck, ArrowRight } from "lucide-react";
 
 export function Footer() {
+    const pathname = usePathname();
+
+    if (pathname === "/extension-view") return null;
+
     return (
         <footer className="bg-[#050505] border-t border-white/5 pt-12 pb-6 relative overflow-hidden">
             {/* Subtle Gradient Glow */}

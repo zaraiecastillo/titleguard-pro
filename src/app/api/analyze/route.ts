@@ -40,21 +40,37 @@ async function scrubPII(text: string): Promise<string> {
 export async function POST(req: NextRequest) {
     try {
         const formData = await req.formData();
-        const file = formData.get("file") as File;
+        const file = formData.get("file") as File | null;
+        const pdfUrl = formData.get("pdfUrl") as string | null;
+        const address = formData.get("address") as string | null;
 
-        if (!file) {
-            return NextResponse.json({ error: "No file provided" }, { status: 400 });
+        if (!file && !pdfUrl && !address) {
+            return NextResponse.json({ error: "No file, pdfUrl, or address provided" }, { status: 400 });
         }
 
-        const arrayBuffer = await file.arrayBuffer();
-        const buffer = Buffer.from(arrayBuffer);
-
         let text = "";
-        try {
-            text = await extractTextFromPDF(buffer);
-        } catch (e) {
-            console.error("PDF Parse Error:", e);
-            return NextResponse.json({ error: "Failed to parse PDF text." }, { status: 400 });
+
+        if (file) {
+            const arrayBuffer = await file.arrayBuffer();
+            const buffer = Buffer.from(arrayBuffer);
+            try {
+                text = await extractTextFromPDF(buffer);
+            } catch (e) {
+                console.error("PDF Parse Error:", e);
+                return NextResponse.json({ error: "Failed to parse PDF text." }, { status: 400 });
+            }
+        } else if (pdfUrl) {
+            try {
+                const response = await fetch(pdfUrl);
+                const arrayBuffer = await response.arrayBuffer();
+                const buffer = Buffer.from(arrayBuffer);
+                text = await extractTextFromPDF(buffer);
+            } catch (e) {
+                console.error("URL Fetch/Parse Error:", e);
+                return NextResponse.json({ error: "Failed to fetch or parse PDF from URL." }, { status: 400 });
+            }
+        } else if (address) {
+            text = `Simulated request for property address: ${address}. Please generate a realistic Stoplight Report demonstrating an analysis of this property's title situation based on generic but plausible data for this address.`;
         }
 
         // 1. PII Scrubbing (Python Skill)
