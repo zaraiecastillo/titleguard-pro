@@ -25,6 +25,10 @@ export async function POST(req: Request) {
         // In reality this would be pulled from the auth session token
         const userId = MOCK_USER_ID;
 
+        // Determine the base URL dynamically from the request headers
+        const url = new URL(req.url);
+        const baseUrl = `${url.protocol}//${req.headers.get("host") || url.host}`;
+
         // Create Checkout Sessions from body params.
         const session = await stripe.checkout.sessions.create({
             line_items: [
@@ -34,8 +38,8 @@ export async function POST(req: Request) {
                 },
             ],
             mode: priceId === 'prod_U2IIzNy62XYos4' ? 'subscription' : 'payment',
-            success_url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/dashboard/welcome`,
-            cancel_url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/pricing`,
+            success_url: `${baseUrl}/dashboard/welcome`,
+            cancel_url: `${baseUrl}/pricing`,
             metadata: {
                 userId: userId,
                 tierMapping: priceId === 'prod_U2IIzNy62XYos4' ? 'pro' : 'one_time'
