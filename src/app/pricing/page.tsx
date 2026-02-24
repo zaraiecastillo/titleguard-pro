@@ -13,7 +13,14 @@ export default function PricingPage() {
     const [loadingTier, setLoadingTier] = useState<string | null>(null);
 
     const handleCheckout = async (tierName: string, priceId?: string) => {
-        if (!priceId) return; // Prevent checkout for free/custom tiers
+        if (!priceId) {
+            if (tierName === "The Entry") {
+                window.location.href = "/dashboard";
+            } else if (tierName === "Enterprise & Institutional") {
+                window.location.href = "/contact";
+            }
+            return;
+        }
 
         try {
             setLoadingTier(tierName);

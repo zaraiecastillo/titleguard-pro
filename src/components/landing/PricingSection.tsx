@@ -1,8 +1,46 @@
 "use client";
 
-import { Check } from "lucide-react";
+import { useState } from "react";
+import { Check, Loader2 } from "lucide-react";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "pk_live_51T4CruP65pwDtpGf4IZpDQtQDomhC1a6NA5LGv5iOubHD1GbbTST0nPitnfc6xlLqHjrMUq0l7h1r9aCSy71b9CC00auk4vIv4");
 
 export function PricingSection() {
+    const [loadingTier, setLoadingTier] = useState<string | null>(null);
+
+    const handleCheckout = async (tierName: string, priceId?: string) => {
+        if (!priceId) {
+            if (tierName === "The Entry") window.location.href = "/dashboard";
+            else if (tierName === "Enterprise & Institutional") window.location.href = "/contact";
+            return;
+        }
+
+        try {
+            setLoadingTier(tierName);
+            const response = await fetch("/api/checkout", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ priceId }),
+            });
+
+            if (!response.ok) return;
+
+            const { sessionId } = await response.json();
+            const stripe = await stripePromise;
+
+            if (stripe) {
+                // @ts-ignore
+                const { error } = await stripe.redirectToCheckout({ sessionId });
+                if (error) console.error("Stripe Checkout Error:", error);
+            }
+        } catch (error) {
+            console.error("Error during checkout:", error);
+        } finally {
+            setLoadingTier(null);
+        }
+    };
+
     return (
         <section id="pricing" className="py-24 px-6 relative z-10">
             <div className="max-w-7xl mx-auto">
@@ -25,7 +63,12 @@ export function PricingSection() {
                             <li className="flex items-center text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3" /> 1 Scan / Month</li>
                             <li className="flex items-center text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3" /> Web Dashboard Only</li>
                         </ul>
-                        <button className="w-full py-3 border border-white/20 text-white hover:bg-white/5 transition-colors text-xs uppercase tracking-widest">Start Free</button>
+                        <button
+                            onClick={() => handleCheckout("The Entry")}
+                            className="w-full py-3 border border-white/20 text-white hover:bg-white/5 transition-colors text-xs uppercase tracking-widest"
+                        >
+                            Start Free
+                        </button>
                     </div>
 
                     {/* Tier 2: Transaction */}
@@ -40,7 +83,14 @@ export function PricingSection() {
                             <li className="flex items-center text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3" /> Web + Chrome Extension</li>
                             <li className="flex items-center text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3" /> 24-Hour Retention</li>
                         </ul>
-                        <button className="w-full py-3 border border-white/20 text-white hover:bg-white/5 transition-colors text-xs uppercase tracking-widest">Secure My Deal</button>
+                        <button
+                            onClick={() => handleCheckout("Per-Transaction", "prod_U2IInuH6bGDZdS")}
+                            disabled={loadingTier === "Per-Transaction"}
+                            className="w-full flex justify-center py-3 border border-white/20 text-white hover:bg-white/5 transition-colors text-xs uppercase tracking-widest disabled:opacity-50"
+                        >
+                            {loadingTier === "Per-Transaction" ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
+                            Secure My Deal
+                        </button>
                     </div>
 
                     {/* Tier 3: Pro (Highlighted) */}
@@ -57,7 +107,14 @@ export function PricingSection() {
                             <li className="flex items-center text-white text-sm"><Check className="w-3 h-3 text-[#D4AF37] mr-3" /> Full Extension Access</li>
                             <li className="flex items-center text-white text-sm"><Check className="w-3 h-3 text-[#D4AF37] mr-3" /> Advanced Logic</li>
                         </ul>
-                        <button className="w-full py-3 bg-[#D4AF37] text-black hover:bg-[#B4942B] transition-colors text-xs uppercase tracking-widest font-bold shadow-[0_0_20px_rgba(212,175,55,0.2)]">Scale My Volume</button>
+                        <button
+                            onClick={() => handleCheckout("The Power-User", "prod_U2IIzNy62XYos4")}
+                            disabled={loadingTier === "The Power-User"}
+                            className="w-full flex justify-center py-3 bg-[#D4AF37] text-black hover:bg-[#B4942B] transition-colors text-xs uppercase tracking-widest font-bold shadow-[0_0_20px_rgba(212,175,55,0.2)] disabled:opacity-50"
+                        >
+                            {loadingTier === "The Power-User" ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
+                            Scale My Volume
+                        </button>
                     </div>
 
                     {/* Tier 4: Enterprise */}
@@ -73,7 +130,12 @@ export function PricingSection() {
                             <li className="flex items-start text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3 mt-1 flex-shrink-0" /> <span className="leading-tight">White-Label Integration</span></li>
                             <li className="flex items-start text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3 mt-1 flex-shrink-0" /> <span className="leading-tight">API & CRM Sync</span></li>
                         </ul>
-                        <button className="w-full py-3 border border-white/20 text-white hover:bg-white/5 transition-colors text-xs uppercase tracking-widest">Request a Demo</button>
+                        <button
+                            onClick={() => handleCheckout("Enterprise & Institutional")}
+                            className="w-full py-3 border border-white/20 text-white hover:bg-white/5 transition-colors text-xs uppercase tracking-widest"
+                        >
+                            Request a Demo
+                        </button>
                         <p className="text-[10px] text-slate-500 mt-4 text-center">
                             Bulk licensing & API docs upon request.
                         </p>
