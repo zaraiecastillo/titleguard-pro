@@ -33,7 +33,9 @@ export default function PricingPage() {
             });
 
             if (!response.ok) {
-                console.error("Failed to create checkout session");
+                const errorData = await response.json();
+                alert(`Checkout Error: ${errorData.error || response.statusText}`);
+                console.error("Failed to create checkout session", errorData);
                 return;
             }
 

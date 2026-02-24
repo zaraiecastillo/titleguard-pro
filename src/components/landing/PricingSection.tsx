@@ -24,7 +24,12 @@ export function PricingSection() {
                 body: JSON.stringify({ priceId }),
             });
 
-            if (!response.ok) return;
+            if (!response.ok) {
+                const errorData = await response.json();
+                alert(`Checkout Error: ${errorData.error || response.statusText}`);
+                console.error("Failed to create checkout session", errorData);
+                return;
+            }
 
             const { sessionId } = await response.json();
             const stripe = await stripePromise;
