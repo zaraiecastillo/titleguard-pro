@@ -59,9 +59,9 @@ export function Navbar() {
                                 {item.name}
                             </Link>
                         ))}
-                        <button className="px-5 py-2 bg-[#D4AF37] text-black text-xs font-bold uppercase tracking-widest hover:bg-[#b5952f] transition-colors rounded-sm shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                        <Link href="/#demo" className="px-5 py-2 bg-[#D4AF37] text-black text-xs font-bold uppercase tracking-widest hover:bg-[#b5952f] transition-colors rounded-sm shadow-[0_0_15px_rgba(212,175,55,0.2)]">
                             Get Access
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Mobile Hamburger (Z-Index higher than overlay) */}
@@ -114,9 +114,9 @@ export function Navbar() {
                                 transition={{ delay: 0.5, duration: 0.4 }}
                                 className="pt-8"
                             >
-                                <button className="w-full max-w-xs py-4 bg-[#D4AF37] text-black text-sm font-bold uppercase tracking-[0.2em] hover:bg-[#b5952f] transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+                                <Link href="/#demo" onClick={() => setIsOpen(false)} className="w-full max-w-xs py-4 bg-[#D4AF37] text-black text-sm font-bold uppercase tracking-[0.2em] hover:bg-[#b5952f] transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)] text-center flex items-center justify-center">
                                     Get Access
-                                </button>
+                                </Link>
                             </motion.div>
                         </div>
                     </motion.div>

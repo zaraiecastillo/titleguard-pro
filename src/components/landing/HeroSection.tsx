@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FileUpload } from "@/components/FileUpload";
 import Image from "next/image";
-import { Handshake, Chrome, Loader2 } from "lucide-react";
+import { Handshake, Chrome, Loader2, Shield } from "lucide-react";
 import { UpgradeModal } from "@/components/UpgradeModal";
 
 interface HeroSectionProps {
@@ -66,7 +66,7 @@ export function HeroSection({ onFileSelect, isAnalyzing }: HeroSectionProps) {
                 >
                     <div className="inline-flex items-center space-x-3">
                         <div className="h-[1px] w-12 bg-[#D4AF37]/50"></div>
-                        <span className="text-[#D4AF37] text-xs font-sans uppercase tracking-[0.2em]">Imperial Alpha v1.0</span>
+                        <span className="text-[#D4AF37] text-xs font-sans uppercase tracking-[0.2em]">The AI-Powered Early Warning System For Real Estate</span>
                     </div>
 
                     <h1 className="text-6xl md:text-8xl font-serif text-white leading-[0.9]">
@@ -76,8 +76,7 @@ export function HeroSection({ onFileSelect, isAnalyzing }: HeroSectionProps) {
                     </h1>
 
                     <p className="text-lg font-sans text-slate-400 max-w-md leading-relaxed border-l border-white/10 pl-6">
-                        Where elegance meets insight. Get a curated
-                        <span className="text-white"> "Stoplight Report"</span> on Day 1 and orchestrate a seamless closing experience.
+                        Where elegance meets insight. Our AI-powered early warning system flags title defects on Day 1, allowing you to orchestrate a seamless closing experience.
                     </p>
 
                     <div className="flex items-center space-x-6 pt-4">
@@ -89,6 +88,11 @@ export function HeroSection({ onFileSelect, isAnalyzing }: HeroSectionProps) {
                         <div className="flex flex-col">
                             <span className="text-2xl font-serif text-white">100%</span>
                             <span className="text-xs text-[#D4AF37] uppercase tracking-widest">Zero-Retention</span>
+                        </div>
+                        <div className="h-8 w-[1px] bg-white/10"></div>
+                        <div className="flex flex-col">
+                            <Shield className="w-7 h-7 text-white mb-1 stroke-1" />
+                            <span className="text-xs text-[#D4AF37] uppercase tracking-widest">Proactive Risk Detection</span>
                         </div>
                     </div>
 
