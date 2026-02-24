@@ -98,7 +98,7 @@ export default function PricingPage() {
                 "White-Label Integration",
                 "API & CRM Sync"
             ],
-            cta: "Request a Demo",
+            cta: "Contact Concierge",
             icon: Briefcase,
             highlight: false
         }

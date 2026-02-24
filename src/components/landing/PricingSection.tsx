@@ -139,7 +139,7 @@ export function PricingSection() {
                             onClick={() => handleCheckout("Enterprise & Institutional")}
                             className="w-full py-3 border border-white/20 text-white hover:bg-white/5 transition-colors text-xs uppercase tracking-widest"
                         >
-                            Request a Demo
+                            Contact Concierge
                         </button>
                         <p className="text-[10px] text-slate-500 mt-4 text-center">
                             Bulk licensing & API docs upon request.
