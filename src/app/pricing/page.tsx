@@ -1,10 +1,49 @@
 "use client";
 
+import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
-import { Check, Zap, Star, Shield, Briefcase, CreditCard } from "lucide-react";
+import { Check, Zap, Star, Shield, Briefcase, CreditCard, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { loadStripe } from "@stripe/stripe-js";
+
+// Make sure to use the publishable key
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "pk_live_51T4CruP65pwDtpGf4IZpDQtQDomhC1a6NA5LGv5iOubHD1GbbTST0nPitnfc6xlLqHjrMUq0l7h1r9aCSy71b9CC00auk4vIv4");
 
 export default function PricingPage() {
+    const [loadingTier, setLoadingTier] = useState<string | null>(null);
+
+    const handleCheckout = async (tierName: string, priceId?: string) => {
+        if (!priceId) return; // Prevent checkout for free/custom tiers
+
+        try {
+            setLoadingTier(tierName);
+            const response = await fetch("/api/checkout", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ priceId }),
+            });
+
+            if (!response.ok) {
+                console.error("Failed to create checkout session");
+                return;
+            }
+
+            const { sessionId } = await response.json();
+            const stripe = await stripePromise;
+
+            if (stripe) {
+                // @ts-ignore - Stripe type definition mismatch in current SDK version
+                const { error } = await stripe.redirectToCheckout({ sessionId });
+                if (error) console.error("Stripe Checkout Error:", error);
+            }
+        } catch (error) {
+            console.error("Error during checkout:", error);
+        } finally {
+            setLoadingTier(null);
+        }
+    };
     const tiers = [
         {
             name: "The Entry",
@@ -24,7 +63,8 @@ export default function PricingPage() {
             features: ["Single High-Fidelity Scan", "Web + Chrome Extension", "24-Hour Data Retention"],
             cta: "Secure My Deal",
             icon: CreditCard,
-            highlight: false
+            highlight: false,
+            priceId: "prod_U2IInuH6bGDZdS"
         },
         {
             name: "The Power-User",
@@ -35,7 +75,8 @@ export default function PricingPage() {
             cta: "Scale My Volume",
             icon: Zap,
             highlight: true,
-            badge: "Best Value"
+            badge: "Best Value",
+            priceId: "prod_U2IIzNy62XYos4"
         },
         {
             name: "Enterprise & Institutional",
@@ -129,13 +170,20 @@ export default function PricingPage() {
                                 </ul>
                             </div>
 
-                            <button className={`
-                                w-full py-4 text-xs font-bold uppercase tracking-[0.2em] transition-all
+                            <button
+                                onClick={() => handleCheckout(tier.name, tier.priceId)}
+                                disabled={loadingTier === tier.name}
+                                className={`
+                                w-full py-4 text-xs flex items-center justify-center font-bold uppercase tracking-[0.2em] transition-all
                                 ${tier.highlight
-                                    ? 'bg-[#D4AF37] text-black hover:bg-[#b5952f] shadow-[0_0_15px_rgba(212,175,55,0.3)]'
-                                    : 'border border-white/10 text-white hover:bg-white/5 hover:border-white/20'
-                                }
+                                        ? 'bg-[#D4AF37] text-black hover:bg-[#b5952f] shadow-[0_0_15px_rgba(212,175,55,0.3)]'
+                                        : 'border border-white/10 text-white hover:bg-white/5 hover:border-white/20'
+                                    }
+                                ${loadingTier === tier.name ? 'opacity-70 cursor-not-allowed' : ''}
                             `}>
+                                {loadingTier === tier.name ? (
+                                    <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                                ) : null}
                                 {tier.cta}
                             </button>
 

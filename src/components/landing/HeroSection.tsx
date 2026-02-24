@@ -1,9 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { FileUpload } from "@/components/FileUpload";
 import Image from "next/image";
-import { Handshake, Chrome } from "lucide-react";
+import { Handshake, Chrome, Loader2 } from "lucide-react";
+import { UpgradeModal } from "@/components/UpgradeModal";
 
 interface HeroSectionProps {
     onFileSelect: (file: File) => void;
@@ -11,6 +13,29 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ onFileSelect, isAnalyzing }: HeroSectionProps) {
+    const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
+    const [isCheckingTier, setIsCheckingTier] = useState(false);
+
+    const handleFileSelect = async (file: File) => {
+        setIsCheckingTier(true);
+        try {
+            const res = await fetch("/api/user/tier");
+            const data = await res.json();
+
+            if (data.tier === "pro" || data.tier === "one_time") {
+                onFileSelect(file);
+            } else {
+                setIsUpgradeModalOpen(true);
+            }
+        } catch (error) {
+            console.error("Failed to check user tier:", error);
+            // Default open modal if DB check fails
+            setIsUpgradeModalOpen(true);
+        } finally {
+            setIsCheckingTier(false);
+        }
+    };
+
     return (
         <section className="relative w-full min-h-screen flex flex-col justify-center items-center px-6 pt-24 pb-12 overflow-hidden">
             {/* Background removed - handled globally in layout.tsx */}
@@ -92,8 +117,13 @@ export function HeroSection({ onFileSelect, isAnalyzing }: HeroSectionProps) {
                                 <div className="w-2 h-2 bg-[#D4AF37] rounded-full animate-pulse shadow-[0_0_10px_#D4AF37]"></div>
                             </div>
 
-                            <div className="bg-[#050505] border border-[#D4AF37]/20 p-2 transition-all duration-500 group-hover:border-[#D4AF37]/50">
-                                <FileUpload onFileSelect={onFileSelect} isAnalyzing={isAnalyzing} />
+                            <div className="bg-[#050505] border border-[#D4AF37]/20 p-2 transition-all duration-500 group-hover:border-[#D4AF37]/50 relative">
+                                {isCheckingTier && (
+                                    <div className="absolute inset-0 z-20 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+                                        <Loader2 className="w-6 h-6 text-[#D4AF37] animate-spin" />
+                                    </div>
+                                )}
+                                <FileUpload onFileSelect={handleFileSelect} isAnalyzing={isAnalyzing || isCheckingTier} />
                             </div>
 
                             <div className="mt-6 flex justify-between items-center text-xs text-slate-500 font-sans">
@@ -105,6 +135,13 @@ export function HeroSection({ onFileSelect, isAnalyzing }: HeroSectionProps) {
                 </motion.div>
 
             </div>
+
+            <UpgradeModal
+                isOpen={isUpgradeModalOpen}
+                onClose={() => setIsUpgradeModalOpen(false)}
+                title="Premium Intelligence Required"
+                description="Secure PDF uploading and analysis require an active Pro Membership or a One-Time pass. Upgrade your account to unlock."
+            />
         </section>
     );
 }

@@ -2,7 +2,8 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { Loader2, ShieldCheck, AlertTriangle, ExternalLink, Activity, ArrowRight } from "lucide-react";
+import { Loader2, ShieldCheck, AlertTriangle, ExternalLink, Activity } from "lucide-react";
+import { UpgradeModal } from "@/components/UpgradeModal";
 
 type AnalysisResult = {
     risk_assessment: {
@@ -31,6 +32,7 @@ function ExtensionViewContent() {
     const [loading, setLoading] = useState(true);
     const [result, setResult] = useState<AnalysisResult | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
 
     useEffect(() => {
         const analyzeTarget = async () => {
@@ -43,6 +45,21 @@ function ExtensionViewContent() {
             setLoading(true);
             setError(null);
 
+            // 1. Gatekeeper Check
+            try {
+                const tierRes = await fetch("/api/user/tier");
+                const { tier } = await tierRes.json();
+
+                if (tier !== "pro" && tier !== "one_time") {
+                    setIsUpgradeModalOpen(true);
+                    setLoading(false);
+                    return;
+                }
+            } catch (err) {
+                console.error("Failed to check user tier", err);
+            }
+
+            // 2. Proceed with Analysis
             const formData = new FormData();
             if (address) formData.append("address", address);
             if (pdfUrl) formData.append("pdfUrl", pdfUrl);
@@ -169,6 +186,12 @@ function ExtensionViewContent() {
                 )}
             </div>
 
+            <UpgradeModal
+                isOpen={isUpgradeModalOpen}
+                onClose={() => setIsUpgradeModalOpen(false)}
+                title="Premium Feature"
+                description="The Chrome Extension overlay requires an active Pro Membership or One-Time pass. Upgrade to unlock intelligence everywhere."
+            />
         </main>
     );
 }
