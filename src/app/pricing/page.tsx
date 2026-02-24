@@ -73,7 +73,7 @@ export default function PricingPage() {
             cta: "Secure My Deal",
             icon: CreditCard,
             highlight: false,
-            priceId: "prod_U2IInuH6bGDZdS"
+            priceId: "price_1T4Di9P65pwDtpGfKdFSbuLc"
         },
         {
             name: "The Power-User",
@@ -85,7 +85,7 @@ export default function PricingPage() {
             icon: Zap,
             highlight: true,
             badge: "Best Value",
-            priceId: "prod_U2IIzNy62XYos4"
+            priceId: "price_1T4Di6P65pwDtpGf31aKgQCe"
         },
         {
             name: "Enterprise & Institutional",

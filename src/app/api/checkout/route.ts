@@ -15,10 +15,10 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Price ID is required' }, { status: 400 });
         }
 
-        // Validate Product IDs strictly to what we expect (Frontend sends these as priceId)
-        const validProductIds = ['prod_U2IInuH6bGDZdS', 'prod_U2IIzNy62XYos4'];
-        if (!validProductIds.includes(priceId)) {
-            return NextResponse.json({ error: 'Invalid Product ID' }, { status: 400 });
+        // Validate Price IDs strictly to what we expect
+        const validPriceIds = ['price_1T4Di9P65pwDtpGfKdFSbuLc', 'price_1T4Di6P65pwDtpGf31aKgQCe'];
+        if (!validPriceIds.includes(priceId)) {
+            return NextResponse.json({ error: 'Invalid Price ID' }, { status: 400 });
         }
 
         // Use the mock user ID to pass through the session
@@ -29,41 +29,21 @@ export async function POST(req: Request) {
         const url = new URL(req.url);
         const baseUrl = `${url.protocol}//${req.headers.get("host") || url.host}`;
 
-        // Create dynamic price_data based on the Product ID
-        let lineItem: Stripe.Checkout.SessionCreateParams.LineItem;
-        if (priceId === 'prod_U2IInuH6bGDZdS') { // $49 one-time
-            lineItem = {
-                price_data: {
-                    currency: 'usd',
-                    product: priceId,
-                    unit_amount: 4900,
-                },
-                quantity: 1,
-            };
-        } else { // prod_U2IIzNy62XYos4 - $150/mo subscription
-            lineItem = {
-                price_data: {
-                    currency: 'usd',
-                    product: priceId,
-                    unit_amount: 15000,
-                    recurring: {
-                        interval: 'month',
-                    }
-                },
-                quantity: 1,
-            };
-        }
-
         // Create Checkout Sessions from body params.
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
-            line_items: [lineItem],
-            mode: priceId === 'prod_U2IIzNy62XYos4' ? 'subscription' : 'payment',
+            line_items: [
+                {
+                    price: priceId,
+                    quantity: 1,
+                }
+            ],
+            mode: priceId === 'price_1T4Di6P65pwDtpGf31aKgQCe' ? 'subscription' : 'payment',
             success_url: `${baseUrl}/dashboard/welcome`,
             cancel_url: `${baseUrl}/pricing`,
             metadata: {
                 userId: userId,
-                tierMapping: priceId === 'prod_U2IIzNy62XYos4' ? 'pro' : 'one_time'
+                tierMapping: priceId === 'price_1T4Di6P65pwDtpGf31aKgQCe' ? 'pro' : 'one_time'
             },
         });
 
