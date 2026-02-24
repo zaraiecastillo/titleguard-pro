@@ -89,7 +89,7 @@ export function PricingSection() {
                             <li className="flex items-center text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3" /> 24-Hour Retention</li>
                         </ul>
                         <button
-                            onClick={() => handleCheckout("Per-Transaction", "price_1T4Di9P65pwDtpGfKdFSbuLc")}
+                            onClick={() => handleCheckout("Per-Transaction", "price_1T4D9X0K6xSYeASO1w2thYki")}
                             disabled={loadingTier === "Per-Transaction"}
                             className="w-full flex justify-center py-3 border border-white/20 text-white hover:bg-white/5 transition-colors text-xs uppercase tracking-widest disabled:opacity-50"
                         >
@@ -113,7 +113,7 @@ export function PricingSection() {
                             <li className="flex items-center text-white text-sm"><Check className="w-3 h-3 text-[#D4AF37] mr-3" /> Advanced Logic</li>
                         </ul>
                         <button
-                            onClick={() => handleCheckout("The Power-User", "price_1T4Di6P65pwDtpGf31aKgQCe")}
+                            onClick={() => handleCheckout("The Power-User", "price_1T4DAi0K6xSYeASOZRKLkpkW")}
                             disabled={loadingTier === "The Power-User"}
                             className="w-full flex justify-center py-3 bg-[#D4AF37] text-black hover:bg-[#B4942B] transition-colors text-xs uppercase tracking-widest font-bold shadow-[0_0_20px_rgba(212,175,55,0.2)] disabled:opacity-50"
                         >

@@ -16,7 +16,7 @@ export async function POST(req: Request) {
         }
 
         // Validate Price IDs strictly to what we expect
-        const validPriceIds = ['price_1T4Di9P65pwDtpGfKdFSbuLc', 'price_1T4Di6P65pwDtpGf31aKgQCe'];
+        const validPriceIds = ['price_1T4D9X0K6xSYeASO1w2thYki', 'price_1T4DAi0K6xSYeASOZRKLkpkW'];
         if (!validPriceIds.includes(priceId)) {
             return NextResponse.json({ error: 'Invalid Price ID' }, { status: 400 });
         }
@@ -38,12 +38,12 @@ export async function POST(req: Request) {
                     quantity: 1,
                 }
             ],
-            mode: priceId === 'price_1T4Di6P65pwDtpGf31aKgQCe' ? 'subscription' : 'payment',
-            success_url: `${baseUrl}/dashboard/welcome`,
-            cancel_url: `${baseUrl}/pricing`,
+            mode: priceId === 'price_1T4DAi0K6xSYeASOZRKLkpkW' ? 'subscription' : 'payment',
+            success_url: `https://titleguard-pro.vercel.app/dashboard?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `https://titleguard-pro.vercel.app/pricing`,
             metadata: {
                 userId: userId,
-                tierMapping: priceId === 'price_1T4Di6P65pwDtpGf31aKgQCe' ? 'pro' : 'one_time'
+                tierMapping: priceId === 'price_1T4DAi0K6xSYeASOZRKLkpkW' ? 'pro' : 'one_time'
             },
         });
 
