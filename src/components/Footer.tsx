@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShieldCheck, ArrowRight } from "lucide-react";
+import { ShieldCheck, ArrowRight, Chrome } from "lucide-react";
 
 export function Footer() {
     const pathname = usePathname();
@@ -25,9 +25,13 @@ export function Footer() {
                                 TitleGuard <span className="text-[#D4AF37]">AI</span>
                             </span>
                         </Link>
-                        <p className="text-slate-400 text-sm leading-relaxed font-sans">
+                        <p className="text-slate-400 text-sm leading-relaxed font-sans pb-4">
                             Eliminating title friction at the source. The proactive intelligence engine for modern real estate transactions.
                         </p>
+                        <a href="#" className="inline-flex items-center space-x-2 bg-white/[0.03] border border-[#D4AF37]/30 hover:border-[#D4AF37] px-3 py-2 rounded-sm transition-all group w-fit">
+                            <Chrome className="w-4 h-4 text-[#D4AF37]" />
+                            <span className="text-[10px] uppercase tracking-widest text-[#D4AF37] group-hover:text-white">Chrome Web Store</span>
+                        </a>
                     </div>
 
                     {/* Column 2: Platform */}

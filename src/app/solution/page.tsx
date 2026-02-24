@@ -1,7 +1,7 @@
 "use client";
 
 import { Navbar } from "@/components/Navbar";
-import { XCircle, CheckCircle, Calendar, Clock, AlertTriangle, ArrowRight } from "lucide-react";
+import { XCircle, CheckCircle, Calendar, Clock, AlertTriangle, ArrowRight, Puzzle, ShieldCheck, Chrome } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function SolutionPage() {
@@ -110,7 +110,72 @@ export default function SolutionPage() {
                     </div>
                 </motion.div>
 
-                {/* Section 3: The Impact (Comparison Table) */}
+                {/* Section 3: Integration (Chrome Extension) */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="mb-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+                >
+                    <div className="order-2 lg:order-1 relative">
+                        {/* Visual: MLS Page graphic with extension */}
+                        <div className="glass-card border-[#D4AF37]/20 bg-[#050505]/80 p-6 relative overflow-hidden h-72 flex flex-col justify-center">
+                            {/* Abstract MLS UI Background */}
+                            <div className="absolute inset-8 border border-white/5 bg-white/[0.02] rounded-md flex flex-col p-4 pointer-events-none">
+                                {/* Fake Nav */}
+                                <div className="h-4 border-b border-white/10 flex items-center space-x-2 pb-2 mb-4 w-full">
+                                    <div className="w-16 h-1.5 bg-slate-700/50 rounded-full" />
+                                    <div className="w-10 h-1.5 bg-slate-700/50 rounded-full" />
+                                </div>
+                                {/* Fake Content Grid */}
+                                <div className="flex-1 grid grid-cols-3 gap-4">
+                                    <div className="col-span-2 space-y-2">
+                                        <div className="w-full h-20 bg-slate-800/30 rounded-sm" />
+                                        <div className="w-3/4 h-3 bg-slate-800/30 rounded-full" />
+                                        <div className="w-1/2 h-3 bg-slate-800/30 rounded-full" />
+                                    </div>
+                                    <div className="col-span-1 border border-white/5 bg-slate-900/30 rounded-sm p-2 flex flex-col space-y-2">
+                                        <div className="w-full h-8 bg-slate-800/50 rounded-sm" />
+                                        <div className="w-full h-2 bg-slate-800/30 rounded-full" />
+                                        <div className="w-3/4 h-2 bg-slate-800/30 rounded-full" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* The Gold Shield Extension Overlay */}
+                            <motion.div
+                                initial={{ scale: 0, opacity: 0 }}
+                                whileInView={{ scale: 1, opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+                                className="absolute top-10 right-10 z-20"
+                            >
+                                <div className="relative group cursor-pointer">
+                                    <div className="absolute inset-0 bg-[#D4AF37] blur-lg opacity-40 group-hover:opacity-70 transition-opacity rounded-full" />
+                                    <div className="relative bg-[#0a0a0a] border border-[#D4AF37] p-3 rounded-lg shadow-2xl flex items-center justify-center transform group-hover:-translate-y-1 transition-transform">
+                                        <ShieldCheck className="w-8 h-8 text-[#D4AF37]" />
+                                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-[#0a0a0a] shadow-[0_0_10px_rgba(16,185,129,0.8)]" />
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
+                    <div className="order-1 lg:order-2">
+                        <div className="inline-flex items-center space-x-3 mb-6">
+                            <Puzzle className="w-5 h-5 text-[#D4AF37]" />
+                            <span className="text-[#D4AF37] text-xs font-sans uppercase tracking-[0.2em]">Ecosystem Integration</span>
+                        </div>
+                        <h2 className="text-4xl font-serif text-white mb-6">Intelligence <span className="text-[#D4AF37] italic">Everywhere</span> You Work.</h2>
+                        <h3 className="text-xl text-slate-300 mb-6 italic">Seamless Chrome Extension</h3>
+                        <p className="text-slate-400 text-lg leading-relaxed font-sans border-l-2 border-[#D4AF37]/20 pl-6">
+                            Whether you are in our professional dashboard or browsing the MLS, TitleGuard AI is with you.
+                            Our Chrome Extension overlays our 'Stoplight' intelligence directly onto your existing workflow.
+                        </p>
+                    </div>
+                </motion.div>
+
+                {/* Section 4: The Impact (Comparison Table) */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}

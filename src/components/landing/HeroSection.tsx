@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { FileUpload } from "@/components/FileUpload";
 import Image from "next/image";
-import { Handshake } from "lucide-react";
+import { Handshake, Chrome } from "lucide-react";
 
 interface HeroSectionProps {
     onFileSelect: (file: File) => void;
@@ -57,6 +57,16 @@ export function HeroSection({ onFileSelect, isAnalyzing }: HeroSectionProps) {
                     <div className="flex items-center space-x-3 pt-6 border-t border-white/5 w-fit">
                         <Handshake className="w-5 h-5 text-[#D4AF37] stroke-[1.5]" />
                         <span className="font-sans italic text-sm tracking-wide text-slate-300">The AI partner for the modern real estate firm.</span>
+                    </div>
+
+                    {/* Chrome Web Store Badge */}
+                    <div className="pt-2">
+                        <a href="#" className="inline-flex items-center space-x-3 bg-white/[0.03] border border-white/10 hover:border-[#D4AF37]/50 px-4 py-2.5 rounded-sm transition-all group backdrop-blur-sm">
+                            <Chrome className="w-5 h-5 text-slate-400 group-hover:text-[#D4AF37] transition-colors" />
+                            <span className="text-xs font-sans text-slate-300 group-hover:text-white transition-colors uppercase tracking-widest font-semibold flex items-center">
+                                Available in Chrome Web Store
+                            </span>
+                        </a>
                     </div>
                 </motion.div>
 

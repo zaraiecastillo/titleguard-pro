@@ -20,10 +20,10 @@ export function PricingSection() {
                             <span className="text-3xl font-serif text-white">$0</span>
                             <span className="text-slate-500 text-sm ml-2">/mo</span>
                         </div>
-                        <p className="text-slate-500 text-xs mb-8 font-sans">Standard Support. Basic Report.</p>
+                        <p className="text-slate-500 text-xs mb-8 font-sans">1 Monthly Scan (Web Only).</p>
                         <ul className="space-y-3 mb-8 flex-1 font-sans">
                             <li className="flex items-center text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3" /> 1 Scan / Month</li>
-                            <li className="flex items-center text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3" /> Standard Support</li>
+                            <li className="flex items-center text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3" /> Web Dashboard Only</li>
                         </ul>
                         <button className="w-full py-3 border border-white/20 text-white hover:bg-white/5 transition-colors text-xs uppercase tracking-widest">Start Free</button>
                     </div>
@@ -35,9 +35,9 @@ export function PricingSection() {
                             <span className="text-3xl font-serif text-white">$49</span>
                             <span className="text-slate-500 text-sm ml-2">/scan</span>
                         </div>
-                        <p className="text-slate-500 text-xs mb-8 font-sans">High-Fidelity Analysis. One-Time.</p>
+                        <p className="text-slate-500 text-xs mb-8 font-sans">1 Full Audit (Web + Extension for 24h).</p>
                         <ul className="space-y-3 mb-8 flex-1 font-sans">
-                            <li className="flex items-center text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3" /> High-Fidelity Scan</li>
+                            <li className="flex items-center text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3" /> Web + Chrome Extension</li>
                             <li className="flex items-center text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3" /> 24-Hour Retention</li>
                         </ul>
                         <button className="w-full py-3 border border-white/20 text-white hover:bg-white/5 transition-colors text-xs uppercase tracking-widest">Secure My Deal</button>
@@ -51,10 +51,10 @@ export function PricingSection() {
                             <span className="text-3xl font-serif text-[#D4AF37]">$150</span>
                             <span className="text-slate-500 text-sm ml-2">/mo</span>
                         </div>
-                        <p className="text-slate-500 text-xs mb-8 font-sans">Unlimited. Priority. Advanced.</p>
+                        <p className="text-slate-500 text-xs mb-8 font-sans">Unlimited Scans + Chrome integration.</p>
                         <ul className="space-y-3 mb-8 flex-1 font-sans">
-                            <li className="flex items-center text-white text-sm"><Check className="w-3 h-3 text-[#D4AF37] mr-3" /> Unlimited Scans</li>
-                            <li className="flex items-center text-white text-sm"><Check className="w-3 h-3 text-[#D4AF37] mr-3" /> Priority Processing</li>
+                            <li className="flex items-center text-white text-sm"><Check className="w-3 h-3 text-[#D4AF37] mr-3" /> Unlimited Web Scans</li>
+                            <li className="flex items-center text-white text-sm"><Check className="w-3 h-3 text-[#D4AF37] mr-3" /> Full Extension Access</li>
                             <li className="flex items-center text-white text-sm"><Check className="w-3 h-3 text-[#D4AF37] mr-3" /> Advanced Logic</li>
                         </ul>
                         <button className="w-full py-3 bg-[#D4AF37] text-black hover:bg-[#B4942B] transition-colors text-xs uppercase tracking-widest font-bold shadow-[0_0_20px_rgba(212,175,55,0.2)]">Scale My Volume</button>
