@@ -170,7 +170,7 @@ export default function SolutionPage() {
                         <h3 className="text-xl text-slate-300 mb-6 italic">Seamless Chrome Extension</h3>
                         <p className="text-slate-400 text-lg leading-relaxed font-sans border-l-2 border-[#D4AF37]/20 pl-6">
                             Whether you are in our professional dashboard or browsing the MLS, TitleGuard AI is with you.
-                            Our Chrome Extension overlays our 'Stoplight' intelligence directly onto your existing workflow.
+                            Our Chrome Extension overlays our &apos;Stoplight&apos; intelligence directly onto your existing workflow.
                         </p>
                     </div>
                 </motion.div>

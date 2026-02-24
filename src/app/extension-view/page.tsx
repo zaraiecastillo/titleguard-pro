@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Loader2, ShieldCheck, AlertTriangle, ExternalLink, Activity, ArrowRight } from "lucide-react";
 
@@ -16,6 +16,14 @@ type AnalysisResult = {
 };
 
 export default function ExtensionView() {
+    return (
+        <Suspense fallback={<div className="min-h-screen bg-[#050505]" />}>
+            <ExtensionViewContent />
+        </Suspense>
+    );
+}
+
+function ExtensionViewContent() {
     const searchParams = useSearchParams();
     const address = searchParams.get("address");
     const pdfUrl = searchParams.get("pdfUrl");
