@@ -38,12 +38,17 @@ export default function PricingPage() {
             badge: "Best Value"
         },
         {
-            name: "The Institutional",
+            name: "Enterprise & Institutional",
             price: "Custom",
             period: "",
-            desc: "White-label. API. Custom Risk.",
-            features: ["White-label Reports", "API Integration", "Multi-agent Licensing", "Custom Risk Parameters"],
-            cta: "Talk to Enterprise",
+            desc: "For Title Firms and Large-Scale Brokerages.",
+            features: [
+                "Fleet-Wide Extension Deployment",
+                "Custom AI Calibration",
+                "White-Label Integration",
+                "API & CRM Sync"
+            ],
+            cta: "Request a Demo",
             icon: Briefcase,
             highlight: false
         }
@@ -133,6 +138,13 @@ export default function PricingPage() {
                             `}>
                                 {tier.cta}
                             </button>
+
+                            {/* Sub-note for Enterprise Tier */}
+                            {tier.name === "Enterprise & Institutional" && (
+                                <p className="text-[10px] text-slate-500 mt-4 text-center px-2">
+                                    Bulk licensing and API documentation available upon request.
+                                </p>
+                            )}
                         </motion.div>
                     ))}
                 </div>

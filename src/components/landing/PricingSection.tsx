@@ -62,16 +62,21 @@ export function PricingSection() {
 
                     {/* Tier 4: Enterprise */}
                     <div className="p-8 border border-white/5 bg-white/[0.02] flex flex-col hover:border-white/10 transition-colors">
-                        <h3 className="text-sm font-sans uppercase tracking-widest text-slate-300 mb-6">The Institutional</h3>
+                        <h3 className="text-sm font-sans uppercase tracking-widest text-slate-300 mb-6">Enterprise & Institutional</h3>
                         <div className="mb-2">
                             <span className="text-3xl font-serif text-white">Custom</span>
                         </div>
-                        <p className="text-slate-500 text-xs mb-8 font-sans">White-label. API. Custom Risk.</p>
+                        <p className="text-slate-500 text-xs mb-8 font-sans">For Title Firms and Large-Scale Brokerages.</p>
                         <ul className="space-y-3 mb-8 flex-1 font-sans">
-                            <li className="flex items-center text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3" /> White-label Reports</li>
-                            <li className="flex items-center text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3" /> API Integration</li>
+                            <li className="flex items-start text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3 mt-1 flex-shrink-0" /> <span className="leading-tight">Fleet-Wide Extension</span></li>
+                            <li className="flex items-start text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3 mt-1 flex-shrink-0" /> <span className="leading-tight">Custom AI Calibration</span></li>
+                            <li className="flex items-start text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3 mt-1 flex-shrink-0" /> <span className="leading-tight">White-Label Integration</span></li>
+                            <li className="flex items-start text-slate-400 text-sm"><Check className="w-3 h-3 text-slate-600 mr-3 mt-1 flex-shrink-0" /> <span className="leading-tight">API & CRM Sync</span></li>
                         </ul>
-                        <button className="w-full py-3 border border-white/20 text-white hover:bg-white/5 transition-colors text-xs uppercase tracking-widest">Talk to Enterprise</button>
+                        <button className="w-full py-3 border border-white/20 text-white hover:bg-white/5 transition-colors text-xs uppercase tracking-widest">Request a Demo</button>
+                        <p className="text-[10px] text-slate-500 mt-4 text-center">
+                            Bulk licensing & API docs upon request.
+                        </p>
                     </div>
                 </div>
             </div>
