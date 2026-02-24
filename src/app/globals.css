@@ -11,6 +11,10 @@
   --color-gold-600: #B4942B;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #050505;
   /* Deep Obsidian */

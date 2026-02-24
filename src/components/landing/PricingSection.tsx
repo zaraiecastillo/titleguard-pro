@@ -11,7 +11,7 @@ export function PricingSection() {
 
     const handleCheckout = async (tierName: string, priceId?: string) => {
         if (!priceId) {
-            if (tierName === "The Entry") window.location.href = "/dashboard";
+            if (tierName === "The Entry") window.location.href = "/#demo";
             else if (tierName === "Enterprise & Institutional") window.location.href = "/contact";
             return;
         }

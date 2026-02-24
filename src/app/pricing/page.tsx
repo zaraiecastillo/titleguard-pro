@@ -15,7 +15,7 @@ export default function PricingPage() {
     const handleCheckout = async (tierName: string, priceId?: string) => {
         if (!priceId) {
             if (tierName === "The Entry") {
-                window.location.href = "/dashboard";
+                window.location.href = "/#demo";
             } else if (tierName === "Enterprise & Institutional") {
                 window.location.href = "/contact";
             }

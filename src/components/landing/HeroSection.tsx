@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FileUpload } from "@/components/FileUpload";
 import Image from "next/image";
@@ -15,6 +15,20 @@ interface HeroSectionProps {
 export function HeroSection({ onFileSelect, isAnalyzing }: HeroSectionProps) {
     const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
     const [isCheckingTier, setIsCheckingTier] = useState(false);
+    const [highlightPulse, setHighlightPulse] = useState(false);
+
+    useEffect(() => {
+        const checkHash = () => {
+            if (window.location.hash === "#demo") {
+                setHighlightPulse(true);
+                setTimeout(() => setHighlightPulse(false), 3000); // 3-second glow pulse
+            }
+        };
+
+        checkHash();
+        window.addEventListener("hashchange", checkHash);
+        return () => window.removeEventListener("hashchange", checkHash);
+    }, []);
 
     const handleFileSelect = async (file: File) => {
         setIsCheckingTier(true);
@@ -37,7 +51,7 @@ export function HeroSection({ onFileSelect, isAnalyzing }: HeroSectionProps) {
     };
 
     return (
-        <section className="relative w-full min-h-screen flex flex-col justify-center items-center px-6 pt-24 pb-12 overflow-hidden">
+        <section id="demo" className="relative w-full min-h-screen flex flex-col justify-center items-center px-6 pt-24 pb-12 overflow-hidden">
             {/* Background removed - handled globally in layout.tsx */}
 
             {/* Content */}
@@ -102,7 +116,8 @@ export function HeroSection({ onFileSelect, isAnalyzing }: HeroSectionProps) {
                     transition={{ duration: 1, delay: 0.3 }}
                     className="lg:col-span-5 w-full"
                 >
-                    <div className="glass-gold p-1 rounded-sm relative group">
+                    <div className={`glass-gold p-1 rounded-sm relative group transition-all duration-1000 ${highlightPulse ? 'ring-4 ring-[#D4AF37] shadow-[0_0_50px_rgba(212,175,55,0.7)] scale-[1.02]' : ''
+                        }`}>
                         {/* Light Sweep Animation Container */}
                         <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-sm">
                             <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-all duration-1000 group-hover:animate-[shimmer_1.5s_infinite]" />
