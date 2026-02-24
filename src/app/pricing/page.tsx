@@ -6,8 +6,8 @@ import { Check, Zap, Star, Shield, Briefcase, CreditCard, Loader2 } from "lucide
 import { motion } from "framer-motion";
 import { loadStripe } from "@stripe/stripe-js";
 
-// Make sure to use the publishable key
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "pk_live_51T4CruP65pwDtpGf4IZpDQtQDomhC1a6NA5LGv5iOubHD1GbbTST0nPitnfc6xlLqHjrMUq0l7h1r9aCSy71b9CC00auk4vIv4");
+// Make sure to use the publishable key set in Vercel Environment Variables
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string);
 
 export default function PricingPage() {
     const [loadingTier, setLoadingTier] = useState<string | null>(null);

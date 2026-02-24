@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Check, Loader2 } from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "pk_live_51T4CruP65pwDtpGf4IZpDQtQDomhC1a6NA5LGv5iOubHD1GbbTST0nPitnfc6xlLqHjrMUq0l7h1r9aCSy71b9CC00auk4vIv4");
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string);
 
 export function PricingSection() {
     const [loadingTier, setLoadingTier] = useState<string | null>(null);
