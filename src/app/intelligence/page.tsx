@@ -171,6 +171,7 @@ export default function IntelligencePage() {
 
                 {/* The Ambient Intelligence Layer (Chrome Extension Roadmap) */}
                 <motion.div
+                    id="extension-roadmap"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -202,7 +203,7 @@ export default function IntelligencePage() {
                                         Status Disclosure
                                     </h4>
                                     <p className="text-slate-400 font-sans text-sm leading-relaxed italic">
-                                        This feature is currently in the design and architecture phase. It is intended to function as a "Passive Sentinel," scraping on-screen text to deliver Stoplight Reports in a side-bar overlay. Note: This functionality is not currently live; we are prioritizing the perfection of our manual PDF Reasoning Engine as our core 2026 baseline.
+                                        The Chrome Extension is a planned Phase 2 release. We are currently focusing our development resources on the Core Reasoning Engine to ensure 100% statutory accuracy before expanding into ambient browser integration.
                                     </p>
                                 </div>
                             </div>
