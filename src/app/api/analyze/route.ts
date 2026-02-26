@@ -106,6 +106,10 @@ export async function POST(req: NextRequest) {
       - CALIFORNIA (Priority Assessment): Trigger: Detect 'PACE', 'HERO', or 'UCC-1 Solar' in Schedule B Exceptions. Action Step (Red Light): "California PACE liens are superior to mortgage deeds of trust. Curative: These assessments must be paid off at closing or specifically subordinated by the lender to prevent title rejection."
       - FLORIDA (Unrecorded Risk): Trigger: Standard Florida Title Commitment header detection. Action Step (Yellow Light): "Florida Statute 159 Warning: Standard title searches do not uncover unrecorded municipal utility liens or code violations. Curative: Order a Municipal Lien Search (MLS) to avoid post-closing liability for unpaid city services."
       - NEW YORK (Judicial Timeline): Trigger: Detect 'Lis Pendens' or 'Notice of Pendency' in the Requirements section. Action Step (Red Light): "New York is a Judicial Foreclosure state (RPAPL § 1301). A Lis Pendens indicates active litigation. Curative: This requires a court-ordered release. Estimated curative timeline: 6–9 months. High risk of deal collapse."
+      - NEW JERSEY (Marital Possession): Trigger: Property is a primary residence and only one spouse is listed as the vested owner. Action Step (Yellow Light): "New Jersey law grants a non-titled spouse a 'Right of Joint Possession' in the principal matrimonial residence. The non-titled spouse MUST sign the deed at closing to extinguish this right, even if they are not on the title. Verify marital status and coordinate spouse attendance for closing."
+      - NEW JERSEY (Tidelands & Riparian Claims): Trigger: Document mentions 'Tidelands', 'Riparian Rights', or property is in a coastal/waterway county (e.g., Monmouth, Ocean, Atlantic, Cape May). Action Step (Red Light): "The State of New Jersey claims ownership of all land that is or was formerly flowed by the tide. A Tidelands Claim is a 'Cloud on Title.' Curative: You must obtain a 'Statement of No Interest' or a 'Riparian Grant' from the NJDEP. This can take 6+ months to resolve."
+      - NEW JERSEY (The Mansion Tax): Trigger: Purchase price is $1,000,000 or greater. Action Step (Yellow Light): "NJ imposes a 1% 'Mansion Tax' on residential transfers over $1M. As of July 2025, the responsibility for this fee has shifted. Curative: Ensure the 'Realty Transfer Fee' (RTF-1) form is accurately calculated to avoid a recording rejection at the County Clerk’s office."
+      - NEW JERSEY (Upper Court Judgments): Trigger: Presence of 'Child Support Lien' or 'Superior Court Judgment' in Schedule B. Action Step (Red Light): "In NJ, Superior Court judgments attach to all real estate owned by the debtor statewide. Curative: A 'Writ of Execution' or a 'Warrant to Satisfy' must be filed with the Clerk of the Superior Court in Trenton before clear title can be issued."
 
       Output ONLY valid JSON matching this exact schema:
       {
@@ -173,14 +177,14 @@ export async function POST(req: NextRequest) {
                 curative_actions: [
                     {
                         priority: "HIGH",
-                        instruction: "Obtain payoff/release for 2018 Mortgage.",
-                        reason: "Active lien on property must be cleared before closing."
+                        instruction: "File Warrant to Satisfy Judgment and request Riparian Grant investigation.",
+                        reason: "Active judgments and tidelands claims block clear title issuance."
                     }
                 ],
                 geographic_intelligence: {
-                    state: "FL",
-                    action_step: "Florida Statute 159 Warning: Standard title searches do not uncover unrecorded municipal utility liens or code violations. Curative: Order a Municipal Lien Search (MLS) to avoid post-closing liability for unpaid city services.",
-                    risk_level: "YELLOW"
+                    state: "NJ",
+                    action_step: "The State of New Jersey claims ownership of all land that is or was formerly flowed by the tide. A Tidelands Claim is a 'Cloud on Title.' Curative: You must obtain a 'Statement of No Interest' or a 'Riparian Grant' from the NJDEP. This can take 6+ months to resolve.",
+                    risk_level: "RED"
                 }
             });
         }
