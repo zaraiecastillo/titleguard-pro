@@ -175,7 +175,9 @@ export function AnalysisReport({ result }: AnalysisReportProps) {
                                         ? "Empire State Intelligence Alerts"
                                         : result.geographic_intelligence.state === "FL" || result.geographic_intelligence.state === "Florida"
                                             ? "Sunshine State Risk Alerts"
-                                            : "Geographic Intelligence Report"}
+                                            : result.geographic_intelligence.state === "TX" || result.geographic_intelligence.state === "Texas"
+                                                ? "Lone Star State Strategic Alerts"
+                                                : "Geographic Intelligence Report"}
                             </span>
                             <h3 className="text-2xl font-serif text-white mb-4">
                                 State Detection: <span className="text-[#D4AF37]">{result.geographic_intelligence.state}</span>

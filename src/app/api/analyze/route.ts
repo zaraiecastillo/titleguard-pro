@@ -102,7 +102,11 @@ export async function POST(req: NextRequest) {
       2. Geographic Detection & Logic Clusters:
       Automatically identify the property state from the 'Legal Description' or 'Schedule A' header.
       Apply these state-specific knowledge base triggers if the property is in one of the Big Four states:
-      - TEXAS (Homestead Logic): Trigger: If 'Marital Status' is listed as 'Single' or 'Unmarried' on a primary residence. Action Step (Yellow Light): "Texas Constitution Article XVI, Section 50 requires spousal joinder for all homestead sales. Verify if the seller is married; if so, the non-owning spouse must sign the Warranty Deed to waive homestead rights."
+      - TEXAS (Mandatory Buyer Agreement): Trigger: Any Texas residential transaction analysis. Action Step (Yellow Light): "NEW TEXAS LAW (SB 1968): As of Jan 1, 2026, you MUST have a signed written representation agreement before showing this property or presenting an offer. Curative: Verify your 'Buyer Representation Agreement' is active and includes the mandatory 2026 transparency disclosures regarding negotiable commissions."
+      - TEXAS (Texas Homestead & Spousal Joinder): Trigger: Property is a primary residence and only one spouse is on the deed/commitment. Action Step (Red Light): "Texas Constitution Art. XVI § 50: A homestead cannot be sold or encumbered without the joinder of BOTH spouses, even if the property is the separate property of one spouse. Curative: The non-titled spouse must sign the Warranty Deed and the Closing Disclosure to waive homestead rights. No exceptions."
+      - TEXAS (Mineral Estate Severance): Trigger: Document mentions 'Mineral Reservation', 'Oil & Gas Lease', or 'Severed Minerals'. Action Step (Red Light): "In Texas, the Mineral Estate is the 'Dominant Estate.' Owners of severed minerals have the legal right to use the surface for extraction. Curative: Recommend a T-19.1 Endorsement (Residential Real Property Corporate Owner/Lender) to provide limited insurance against surface damage from mineral extraction."
+      - TEXAS (Community Property W/O Survivorship): Trigger: Owners are 'Husband and Wife' but the deed lacks 'Right of Survivorship' language. Action Step (Yellow Light): "Texas is a Community Property state, but it does NOT automatically include 'Right of Survivorship.' Curative: Without a recorded 'Survivorship Agreement,' the deceased spouse’s 50% interest passes to heirs via probate. Verify if a 'Community Property Survivorship Agreement' has been executed to avoid a 6-month probate delay."
+      - TEXAS (FinCEN Cash Reporting): Trigger: All-cash purchase by an LLC, Trust, or Entity. Action Step (Red Light): "FEDERAL COMPLIANCE: Effective March 1, 2026, this non-financed entity transfer requires a FinCEN Real Estate Report. Curative: The closing agent must collect and report Beneficial Ownership Information (BOI) within 30 days of closing. Failure to comply prevents the title company from issuing the policy."
       - CALIFORNIA (Priority Assessment): Trigger: Detect 'PACE', 'HERO', or 'UCC-1 Solar' in Schedule B Exceptions. Action Step (Red Light): "California PACE liens are superior to mortgage deeds of trust. Curative: These assessments must be paid off at closing or specifically subordinated by the lender to prevent title rejection."
       - FLORIDA (FinCEN Real Estate Reporting): Trigger: Residential transaction (1-4 family), Purchase is non-financed (Cash), and Buyer is an LLC or Trust. Action Step (Red Light): "NEW FEDERAL MANDATE: Under 31 CFR §1010.821 (effective March 1, 2026), this cash/LLC transaction triggers mandatory FinCEN Real Estate Reporting. Curative: Both parties must provide Beneficial Ownership Information (BOI) to the closing agent at least 24 hours prior to closing. Failure to report can result in severe federal penalties."
       - FLORIDA (Florida Homestead): Trigger: Property is a primary residence. Action Step (Yellow Light): "Florida Constitution shields homesteads from most judgment liens, but NOT from taxes, mortgages, or construction liens. Curative: Verify the 'Save Our Homes' tax cap status. Note: Homestead exemptions DO NOT transfer to a new buyer; the buyer must re-file by March 1st of the following year to prevent a massive tax hike."
@@ -185,13 +189,13 @@ export async function POST(req: NextRequest) {
                 curative_actions: [
                     {
                         priority: "HIGH",
-                        instruction: "Obtain Beneficial Ownership Information (BOI) from all parties.",
-                        reason: "Cash transactions for LLCs are subject to strict federal FinCEN regulations."
+                        instruction: "Obtain spousal joinder on Warranty Deed and CD.",
+                        reason: "Texas homestead laws strictly require both spouses to sign to waive homestead rights."
                     }
                 ],
                 geographic_intelligence: {
-                    state: "FL",
-                    action_step: "NEW FEDERAL MANDATE: Under 31 CFR §1010.821 (effective March 1, 2026), this cash/LLC transaction triggers mandatory FinCEN Real Estate Reporting. Curative: Both parties must provide Beneficial Ownership Information (BOI) to the closing agent at least 24 hours prior to closing. Failure to report can result in severe federal penalties.",
+                    state: "TX",
+                    action_step: "Texas Constitution Art. XVI § 50: A homestead cannot be sold or encumbered without the joinder of BOTH spouses, even if the property is the separate property of one spouse. Curative: The non-titled spouse must sign the Warranty Deed and the Closing Disclosure to waive homestead rights. No exceptions.",
                     risk_level: "RED"
                 }
             });
