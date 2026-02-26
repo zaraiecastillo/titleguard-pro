@@ -30,9 +30,14 @@ export function JurisdictionalLogicTabs() {
                                 <ShieldCheck className="w-5 h-5 text-[#D4AF37]" />
                                 <h3 className="text-xl font-serif text-white">FEDERAL</h3>
                             </div>
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 tracking-wider uppercase">
-                                Active
-                            </span>
+                            <div className="flex flex-wrap gap-2">
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 tracking-wider uppercase">
+                                    Active
+                                </span>
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-slate-800 text-slate-300 border border-slate-700 tracking-wider uppercase">
+                                    Static Statutory Curation
+                                </span>
+                            </div>
                         </div>
                         <div className="md:w-3/4">
                             <p className="text-slate-300 font-sans leading-relaxed text-sm md:text-base border-l-2 border-[#D4AF37]/30 pl-4 group-hover:border-[#D4AF37] transition-colors">
@@ -48,9 +53,14 @@ export function JurisdictionalLogicTabs() {
                                 <Map className="w-5 h-5 text-[#D4AF37]" />
                                 <h3 className="text-xl font-serif text-white">NEW JERSEY</h3>
                             </div>
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 tracking-wider uppercase">
-                                Active
-                            </span>
+                            <div className="flex flex-wrap gap-2">
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 tracking-wider uppercase">
+                                    Active
+                                </span>
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-slate-800 text-slate-300 border border-slate-700 tracking-wider uppercase">
+                                    Static Statutory Curation
+                                </span>
+                            </div>
                         </div>
                         <div className="md:w-3/4">
                             <p className="text-slate-300 font-sans leading-relaxed text-sm md:text-base border-l-2 border-[#D4AF37]/30 pl-4 group-hover:border-[#D4AF37] transition-colors">
@@ -66,9 +76,14 @@ export function JurisdictionalLogicTabs() {
                                 <Scale className="w-5 h-5 text-[#D4AF37]" />
                                 <h3 className="text-xl font-serif text-white">NEW YORK</h3>
                             </div>
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 tracking-wider uppercase">
-                                Active
-                            </span>
+                            <div className="flex flex-wrap gap-2">
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 tracking-wider uppercase">
+                                    Active
+                                </span>
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-slate-800 text-slate-300 border border-slate-700 tracking-wider uppercase">
+                                    Static Statutory Curation
+                                </span>
+                            </div>
                         </div>
                         <div className="md:w-3/4">
                             <p className="text-slate-300 font-sans leading-relaxed text-sm md:text-base border-l-2 border-[#D4AF37]/30 pl-4 group-hover:border-[#D4AF37] transition-colors">
@@ -84,9 +99,14 @@ export function JurisdictionalLogicTabs() {
                                 <Briefcase className="w-5 h-5 text-[#D4AF37]" />
                                 <h3 className="text-xl font-serif text-white">TEXAS</h3>
                             </div>
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 tracking-wider uppercase">
-                                Active
-                            </span>
+                            <div className="flex flex-wrap gap-2">
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 tracking-wider uppercase">
+                                    Active
+                                </span>
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-slate-800 text-slate-300 border border-slate-700 tracking-wider uppercase">
+                                    Static Statutory Curation
+                                </span>
+                            </div>
                         </div>
                         <div className="md:w-3/4">
                             <p className="text-slate-300 font-sans leading-relaxed text-sm md:text-base border-l-2 border-[#D4AF37]/30 pl-4 group-hover:border-[#D4AF37] transition-colors">
@@ -102,9 +122,14 @@ export function JurisdictionalLogicTabs() {
                                 <FileWarning className="w-5 h-5 text-[#D4AF37]" />
                                 <h3 className="text-xl font-serif text-white">CALIFORNIA</h3>
                             </div>
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 tracking-wider uppercase">
-                                Active
-                            </span>
+                            <div className="flex flex-wrap gap-2">
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 tracking-wider uppercase">
+                                    Active
+                                </span>
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-slate-800 text-slate-300 border border-slate-700 tracking-wider uppercase">
+                                    Static Statutory Curation
+                                </span>
+                            </div>
                         </div>
                         <div className="md:w-3/4">
                             <p className="text-slate-300 font-sans leading-relaxed text-sm md:text-base border-l-2 border-[#D4AF37]/30 pl-4 group-hover:border-[#D4AF37] transition-colors">
@@ -134,7 +159,7 @@ export function JurisdictionalLogicTabs() {
                 </h4>
 
                 <p className="text-slate-400 font-sans text-sm md:text-base leading-relaxed relative z-10 max-w-4xl">
-                    Our current logic is manually verified and updated periodically. While highly accurate for the identified jurisdictions, we are currently raising capital to build the Automated Legal Sentinel—a system designed to autonomously ingest state-level legislative updates in real-time. Until then, TitleGuard PRO serves as a high-fidelity "Early Warning System" that flags risks for human review.
+                    TitleGuard PRO is a High-Fidelity Early Warning System. All logic is manually verified against 2026 legislative sessions. As we scale, we plan to transition to an automated statutory sync (Project Sentinel). Until then, we provide the most accurate manual logic-layer available for the Big 5 markets.
                 </p>
             </motion.div>
         </div>

@@ -18,9 +18,9 @@ export default function IntelligencePage() {
     const steps = [
         {
             icon: ScanLine,
-            title: "Optical Extraction",
+            title: "High-Fidelity Textual Ingestion",
             subtitle: "High-Fidelity Ingestion",
-            description: "We do not simply 'read' the PDF. Our engine performs pixel-perfect OCR to map the legal description, schedule B exceptions, and requirement chains into a structured JSON data model.",
+            description: "Our engine performs a deterministic audit of search-enabled PDF documents. By mapping requirement chains and Schedule B exceptions into structured data, we eliminate the risk of human oversight.",
         },
         {
             icon: Scale,
@@ -165,6 +165,47 @@ export default function IntelligencePage() {
                                     )}
                                 </div>
                             ))}
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* The Ambient Intelligence Layer (Chrome Extension Roadmap) */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="mb-32 max-w-5xl mx-auto"
+                >
+                    <div className="glass-card border border-[#D4AF37]/20 p-8 md:p-12 relative overflow-hidden bg-[#0A0A0A]/80">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#D4AF37]/5 blur-[80px] pointer-events-none" />
+
+                        <div className="flex flex-col md:flex-row gap-8 items-start">
+                            <div className="w-16 h-16 rounded-full bg-[#1A1612] border border-[#D4AF37]/30 flex items-center justify-center flex-shrink-0 relative z-10">
+                                <ScanLine className="text-[#D4AF37] w-8 h-8" />
+                            </div>
+
+                            <div className="relative z-10">
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20 tracking-wider uppercase mb-4">
+                                    In Provisioning
+                                </span>
+                                <h3 className="text-3xl font-serif text-white mb-4">
+                                    The Ambient Intelligence <span className="text-[#D4AF37] italic">Layer</span>
+                                </h3>
+                                <p className="text-slate-300 font-sans leading-relaxed mb-6">
+                                    For firms requiring background analysis without manual file uploads, we are designing a Chrome Extension to live within your CRM or Gmail.
+                                </p>
+
+                                <div className="bg-black/40 border border-[#D4AF37]/10 p-5 rounded-sm">
+                                    <h4 className="text-[#D4AF37] text-xs uppercase tracking-widest font-sans mb-2 flex items-center">
+                                        <TriangleAlert className="w-4 h-4 mr-2" />
+                                        Status Disclosure
+                                    </h4>
+                                    <p className="text-slate-400 font-sans text-sm leading-relaxed italic">
+                                        This feature is currently in the design and architecture phase. It is intended to function as a "Passive Sentinel," scraping on-screen text to deliver Stoplight Reports in a side-bar overlay. Note: This functionality is not currently live; we are prioritizing the perfection of our manual PDF Reasoning Engine as our core 2026 baseline.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </motion.div>
