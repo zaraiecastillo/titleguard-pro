@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { RiskGauge, RiskScore } from "@/components/RiskGauge";
-import { ShieldCheck, ClipboardList, Hammer, Check, X } from "lucide-react";
+import { ShieldCheck, ClipboardList, Hammer, Check, X, MapPin } from "lucide-react";
 
 // Types matching API response
 export interface AnalysisResult {
@@ -30,6 +30,11 @@ export interface AnalysisResult {
         instruction: string;
         reason: string;
     }>;
+    geographic_intelligence?: {
+        state: string;
+        action_step: string;
+        risk_level: "RED" | "YELLOW" | "GREEN";
+    };
 }
 
 interface AnalysisReportProps {
@@ -147,6 +152,47 @@ export function AnalysisReport({ result }: AnalysisReportProps) {
                         )}
                     </div>
                 </div>
+
+                {/* Optional Column 4: Geographic Intelligence (Full Width below) */}
+                {result.geographic_intelligence && (
+                    <div className="mt-12 w-full glass-card border border-white/10 p-8 flex flex-col md:flex-row items-start gap-8 relative overflow-hidden">
+                        {/* Status Glow Background */}
+                        <div className={`absolute top-0 right-0 w-64 h-64 blur-[100px] opacity-20 pointer-events-none ${result.geographic_intelligence.risk_level === 'RED' ? 'bg-rose-500' :
+                                result.geographic_intelligence.risk_level === 'YELLOW' ? 'bg-amber-500' : 'bg-emerald-500'
+                            }`} />
+
+                        <div className="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full bg-white/5 border border-white/10 relative z-10">
+                            <MapPin className={`w-8 h-8 ${result.geographic_intelligence.risk_level === 'RED' ? 'text-rose-500' :
+                                    result.geographic_intelligence.risk_level === 'YELLOW' ? 'text-amber-500' : 'text-emerald-500'
+                                }`} />
+                        </div>
+
+                        <div className="relative z-10 flex-1">
+                            <span className="text-[#D4AF37] text-xs font-sans uppercase tracking-[0.25em] mb-2 block">Geographic Intelligence Report</span>
+                            <h3 className="text-2xl font-serif text-white mb-4">
+                                State Detection: <span className="text-[#D4AF37]">{result.geographic_intelligence.state}</span>
+                            </h3>
+                            <div className="bg-[#050505] border border-white/10 p-6 rounded-sm">
+                                <div className="flex items-start">
+                                    <div className="mt-1 mr-4">
+                                        {result.geographic_intelligence.risk_level === 'RED' && (
+                                            <div className="w-3 h-3 bg-rose-500 rounded-full shadow-[0_0_15px_#f43f5e] animate-pulse" />
+                                        )}
+                                        {result.geographic_intelligence.risk_level === 'YELLOW' && (
+                                            <div className="w-3 h-3 bg-amber-500 rounded-full shadow-[0_0_15px_#f59e0b]" />
+                                        )}
+                                        {result.geographic_intelligence.risk_level === 'GREEN' && (
+                                            <div className="w-3 h-3 bg-emerald-500 rounded-full shadow-[0_0_15px_#10b981]" />
+                                        )}
+                                    </div>
+                                    <p className="text-slate-300 font-sans text-sm leading-relaxed">
+                                        {result.geographic_intelligence.action_step}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </motion.div>
         </section>
     );

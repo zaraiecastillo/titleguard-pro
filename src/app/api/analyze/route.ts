@@ -98,7 +98,15 @@ export async function POST(req: NextRequest) {
       --- DOCUMENT TEXT ---
       ${scrubbedText.slice(0, 30000)}
       ---------------------
-      
+
+      2. Geographic Detection & Logic Clusters:
+      Automatically identify the property state from the 'Legal Description' or 'Schedule A' header.
+      Apply these state-specific knowledge base triggers if the property is in one of the Big Four states:
+      - TEXAS (Homestead Logic): Trigger: If 'Marital Status' is listed as 'Single' or 'Unmarried' on a primary residence. Action Step (Yellow Light): "Texas Constitution Article XVI, Section 50 requires spousal joinder for all homestead sales. Verify if the seller is married; if so, the non-owning spouse must sign the Warranty Deed to waive homestead rights."
+      - CALIFORNIA (Priority Assessment): Trigger: Detect 'PACE', 'HERO', or 'UCC-1 Solar' in Schedule B Exceptions. Action Step (Red Light): "California PACE liens are superior to mortgage deeds of trust. Curative: These assessments must be paid off at closing or specifically subordinated by the lender to prevent title rejection."
+      - FLORIDA (Unrecorded Risk): Trigger: Standard Florida Title Commitment header detection. Action Step (Yellow Light): "Florida Statute 159 Warning: Standard title searches do not uncover unrecorded municipal utility liens or code violations. Curative: Order a Municipal Lien Search (MLS) to avoid post-closing liability for unpaid city services."
+      - NEW YORK (Judicial Timeline): Trigger: Detect 'Lis Pendens' or 'Notice of Pendency' in the Requirements section. Action Step (Red Light): "New York is a Judicial Foreclosure state (RPAPL § 1301). A Lis Pendens indicates active litigation. Curative: This requires a court-ordered release. Estimated curative timeline: 6–9 months. High risk of deal collapse."
+
       Output ONLY valid JSON matching this exact schema:
       {
         "report_id": "string (uuid)",
@@ -128,7 +136,12 @@ export async function POST(req: NextRequest) {
             "instruction": "E.g., Request death certificate for co-owner.",
             "reason": "Why this blocks the closing."
             }
-        ]
+        ],
+        "geographic_intelligence": {
+            "state": "string (e.g., TX, CA, FL, NY)",
+            "action_step": "string (The Action Step text above, or standard message)",
+            "risk_level": "RED" | "YELLOW" | "GREEN"
+        }
       }
     `;
 
@@ -163,7 +176,12 @@ export async function POST(req: NextRequest) {
                         instruction: "Obtain payoff/release for 2018 Mortgage.",
                         reason: "Active lien on property must be cleared before closing."
                     }
-                ]
+                ],
+                geographic_intelligence: {
+                    state: "FL",
+                    action_step: "Florida Statute 159 Warning: Standard title searches do not uncover unrecorded municipal utility liens or code violations. Curative: Order a Municipal Lien Search (MLS) to avoid post-closing liability for unpaid city services.",
+                    risk_level: "YELLOW"
+                }
             });
         }
 
