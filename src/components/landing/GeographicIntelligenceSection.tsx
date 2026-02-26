@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Map, ShieldCheck, FileSearch, Target } from "lucide-react";
+import { Map, ShieldCheck, FileSearch, Target, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function GeographicIntelligenceSection() {
     return (
@@ -97,9 +98,15 @@ export function GeographicIntelligenceSection() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-center max-w-3xl mx-auto pt-8 border-t border-white/5"
+                    className="flex flex-col items-center max-w-3xl mx-auto pt-12 border-t border-white/5"
                 >
-                    <p className="text-slate-500 font-mono text-[11px] leading-relaxed uppercase tracking-wider">
+                    <Link href="/intelligence" className="mb-8">
+                        <button className="group relative px-8 py-3 bg-[#D4AF37] text-black font-sans text-xs uppercase tracking-widest overflow-hidden hover:bg-[#F3E5AB] transition-colors flex items-center justify-center">
+                            <span>Learn More</span>
+                            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </button>
+                    </Link>
+                    <p className="text-slate-500 font-mono text-[11px] leading-relaxed uppercase tracking-wider text-center">
                         Transparency is our policy. TitleGuard PRO provides risk detection based on specific 2026 statutes, intended to augment—not replace—professional legal counsel.
                     </p>
                 </motion.div>
