@@ -6,6 +6,7 @@ import { HeroSection } from "@/components/landing/HeroSection";
 import { StorySection } from "@/components/landing/StorySection";
 import { PricingSection } from "@/components/landing/PricingSection";
 import { SecuritySection } from "@/components/landing/SecuritySection";
+import { GeographicIntelligenceSection } from "@/components/landing/GeographicIntelligenceSection";
 import { AnalysisReport, AnalysisResult } from "@/components/landing/AnalysisReport";
 import { AlertTriangle, Loader2 } from "lucide-react";
 
@@ -60,10 +61,11 @@ export default function Home() {
         </div>
       )}
 
-      {/* Results Section - Only shows when result exists */}
       {result && <AnalysisReport result={result} />}
 
       <StorySection />
+
+      <GeographicIntelligenceSection />
 
       <PricingSection />
 
