@@ -171,7 +171,9 @@ export function AnalysisReport({ result }: AnalysisReportProps) {
                             <span className="text-[#D4AF37] text-xs font-sans uppercase tracking-[0.25em] mb-2 block">
                                 {result.geographic_intelligence.state === "NJ" || result.geographic_intelligence.state === "New Jersey"
                                     ? "Garden State Compliance Alerts"
-                                    : "Geographic Intelligence Report"}
+                                    : result.geographic_intelligence.state === "NY" || result.geographic_intelligence.state === "New York"
+                                        ? "Empire State Intelligence Alerts"
+                                        : "Geographic Intelligence Report"}
                             </span>
                             <h3 className="text-2xl font-serif text-white mb-4">
                                 State Detection: <span className="text-[#D4AF37]">{result.geographic_intelligence.state}</span>
