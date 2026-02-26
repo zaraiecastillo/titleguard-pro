@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Upload, Cpu, FileCheck, ScanLine, Database, Scale, ArrowRight, ShieldAlert, Check, TriangleAlert, CircleX, Handshake } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { JurisdictionalLogicTabs } from "@/components/intelligence/JurisdictionalLogicTabs";
 
 export default function IntelligencePage() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -167,6 +168,9 @@ export default function IntelligencePage() {
                         </div>
                     </div>
                 </motion.div>
+
+                {/* Jurisdictional Logic Clusters Tab Interface */}
+                <JurisdictionalLogicTabs />
 
                 {/* Stoplight Interactive Breakdown */}
                 <motion.div
