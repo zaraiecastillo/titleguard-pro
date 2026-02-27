@@ -82,11 +82,12 @@ export default function PricingPage() {
 
                     {/* Tier 1: The Trial */}
                     <motion.div
+                        id="free-tier"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1, duration: 0.6 }}
-                        className="relative p-8 flex flex-col h-full glass-card transition-all duration-300 border-white/5 hover:border-white/20 hover:bg-white/[0.02]"
+                        className="relative p-8 flex flex-col h-full glass-card transition-all duration-300 border-white/5 hover:border-white/20 hover:bg-white/[0.02] scroll-mt-24"
                     >
                         <div className="mb-6">
                             <Star className="w-8 h-8 mb-4 text-slate-400" />
