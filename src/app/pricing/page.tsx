@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
-import { Check, Zap, Star, Shield, Briefcase, CreditCard, Loader2 } from "lucide-react";
+import { Check, Zap, Star, Briefcase, CreditCard, Loader2, TriangleAlert, Info } from "lucide-react";
 import { motion } from "framer-motion";
 import { loadStripe } from "@stripe/stripe-js";
 
@@ -14,7 +14,7 @@ export default function PricingPage() {
 
     const handleCheckout = async (tierName: string, priceId?: string) => {
         if (!priceId) {
-            if (tierName === "The Entry") {
+            if (tierName === "The Trial") {
                 window.location.href = "/#demo";
             } else if (tierName === "Enterprise & Institutional") {
                 window.location.href = "/contact";
@@ -53,56 +53,6 @@ export default function PricingPage() {
             setLoadingTier(null);
         }
     };
-    const tiers = [
-        {
-            name: "The Entry",
-            price: "$0",
-            period: "/mo",
-            desc: "1 Monthly Scan (Web Only).",
-            features: ["1 Scan / Month", "Web Dashboard Only", "Basic Stoplight Report"],
-            cta: "Start Scanning",
-            icon: Star,
-            highlight: false
-        },
-        {
-            name: "Per-Transaction",
-            price: "$49",
-            period: "/scan",
-            desc: "1 Full Audit (Web + Extension Access for 24 hours).",
-            features: ["Single High-Fidelity Scan", "Web + Chrome Extension", "24-Hour Data Retention"],
-            cta: "Secure My Deal",
-            icon: CreditCard,
-            highlight: false,
-            priceId: "price_1T4D9X0K6xSYeASO1w2thYki"
-        },
-        {
-            name: "The Power-User",
-            price: "$150",
-            period: "/mo",
-            desc: "Unlimited Scans + Full Chrome Extension Integration.",
-            features: ["Unlimited Web Scans", "Full Extension Access", "Advanced 'Heirship' Logic", "Dashboard Analytics"],
-            cta: "Scale My Volume",
-            icon: Zap,
-            highlight: true,
-            badge: "Best Value",
-            priceId: "price_1T4DAi0K6xSYeASOZRKLkpkW"
-        },
-        {
-            name: "Enterprise & Institutional",
-            price: "Custom",
-            period: "",
-            desc: "For Title Firms and Large-Scale Brokerages.",
-            features: [
-                "Fleet-Wide Extension Deployment",
-                "Custom AI Calibration",
-                "White-Label Integration",
-                "API & CRM Sync"
-            ],
-            cta: "Contact Concierge",
-            icon: Briefcase,
-            highlight: false
-        }
-    ];
 
     return (
         <main className="min-h-screen relative overflow-hidden pt-24">
@@ -129,81 +79,222 @@ export default function PricingPage() {
 
                 {/* Pricing Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {tiers.map((tier, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, duration: 0.6 }}
-                            className={`
-                                relative p-8 flex flex-col h-full
-                                glass-card transition-all duration-300
-                                ${tier.highlight
-                                    ? 'border-[#D4AF37] bg-[#D4AF37]/5 shadow-[0_0_30px_rgba(212,175,55,0.1)] scale-105 z-10'
-                                    : 'border-white/5 hover:border-white/20 hover:bg-white/[0.02]'
-                                }
-                            `}
+
+                    {/* Tier 1: The Trial */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1, duration: 0.6 }}
+                        className="relative p-8 flex flex-col h-full glass-card transition-all duration-300 border-white/5 hover:border-white/20 hover:bg-white/[0.02]"
+                    >
+                        <div className="mb-6">
+                            <Star className="w-8 h-8 mb-4 text-slate-400" />
+                            <h3 className="text-sm font-sans uppercase tracking-widest text-slate-300">The Trial</h3>
+                        </div>
+                        <div className="mb-6">
+                            <div className="flex items-baseline">
+                                <span className="text-4xl font-serif text-white">$0</span>
+                            </div>
+                            <p className="text-slate-500 text-xs mt-2 font-sans">
+                                1 Manual PDF Scan. Experience the 2026 Statutory Logic firsthand with a full Stoplight Report for one property.
+                            </p>
+                        </div>
+                        <div className="flex-1 mb-8">
+                            <ul className="space-y-4">
+                                <li className="flex items-start text-sm">
+                                    <Check className="w-4 h-4 mr-3 mt-0.5 text-slate-600 flex-shrink-0" />
+                                    <span className="text-slate-300 font-sans">Web-Based PDF Analysis</span>
+                                </li>
+                                <li className="flex items-start pt-4 mt-2 border-t border-white/5">
+                                    <div className="bg-black/40 border border-white/10 p-3 rounded-sm w-full">
+                                        <h4 className="text-slate-400 text-[10px] uppercase tracking-widest font-sans mb-1 flex items-center">
+                                            <Info className="w-3 h-3 mr-1.5" />
+                                            OCR Note
+                                        </h4>
+                                        <p className="text-slate-500 font-sans text-[11px] leading-relaxed italic">
+                                            Optimized for search-enabled PDFs. Handwritten scan support coming in Phase 3.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <button
+                            onClick={() => handleCheckout("The Trial")}
+                            className="w-full py-4 text-xs flex items-center justify-center font-bold uppercase tracking-[0.2em] transition-all border border-white/10 text-white hover:bg-white/5 hover:border-white/20"
                         >
-                            {tier.highlight && (
-                                <div className="absolute top-0 right-0 bg-[#D4AF37] text-black text-[10px] font-bold px-3 py-1 uppercase tracking-wider">
-                                    {tier.badge}
-                                </div>
-                            )}
+                            Claim My Free Scan
+                        </button>
+                    </motion.div>
 
-                            <div className="mb-6">
-                                <tier.icon className={`w-8 h-8 mb-4 ${tier.highlight ? 'text-[#D4AF37]' : 'text-slate-400'}`} />
-                                <h3 className={`text-sm font-sans uppercase tracking-widest ${tier.highlight ? 'text-white' : 'text-slate-300'}`}>
-                                    {tier.name}
-                                </h3>
+                    {/* Tier 2: The Single Audit */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2, duration: 0.6 }}
+                        className="relative p-8 flex flex-col h-full glass-card transition-all duration-300 border-white/5 hover:border-white/20 hover:bg-white/[0.02]"
+                    >
+                        <div className="mb-6">
+                            <CreditCard className="w-8 h-8 mb-4 text-slate-400" />
+                            <h3 className="text-sm font-sans uppercase tracking-widest text-slate-300">The Single Audit</h3>
+                        </div>
+                        <div className="mb-6">
+                            <div className="flex items-baseline">
+                                <span className="text-4xl font-serif text-white">$49</span>
+                                <span className="text-slate-500 text-sm ml-2">/scan</span>
                             </div>
+                            <p className="text-slate-500 text-xs mt-2 font-sans">
+                                Transactional Access. No commitment. 1 Full PDF Analysis with 24-hour cloud report retention.
+                            </p>
+                        </div>
+                        <div className="flex-1 mb-8">
+                            <ul className="space-y-4">
+                                <li className="flex items-start text-sm">
+                                    <Check className="w-4 h-4 mr-3 mt-0.5 text-slate-600 flex-shrink-0" />
+                                    <span className="text-slate-300 font-sans">Web-Based PDF Analysis</span>
+                                </li>
+                                <li className="flex items-start text-sm">
+                                    <Check className="w-4 h-4 mr-3 mt-0.5 text-slate-600 flex-shrink-0" />
+                                    <span className="text-slate-300 font-sans">24-hour cloud report retention</span>
+                                </li>
+                                <li className="flex items-start pt-4 mt-2 border-t border-white/5">
+                                    <div className="bg-black/40 border border-white/10 p-3 rounded-sm w-full">
+                                        <h4 className="text-slate-400 text-[10px] uppercase tracking-widest font-sans mb-1 flex items-center">
+                                            <Info className="w-3 h-3 mr-1.5" />
+                                            OCR Note
+                                        </h4>
+                                        <p className="text-slate-500 font-sans text-[11px] leading-relaxed italic">
+                                            Optimized for search-enabled PDFs. Handwritten scan support coming in Phase 3.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <button
+                            onClick={() => handleCheckout("The Single Audit", "price_1T4D9X0K6xSYeASO1w2thYki")}
+                            disabled={loadingTier === "The Single Audit"}
+                            className="w-full py-4 text-xs flex items-center justify-center font-bold uppercase tracking-[0.2em] transition-all border border-white/10 text-white hover:bg-white/5 hover:border-white/20 disabled:opacity-70 disabled:cursor-not-allowed"
+                        >
+                            {loadingTier === "The Single Audit" ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
+                            Purchase One-Time Audit
+                        </button>
+                    </motion.div>
 
-                            <div className="mb-6">
-                                <div className="flex items-baseline">
-                                    <span className={`text-4xl font-serif ${tier.highlight ? 'text-[#D4AF37]' : 'text-white'}`}>
-                                        {tier.price}
-                                    </span>
-                                    {tier.period && <span className="text-slate-500 text-sm ml-2">{tier.period}</span>}
-                                </div>
-                                <p className="text-slate-500 text-xs mt-2 font-sans">{tier.desc}</p>
+                    {/* Tier 3: The Professional */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3, duration: 0.6 }}
+                        className="relative p-8 flex flex-col h-full glass-card transition-all duration-300 border-[#D4AF37] bg-[#D4AF37]/5 shadow-[0_0_30px_rgba(212,175,55,0.1)] scale-105 z-10"
+                    >
+                        <div className="absolute top-0 right-0 bg-[#D4AF37] text-black text-[10px] font-bold px-3 py-1 uppercase tracking-wider">
+                            Best Value
+                        </div>
+                        <div className="mb-6">
+                            <Zap className="w-8 h-8 mb-4 text-[#D4AF37]" />
+                            <h3 className="text-sm font-sans uppercase tracking-widest text-white">The Professional</h3>
+                        </div>
+                        <div className="mb-6">
+                            <div className="flex items-baseline">
+                                <span className="text-4xl font-serif text-[#D4AF37]">$150</span>
+                                <span className="text-slate-500 text-sm ml-2">/mo</span>
                             </div>
+                            <p className="text-slate-500 text-xs mt-2 font-sans">
+                                Unlimited PDF Analysis. Full Web Dashboard access for NJ, NY, FL, TX, & CA. Priority access to the Chrome Extension Beta waitlist.
+                            </p>
+                        </div>
+                        <div className="flex-1 mb-8">
+                            <ul className="space-y-4">
+                                <li className="flex items-start text-sm">
+                                    <Check className="w-4 h-4 mr-3 mt-0.5 text-[#D4AF37] flex-shrink-0" />
+                                    <span className="text-slate-300 font-sans">Unlimited Web-Based PDF Analysis</span>
+                                </li>
+                                <li className="flex items-start pt-4 mt-2 border-t border-white/5">
+                                    <div className="bg-black/40 border border-[#D4AF37]/20 p-3 rounded-sm w-full">
+                                        <h4 className="text-[#D4AF37] text-[10px] uppercase tracking-widest font-sans mb-1 flex items-center">
+                                            <TriangleAlert className="w-3 h-3 mr-1.5" />
+                                            Roadmap Access
+                                        </h4>
+                                        <p className="text-slate-400 font-sans text-[11px] leading-relaxed italic">
+                                            Waitlist Access: Ambient Intelligence (Chrome Extension) is in provisioning for Q4 2026.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <button
+                            onClick={() => handleCheckout("The Professional", "price_1T4DAi0K6xSYeASOZRKLkpkW")}
+                            disabled={loadingTier === "The Professional"}
+                            className="w-full py-4 text-xs flex items-center justify-center font-bold uppercase tracking-[0.2em] transition-all bg-[#D4AF37] text-black hover:bg-[#b5952f] shadow-[0_0_15px_rgba(212,175,55,0.3)] disabled:opacity-70 disabled:cursor-not-allowed"
+                        >
+                            {loadingTier === "The Professional" ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
+                            Go Unlimited
+                        </button>
+                    </motion.div>
 
-                            <div className="flex-1 mb-8">
-                                <ul className="space-y-4">
-                                    {tier.features.map((feature, i) => (
-                                        <li key={i} className="flex items-start text-sm">
-                                            <Check className={`w-4 h-4 mr-3 mt-0.5 ${tier.highlight ? 'text-[#D4AF37]' : 'text-slate-600'}`} />
-                                            <span className="text-slate-300 font-sans">{feature}</span>
-                                        </li>
-                                    ))}
-                                </ul>
+                    {/* Tier 4: Enterprise */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4, duration: 0.6 }}
+                        className="relative p-8 flex flex-col h-full glass-card transition-all duration-300 border-white/5 hover:border-white/20 hover:bg-white/[0.02]"
+                    >
+                        <div className="mb-6">
+                            <Briefcase className="w-8 h-8 mb-4 text-slate-400" />
+                            <h3 className="text-sm font-sans uppercase tracking-widest text-slate-300">Enterprise & Institutional</h3>
+                        </div>
+                        <div className="mb-6">
+                            <div className="flex items-baseline">
+                                <span className="text-4xl font-serif text-white">Custom</span>
                             </div>
+                            <p className="text-slate-500 text-xs mt-2 font-sans">
+                                Fleet-wide licensing. Bulk batch processing, API access, and partnership for the Q4 2026 Ambient Intelligence rollout.
+                            </p>
+                        </div>
+                        <div className="flex-1 mb-8">
+                            <ul className="space-y-4">
+                                <li className="flex items-start text-sm">
+                                    <Check className="w-4 h-4 mr-3 mt-0.5 text-slate-600 flex-shrink-0" />
+                                    <span className="text-slate-300 font-sans">Bulk Web-Based PDF Analysis</span>
+                                </li>
+                                <li className="flex items-start text-sm">
+                                    <Check className="w-4 h-4 mr-3 mt-0.5 text-slate-600 flex-shrink-0" />
+                                    <span className="text-slate-300 font-sans">API & CRM Sync Access</span>
+                                </li>
+                                <li className="flex items-start pt-4 mt-2 border-t border-white/5">
+                                    <div className="bg-black/40 border border-[#D4AF37]/20 p-3 rounded-sm w-full">
+                                        <h4 className="text-[#D4AF37] text-[10px] uppercase tracking-widest font-sans mb-1 flex items-center">
+                                            <TriangleAlert className="w-3 h-3 mr-1.5" />
+                                            Roadmap Access
+                                        </h4>
+                                        <p className="text-slate-400 font-sans text-[11px] leading-relaxed italic">
+                                            Waitlist Access: Ambient Intelligence (Chrome Extension) is in provisioning for Q4 2026.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <button
+                            onClick={() => handleCheckout("Enterprise & Institutional")}
+                            className="w-full py-4 text-xs flex items-center justify-center font-bold uppercase tracking-[0.2em] transition-all border border-white/10 text-white hover:bg-white/5 hover:border-white/20"
+                        >
+                            Contact Concierge
+                        </button>
+                        <p className="text-[10px] text-slate-500 mt-4 text-center px-2">
+                            Bulk licensing and API documentation available upon request.
+                        </p>
+                    </motion.div>
 
-                            <button
-                                onClick={() => handleCheckout(tier.name, tier.priceId)}
-                                disabled={loadingTier === tier.name}
-                                className={`
-                                w-full py-4 text-xs flex items-center justify-center font-bold uppercase tracking-[0.2em] transition-all
-                                ${tier.highlight
-                                        ? 'bg-[#D4AF37] text-black hover:bg-[#b5952f] shadow-[0_0_15px_rgba(212,175,55,0.3)]'
-                                        : 'border border-white/10 text-white hover:bg-white/5 hover:border-white/20'
-                                    }
-                                ${loadingTier === tier.name ? 'opacity-70 cursor-not-allowed' : ''}
-                            `}>
-                                {loadingTier === tier.name ? (
-                                    <Loader2 className="w-4 h-4 animate-spin mr-2" />
-                                ) : null}
-                                {tier.cta}
-                            </button>
+                </div>
 
-                            {/* Sub-note for Enterprise Tier */}
-                            {tier.name === "Enterprise & Institutional" && (
-                                <p className="text-[10px] text-slate-500 mt-4 text-center px-2">
-                                    Bulk licensing and API documentation available upon request.
-                                </p>
-                            )}
-                        </motion.div>
-                    ))}
+                {/* Global Footnote */}
+                <div className="text-center max-w-3xl mx-auto pt-16 mt-8 border-t border-white/5">
+                    <p className="text-slate-500 font-mono text-[11px] leading-relaxed uppercase tracking-wider">
+                        TitleGuard PRO is an Early Warning System. Our 2026 logic is currently active for NJ, NY, FL, TX, and CA. We are currently raising seed capital to automate our statutory sync and release our ambient browser integration.
+                    </p>
                 </div>
 
                 {/* FAQ / Trust Indicator */}
