@@ -61,11 +61,9 @@ export default function SecurityPage() {
                             <div className="h-[1px] w-12 bg-[#D4AF37]/50"></div>
                             <span className="text-[#D4AF37] text-xs font-sans uppercase tracking-[0.2em]">Zero Trace Protocol</span>
                         </div>
-                        <h2 className="text-4xl font-serif text-white mb-6">Non-Persistent Infrastructure</h2>
+                        <h2 className="text-4xl font-serif text-white mb-6">Privacy-First Data Handling</h2>
                         <p className="text-slate-300 text-lg leading-relaxed font-sans">
-                            Files are processed exclusively in <span className="text-white font-medium">RAM (Random Access Memory)</span> and purged instantly.
-                            The moment your 'Stoplight Report' is generated, the source document is
-                            permanently wiped. No backups. No shadow data. No liability.
+                            We minimize data liability. Uploaded Title Commitments are held in encrypted temporary storage only for the duration of the analysis. Once your Stoplight Report is generated, you have the power to manually purge the source file from our secure cloud.
                         </p>
                     </div>
                     {/* Visual representation of data purging */}
@@ -105,18 +103,18 @@ export default function SecurityPage() {
                         {[
                             {
                                 icon: Lock,
-                                title: "AES-256 Encryption",
+                                title: "Bank-Grade Encryption in Transit",
                                 desc: "Bank-Grade Encryption. All data in transit is protected by the highest global financial standards."
                             },
                             {
                                 icon: Server,
-                                title: "Isolated Sandboxes",
-                                desc: "Every scan occurs in a fresh, unique environment to prevent cross-contamination. Absolute isolation."
+                                title: "Statutory Logic Isolation",
+                                desc: "Your data is never used to train our models. Each session is treated as an isolated event, ensuring that sensitive property data from one transaction never influences the intelligence of another."
                             },
                             {
                                 icon: Shield,
-                                title: "SOC2 Alignment",
-                                desc: "Architecture built to exceed the rigorous confidentiality standards of legal and financial institutions."
+                                title: "Designed for Compliance",
+                                desc: "TitleGuard PRO is built with the rigorous confidentiality standards of legal and financial institutions in mind. We are currently architecting our systems to meet SOC2 Type I standards as we scale toward enterprise-wide deployment."
                             }
                         ].map((item, i) => (
                             <motion.div
@@ -152,6 +150,16 @@ export default function SecurityPage() {
                     </div>
                     <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#D4AF37]/5 to-transparent pointer-events-none" />
                 </motion.div>
+
+                {/* Section 4: Founder's Privacy Pledge */}
+                <div className="text-center max-w-4xl mx-auto border-t border-white/5 pt-16 mb-24">
+                    <h3 className="text-[#D4AF37] text-sm font-sans uppercase tracking-[0.2em] mb-6">Founder's Privacy Pledge</h3>
+                    <div className="bg-black/30 border border-[#D4AF37]/20 p-8 rounded-sm text-left">
+                        <p className="text-slate-300 font-sans italic leading-relaxed md:text-lg">
+                            "As a startup in the pitching phase, we prioritize your data sovereignty above all else. We do not store, sell, or train on your title data. Our goal is to provide the intelligence you need without the liability of long-term data storage."
+                        </p>
+                    </div>
+                </div>
 
                 {/* Footer Action */}
                 <div className="text-center pb-12">
