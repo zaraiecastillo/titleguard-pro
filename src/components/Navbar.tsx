@@ -60,7 +60,7 @@ export function Navbar() {
                             </Link>
                         ))}
                         <Link href="/pricing#free-tier" className="px-5 py-2 bg-[#D4AF37] text-black text-xs font-bold uppercase tracking-widest hover:bg-[#b5952f] transition-colors rounded-sm shadow-[0_0_15px_rgba(212,175,55,0.2)]">
-                            Analyze for Free
+                            GET ACCESS
                         </Link>
                     </div>
 
@@ -115,7 +115,7 @@ export function Navbar() {
                                 className="pt-8"
                             >
                                 <Link href="/pricing#free-tier" onClick={() => setIsOpen(false)} className="w-full max-w-xs py-4 bg-[#D4AF37] text-black text-sm font-bold uppercase tracking-[0.2em] hover:bg-[#b5952f] transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)] text-center flex items-center justify-center">
-                                    Analyze for Free
+                                    GET ACCESS
                                 </Link>
                             </motion.div>
                         </div>
