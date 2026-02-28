@@ -54,7 +54,7 @@ export function Navbar() {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className="text-sm text-slate-400 hover:text-[#D4AF37] transition-colors lowercase font-sans tracking-wide"
+                                className="text-sm text-slate-400 hover:text-[#D4AF37] transition-colors font-sans tracking-wide"
                             >
                                 {item.name}
                             </Link>
