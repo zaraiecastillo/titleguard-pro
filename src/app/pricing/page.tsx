@@ -301,7 +301,7 @@ export default function PricingPage() {
                 {/* FAQ / Trust Indicator */}
                 <div className="mt-24 text-center border-t border-white/5 pt-12">
                     <p className="text-slate-500 font-mono text-xs">
-                        TRUSTED BY TOP BROKERAGES FOR OVER $500M IN CLOSED VOLUME
+                        ARCHITECTED FOR PRECISION. DESIGNED TO PROTECT INSTITUTIONAL-GRADE REAL ESTATE ASSETS.
                     </p>
                 </div>
 
