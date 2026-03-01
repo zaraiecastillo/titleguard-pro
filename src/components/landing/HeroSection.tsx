@@ -105,7 +105,7 @@ export function HeroSection({ onFileSelect, isAnalyzing }: HeroSectionProps) {
 
                     {/* Chrome Web Store Badge */}
                     <div className="pt-2">
-                        <Link href="/intelligence#extension-roadmap" className="inline-flex flex-col space-y-1 bg-white/[0.03] border border-white/10 hover:border-[#D4AF37]/50 px-4 py-2.5 rounded-sm transition-all group backdrop-blur-sm">
+                        <Link href="/solution#current-delivery" className="inline-flex flex-col space-y-1 bg-white/[0.03] border border-white/10 hover:border-[#D4AF37]/50 px-4 py-2.5 rounded-sm transition-all group backdrop-blur-sm">
                             <div className="flex items-center space-x-3">
                                 <Chrome className="w-5 h-5 text-slate-400 group-hover:text-[#D4AF37] transition-colors" />
                                 <span className="text-xs font-sans text-slate-300 group-hover:text-white transition-colors uppercase tracking-widest font-semibold flex items-center">

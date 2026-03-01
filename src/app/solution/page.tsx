@@ -161,7 +161,7 @@ export default function SolutionPage() {
                     </div>
                     <div className="order-1 lg:order-2 flex flex-col justify-center space-y-12">
                         {/* Current Delivery */}
-                        <div>
+                        <div id="current-delivery" className="scroll-mt-24">
                             <div className="inline-flex items-center space-x-3 mb-6">
                                 <Puzzle className="w-5 h-5 text-[#D4AF37]" />
                                 <span className="text-[#D4AF37] text-xs font-sans uppercase tracking-[0.2em]">Current Delivery</span>
