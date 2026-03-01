@@ -24,26 +24,26 @@ export default function AboutPage() {
                     </motion.div>
                 </div>
 
-                {/* Founder's Letter & Portrait Grid Container */}
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] items-stretch gap-12">
+                {/* Founder's Feature: Vertical Stack Container */}
+                <div className="flex flex-col items-center text-center max-w-[900px] mx-auto gap-12">
 
                     {/* Founder Landscape Image */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.3, duration: 0.8 }}
-                        className="relative group h-full"
+                        className="relative group mb-8 w-auto inline-block"
                     >
-                        <div className="relative overflow-hidden rounded-sm glass-card border border-[#D4AF37] p-1 bg-[#050505] z-10 w-full h-full">
+                        <div className="relative overflow-hidden rounded-sm glass-card border border-[#D4AF37] p-1 bg-[#050505] z-10 w-auto h-auto">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                                 src="/zaraie-founder.jpg"
                                 alt="Founder Portrait"
-                                className="w-full h-full object-cover filter grayscale contrast-105 group-hover:grayscale-0 transition-all duration-700 block"
+                                className="w-auto h-auto max-h-[400px] object-contain filter grayscale contrast-105 group-hover:grayscale-0 transition-all duration-700 block mx-auto"
                             />
                             {/* Caption overlay */}
                             <div className="absolute bottom-6 left-6 right-6">
-                                <div className="bg-black/80 backdrop-blur-md border border-white/10 p-4">
+                                <div className="bg-black/80 backdrop-blur-md border border-white/10 p-4 text-left">
                                     <p className="text-[#D4AF37] font-serif text-lg m-0">Zaraie Castillo</p>
                                     <p className="text-slate-400 font-sans text-[10px] uppercase tracking-widest mt-1">Founder & Lead Architect</p>
                                 </div>
@@ -58,7 +58,7 @@ export default function AboutPage() {
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2, duration: 0.8 }}
-                        className="glass-card border border-white/10 bg-[#050505]/60 p-8 md:p-12 lg:pl-[3rem] relative overflow-hidden flex flex-col justify-center h-full"
+                        className="glass-card border border-white/10 bg-[#050505]/60 p-8 md:p-12 relative overflow-hidden flex flex-col justify-center items-center w-full"
                     >
                         <div className="relative z-10 prose prose-invert prose-lg max-w-none font-sans text-slate-300 leading-relaxed space-y-6">
 
