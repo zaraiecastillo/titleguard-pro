@@ -34,12 +34,12 @@ export default function AboutPage() {
                         transition={{ delay: 0.3, duration: 0.8 }}
                         className="lg:col-span-5 relative group"
                     >
-                        <div className="relative overflow-hidden rounded-sm glass-card border border-white/10 p-2 bg-[#050505]/60 z-10 w-full h-[600px]">
+                        <div className="relative overflow-hidden rounded-sm glass-card border border-white/10 p-2 bg-[#050505]/60 z-10 w-full h-auto">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                                 src="/zaraie-founder.jpg"
                                 alt="Founder Portrait"
-                                className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                                className="w-full h-auto object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                             />
                             {/* Caption overlay */}
                             <div className="absolute bottom-6 left-6 right-6">
