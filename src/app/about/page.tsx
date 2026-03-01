@@ -24,22 +24,22 @@ export default function AboutPage() {
                     </motion.div>
                 </div>
 
-                {/* Founder's Letter & Portrait Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                {/* Founder's Letter & Portrait Flex Container */}
+                <div className="flex flex-col lg:flex-row items-stretch gap-12">
 
                     {/* Founder Landscape Image */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.3, duration: 0.8 }}
-                        className="lg:col-span-5 relative group"
+                        className="w-full lg:w-5/12 relative group flex-shrink-0"
                     >
-                        <div className="relative overflow-hidden rounded-sm glass-card border border-white/10 p-2 bg-[#050505]/60 z-10 w-full h-auto">
+                        <div className="relative overflow-hidden rounded-sm glass-card border border-[#D4AF37] p-1 bg-[#050505] z-10 w-full aspect-square lg:aspect-[4/5] flex">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                                 src="/zaraie-founder.jpg"
                                 alt="Founder Portrait"
-                                className="w-full h-auto object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                                className="w-full h-full object-cover filter grayscale contrast-105 group-hover:grayscale-0 transition-all duration-700"
                             />
                             {/* Caption overlay */}
                             <div className="absolute bottom-6 left-6 right-6">
@@ -58,7 +58,7 @@ export default function AboutPage() {
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2, duration: 0.8 }}
-                        className="lg:col-span-7 glass-card border border-white/10 bg-[#050505]/60 p-8 md:p-12 relative overflow-hidden h-full"
+                        className="w-full lg:w-7/12 glass-card border border-white/10 bg-[#050505]/60 p-8 md:p-12 relative overflow-hidden flex flex-col justify-center"
                     >
                         <div className="relative z-10 prose prose-invert prose-lg max-w-none font-sans text-slate-300 leading-relaxed space-y-6">
 
