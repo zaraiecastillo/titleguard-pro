@@ -59,9 +59,7 @@ export default function SolutionPage() {
                         <h2 className="text-4xl font-serif text-white mb-6">The 28-Day <span className="text-rose-500">Disaster</span>.</h2>
                         <h3 className="text-xl text-slate-300 mb-6 italic">Stop Losing Deals to Last-Minute Title Defects.</h3>
                         <p className="text-slate-400 text-lg leading-relaxed font-sans border-l-2 border-rose-500/20 pl-6">
-                            The industry standard is to discover title issues 28 days into a transaction, days before closing.
-                            This means <span className="text-rose-400">lost commissions</span>, embarrassed clients, and wasted time.
-                            You are currently working blind.
+                            Traditional title search is a black box. Defects often emerge just 48 hours before closing, turning commissions into catastrophes. This reactive cycle costs firms time, reputation, and revenue.
                         </p>
                     </div>
                 </motion.div>
@@ -79,11 +77,10 @@ export default function SolutionPage() {
                             <CheckCircle className="w-5 h-5 text-emerald-500" />
                             <span className="text-emerald-500 text-xs font-sans uppercase tracking-[0.2em]">The TitleGuard Way</span>
                         </div>
-                        <h2 className="text-4xl font-serif text-white mb-6">The Day 1 <span className="text-emerald-500">Advantage</span>.</h2>
+                        <h2 className="text-4xl font-serif text-white mb-6">Day 1 <span className="text-emerald-500">Certainty</span>.</h2>
                         <h3 className="text-xl text-slate-300 mb-6 italic">Turn Every Red Light Into a Closed Commission.</h3>
                         <p className="text-slate-400 text-lg leading-relaxed font-sans border-l-2 border-emerald-500/20 pl-6">
-                            TitleGuard AI transforms your workflow from reactive to proactive. By analyzing title commitments on <span className="text-emerald-400">Day 1</span>,
-                            we identify closing-killers immediately, giving you the time to curate the solution before the deal is compromised.
+                            TitleGuard AI flips the script. By analyzing the Title Commitment the moment it is issued, we identify closing-killers on Day 1. Our Reasoning Engine provides an instant curative roadmap, giving you weeks—not hours—to secure the deal.
                         </p>
                     </div>
                     <div className="relative">
@@ -161,17 +158,29 @@ export default function SolutionPage() {
                             </motion.div>
                         </div>
                     </div>
-                    <div className="order-1 lg:order-2">
-                        <div className="inline-flex items-center space-x-3 mb-6">
-                            <Puzzle className="w-5 h-5 text-[#D4AF37]" />
-                            <span className="text-[#D4AF37] text-xs font-sans uppercase tracking-[0.2em]">Ecosystem Integration</span>
+                    <div className="order-1 lg:order-2 flex flex-col justify-center space-y-12">
+                        {/* Current Delivery */}
+                        <div>
+                            <div className="inline-flex items-center space-x-3 mb-6">
+                                <Puzzle className="w-5 h-5 text-[#D4AF37]" />
+                                <span className="text-[#D4AF37] text-xs font-sans uppercase tracking-[0.2em]">Current Delivery</span>
+                            </div>
+                            <h2 className="text-3xl font-serif text-white mb-4">Centralized Intelligence</h2>
+                            <p className="text-slate-400 text-lg leading-relaxed font-sans border-l-2 border-[#D4AF37]/20 pl-6">
+                                Our core solution is delivered through a high-fidelity Web Dashboard. Users upload search-enabled PDFs and receive a deterministic Stoplight Report in under 60 seconds.
+                            </p>
                         </div>
-                        <h2 className="text-4xl font-serif text-white mb-6">Intelligence <span className="text-[#D4AF37] italic">Everywhere</span> You Work.</h2>
-                        <h3 className="text-xl text-slate-300 mb-6 italic">Seamless Chrome Extension</h3>
-                        <p className="text-slate-400 text-lg leading-relaxed font-sans border-l-2 border-[#D4AF37]/20 pl-6">
-                            Whether you are in our professional dashboard or browsing the MLS, TitleGuard AI is with you.
-                            Our Chrome Extension overlays our &apos;Stoplight&apos; intelligence directly onto your existing workflow.
-                        </p>
+                        {/* The Roadmap */}
+                        <div>
+                            <div className="inline-flex items-center space-x-3 mb-6">
+                                <Chrome className="w-5 h-5 text-slate-500" />
+                                <span className="text-slate-500 text-xs font-sans uppercase tracking-[0.2em]">The Roadmap</span>
+                            </div>
+                            <h2 className="text-3xl font-serif text-white mb-4">Future Integration: The Ambient Layer</h2>
+                            <p className="text-slate-400 text-lg leading-relaxed font-sans border-l-2 border-slate-500/20 pl-6">
+                                In Phase 2 (Q4 2026), we are bringing this intelligence directly into your workflow via a Chrome Extension. This will enable automatic analysis within your CRM and email without manual uploads.
+                            </p>
+                        </div>
                     </div>
                 </motion.div>
 
@@ -199,7 +208,7 @@ export default function SolutionPage() {
                         {[
                             { metric: "Title Search Time", old: "45-60 Hours", new: "60 Seconds", icon: Clock },
                             { metric: "Issue Discovery", old: "Day 28 (Disaster)", new: "Day 1 (Solution)", icon: AlertTriangle },
-                            { metric: "Deal Status", old: "Reactive / Chaotic", new: "Proactive / Managed", icon: CheckCircle },
+                            { metric: "Deal Status", old: "Reactive / Chaotic", new: "Proactive / Managed via Web Dashboard", icon: CheckCircle },
                         ].map((row, i) => (
                             <div key={i} className="grid grid-cols-3 p-6 border-b border-white/5 hover:bg-white/[0.02] transition-colors items-center">
                                 <div className="text-white font-serif flex items-center">
