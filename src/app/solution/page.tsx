@@ -3,6 +3,7 @@
 import { Navbar } from "@/components/Navbar";
 import { XCircle, CheckCircle, Calendar, Clock, AlertTriangle, ArrowRight, Puzzle, ShieldCheck, Chrome } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function SolutionPage() {
     return (
@@ -224,9 +225,9 @@ export default function SolutionPage() {
 
                 {/* Call to Action */}
                 <div className="text-center">
-                    <button className="px-8 py-4 bg-[#D4AF37] text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-[#b5952f] transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+                    <Link href="/pricing#free-tier" className="inline-block px-8 py-4 bg-[#D4AF37] text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-[#b5952f] transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)]">
                         Start Your Free Trial
-                    </button>
+                    </Link>
                     <p className="mt-4 text-slate-500 text-xs">No credit card required for first scan.</p>
                 </div>
 
