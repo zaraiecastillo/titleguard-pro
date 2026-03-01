@@ -11,57 +11,57 @@ export default function FAQPage() {
 
     const faqCategories = [
         {
-            title: "Product & Accuracy",
-            items: [
-                {
-                    id: "prod-1",
-                    q: "How does TitleGuard AI differ from a standard title search?",
-                    a: "Traditional title searches are reactive and occur late in the transaction (Day 28). TitleGuard AI is proactive, allowing you to audit the title commitment on Day 1. We don’t just find data; we use a reasoning engine to identify curative issues that human eyes often overlook in the first pass."
-                },
-                {
-                    id: "prod-2",
-                    q: "Does this replace the Title Underwriter?",
-                    a: "No. TitleGuard AI is a curative accelerator. We empower the Listing Agent and Title Officer to fix \"Closing-Killers\" (like unreleased liens or probate errors) weeks before the underwriter ever sees the file, ensuring a \"Clear to Close\" on the first attempt."
-                }
-            ]
-        },
-        {
-            title: "Security & Compliance",
+            title: "Trust & Security",
             items: [
                 {
                     id: "sec-1",
-                    q: "Is my clients' sensitive data stored?",
-                    a: "No. We utilize a Zero-Retention Protocol. All files are processed in volatile RAM and are permanently purged the moment your report is generated. We provide the intelligence without the data liability."
+                    q: "Is my client's data used to train your AI?",
+                    a: "No. We utilize Statutory Logic Isolation. Your data is processed in a private session and is never used to train our models or shared with third parties. Once your analysis is done, you have the power to purge the file instantly."
                 },
                 {
                     id: "sec-2",
-                    q: "Is TitleGuard AI SOC2 compliant?",
-                    a: "Our architecture is built to align with institutional-grade security standards, including AES-256 encryption and isolated compute sandboxes for every individual scan."
+                    q: "Is TitleGuard SOC2 Compliant?",
+                    a: "We are Designed for Compliance. We are currently architecting our systems to meet SOC2 Type I standards as we move toward institutional scale. Today, we utilize bank-grade AES-256 encryption for all data in transit."
                 }
             ]
         },
         {
-            title: "The \"Stoplight\" Logic",
+            title: "Product & Abilities",
             items: [
                 {
-                    id: "logic-1",
-                    q: "What qualifies as a \"Red\" vs. \"Yellow\" alert?",
-                    a: "Red indicates a critical defect (e.g., a \"Dead Grandfather\" probate issue or an active tax lien) that will stop the closing. Yellow indicates a curative requirement (e.g., a missing signature or a name variance) that needs a simple fix to keep the deal on track."
-                }
-            ]
-        },
-        {
-            title: "Business & ROI",
-            items: [
-                {
-                    id: "roi-1",
-                    q: "Can I white-label these reports for my firm?",
-                    a: "Yes. Under our Institutional (Custom) tier, we offer full white-labeling, allowing you to present the Stoplight Report under your own brand to increase your firm's perceived value."
+                    id: "prod-1",
+                    q: "Can you read handwritten or blurry title documents?",
+                    a: "To ensure 100% accuracy, our Reasoning Engine is currently optimized for search-enabled PDFs. This allows us to perform a deterministic audit of the text rather than 'guessing' at unreadable scans."
                 },
                 {
-                    id: "roi-2",
-                    q: "Is there a limit on how many PDFs I can upload?",
-                    a: "For Pro users, uploads are unlimited. For One-Time users, it is a single high-fidelity audit per purchase."
+                    id: "prod-2",
+                    q: "Does this replace my Title Officer or Underwriter?",
+                    a: "Not at all. TitleGuard is a 'Co-Pilot.' We provide the Day 1 Certainty by flagging risks the moment a commitment is issued, giving your human team weeks of lead time to solve curative issues."
+                }
+            ]
+        },
+        {
+            title: "The Roadmap",
+            items: [
+                {
+                    id: "road-1",
+                    q: "When will the Chrome Extension be available?",
+                    a: "We are currently in the provisioning phase for our 'Ambient Intelligence' layer. The Chrome Extension is scheduled for a Q4 2026 release. Current users have full access to our high-fidelity Web Dashboard today."
+                },
+                {
+                    id: "road-2",
+                    q: "How often is the Statutory Database updated?",
+                    a: "We currently perform Static Statutory Curation. Our database is manually updated by our team to reflect major laws, such as the March 2026 FinCEN rules. We are raising capital to automate this sync into a real-time 'Legal Sentinel'."
+                }
+            ]
+        },
+        {
+            title: "The Founder",
+            items: [
+                {
+                    id: "fnd-1",
+                    q: "What inspired TitleGuard AI?",
+                    a: "TitleGuard was born from a legacy of real estate experience. Inspired by my family’s work at Gonsosa Development and Florostone Realty, I built this to solve the '28-Day Disaster' using the AI logic I am currently studying in my university coursework."
                 }
             ]
         }
