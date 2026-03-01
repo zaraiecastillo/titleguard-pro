@@ -37,7 +37,7 @@ export default function AboutPage() {
                         <div className="relative overflow-hidden rounded-sm glass-card border border-white/10 p-2 bg-[#050505]/60 z-10 w-full h-[600px]">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
-                                src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/AI_RealEstate_Founder.max-1000x1000.jpg"
+                                src="/zaraie-founder.jpg"
                                 alt="Founder Portrait"
                                 className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                             />
