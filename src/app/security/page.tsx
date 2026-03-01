@@ -87,7 +87,7 @@ export default function SecurityPage() {
                                     <span>DONE</span>
                                 </div>
                                 <div className="flex justify-between text-rose-500 mt-4 pt-4 border-t border-white/5 animate-pulse">
-                                    <span>INITIATNG PURGE SEQUENCE...</span>
+                                    <span>INITIALIZING PRIVACY FILTER...</span>
                                     <span>WIPING...</span>
                                 </div>
                             </div>
