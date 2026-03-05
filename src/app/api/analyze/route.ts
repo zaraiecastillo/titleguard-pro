@@ -14,7 +14,7 @@ const apiKey = process.env.GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey || "mock-key");
 
 // Use a reasoning model if available to match "Deep Think" request
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
 const PROJECT_BRIEF_PATH = path.join(process.cwd(), "PROJECT_BRIEF.md");
 const PII_SCRUBBER_PATH = path.join(process.cwd(), "scripts/pii_scrubber.py");

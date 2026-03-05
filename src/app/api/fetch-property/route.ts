@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 const apiKey = process.env.GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey || "mock-key");
 const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-pro-latest",
+    model: "gemini-1.5-pro",
     safetySettings: [
         {
             category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
