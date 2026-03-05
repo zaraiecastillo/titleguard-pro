@@ -40,11 +40,37 @@ export default function Home() {
     }
   };
 
+  const handlePropertySearch = async (address: string) => {
+    setLoading(true);
+    setError(null);
+    setResult(null);
+
+    try {
+      const response = await fetch("/api/fetch-property", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ address })
+      });
+      if (!response.ok) throw new Error("Property search failed");
+      const data = await response.json();
+      setResult(data);
+      // Determine scroll target: Report if success, or top if error
+      setTimeout(() => {
+        document.getElementById("report")?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } catch (err) {
+      setError("Failed to fetch property details. Please check the address and try again.");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <main className="min-h-screen relative overflow-hidden font-sans selection:bg-[#D4AF37]/30 selection:text-white">
       <Navbar />
 
-      <HeroSection onFileSelect={handleFileUpload} isAnalyzing={loading} />
+      <HeroSection onFileSelect={handleFileUpload} onPropertySearch={handlePropertySearch} isAnalyzing={loading} />
 
       {/* Loading State Overlay or Inline */}
       {loading && (

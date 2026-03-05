@@ -73,6 +73,53 @@ export async function POST(req: NextRequest) {
             text = `Simulated request for property address: ${address}. Please generate a realistic Stoplight Report demonstrating an analysis of this property's title situation based on generic but plausible data for this address.`;
         }
 
+        // --- PITCH DEMO INTERCEPTION: GOLDEN PATH ---
+        const isPitchDemo =
+            (address && address.toLowerCase().includes("1600 pennsylvania")) ||
+            (text && text.toLowerCase().includes("tony stark"));
+
+        if (isPitchDemo) {
+            // Artificial delay for dramatic effect during pitch
+            await new Promise(resolve => setTimeout(resolve, 2500));
+
+            return NextResponse.json({
+                report_id: "DEMO-" + uuidv4().split('-')[0].toUpperCase(),
+                timestamp: new Date().toISOString(),
+                risk_assessment: {
+                    score: "RED",
+                    confidence_rating: "0.99",
+                    summary: "Critical defect identified. An unreleased mortgage from 1995 creates a severe cloud on title, blocking the Clear to Close process."
+                },
+                vesting_check: {
+                    owner_on_record: "Tony Stark",
+                    match_confirmed: true,
+                    issues: []
+                },
+                open_liens: [
+                    {
+                        type: "Institutional Mortgage",
+                        recorded_date: "1995-10-14",
+                        amount: 15000000,
+                        instrument_number: "INST-1995-44820",
+                        status: "UNRELEASED"
+                    }
+                ],
+                curative_actions: [
+                    {
+                        priority: "HIGH",
+                        instruction: "Obtain and record a 'Satisfaction of Mortgage' from the original 1995 institutional lender or their successor.",
+                        reason: "The 1995 mortgage holds a super-priority senior position. No new lender will fund this transaction until this lien is permanently purged."
+                    }
+                ],
+                geographic_intelligence: {
+                    state: "DC",
+                    action_step: "DISTRICT COMPLIANCE ALERTS: Washington D.C. Recorder of Deeds requires wet-ink signatures for historic lien releases. Expect a minimum 14-day manual processing delay. Curative action must begin immediately.",
+                    risk_level: "RED"
+                }
+            });
+        }
+        // --------------------------------------------
+
         // 1. PII Scrubbing (Python Skill)
         const scrubbedText = await scrubPII(text);
 

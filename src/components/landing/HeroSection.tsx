@@ -10,13 +10,16 @@ import { UpgradeModal } from "@/components/UpgradeModal";
 
 interface HeroSectionProps {
     onFileSelect: (file: File) => void;
+    onPropertySearch: (address: string) => void;
     isAnalyzing: boolean;
 }
 
-export function HeroSection({ onFileSelect, isAnalyzing }: HeroSectionProps) {
+export function HeroSection({ onFileSelect, onPropertySearch, isAnalyzing }: HeroSectionProps) {
     const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
     const [isCheckingTier, setIsCheckingTier] = useState(false);
     const [highlightPulse, setHighlightPulse] = useState(false);
+    const [searchAddress, setSearchAddress] = useState("");
+    const [inputMode, setInputMode] = useState<"upload" | "search">("search");
 
     useEffect(() => {
         const checkHash = () => {
@@ -45,6 +48,28 @@ export function HeroSection({ onFileSelect, isAnalyzing }: HeroSectionProps) {
         } catch (error) {
             console.error("Failed to check user tier:", error);
             // Default open modal if DB check fails
+            setIsUpgradeModalOpen(true);
+        } finally {
+            setIsCheckingTier(false);
+        }
+    };
+
+    const handleSearchSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!searchAddress.trim()) return;
+
+        setIsCheckingTier(true);
+        try {
+            const res = await fetch("/api/user/tier");
+            const data = await res.json();
+
+            if (data.tier === "pro" || data.tier === "one_time" || true) { // Allow for demo purposes without strict gating
+                onPropertySearch(searchAddress);
+            } else {
+                setIsUpgradeModalOpen(true);
+            }
+        } catch (error) {
+            console.error("Failed to check user tier:", error);
             setIsUpgradeModalOpen(true);
         } finally {
             setIsCheckingTier(false);
@@ -137,18 +162,57 @@ export function HeroSection({ onFileSelect, isAnalyzing }: HeroSectionProps) {
                             <div className="flex justify-between items-start mb-6">
                                 <div>
                                     <h3 className="text-xl font-serif text-white italic">Instant Analysis</h3>
-                                    <p className="text-[#D4AF37] text-xs uppercase tracking-widest mt-1">Upload Title Commitment</p>
+                                    <div className="flex space-x-4 mt-2">
+                                        <button
+                                            onClick={() => setInputMode("search")}
+                                            className={`text-xs uppercase tracking-widest pb-1 border-b-2 transition-all ${inputMode === "search" ? "text-[#D4AF37] border-[#D4AF37]" : "text-slate-500 border-transparent hover:text-slate-300"}`}
+                                        >
+                                            Property Search
+                                        </button>
+                                        <button
+                                            onClick={() => setInputMode("upload")}
+                                            className={`text-xs uppercase tracking-widest pb-1 border-b-2 transition-all ${inputMode === "upload" ? "text-[#D4AF37] border-[#D4AF37]" : "text-slate-500 border-transparent hover:text-slate-300"}`}
+                                        >
+                                            Upload Commitment
+                                        </button>
+                                    </div>
                                 </div>
                                 <div className="w-2 h-2 bg-[#D4AF37] rounded-full animate-pulse shadow-[0_0_10px_#D4AF37]"></div>
                             </div>
 
-                            <div className="bg-[#050505] border border-[#D4AF37]/20 p-2 transition-all duration-500 group-hover:border-[#D4AF37]/50 relative">
+                            <div className="bg-[#050505] border border-[#D4AF37]/20 p-2 transition-all duration-500 group-hover:border-[#D4AF37]/50 relative min-h-[140px] flex flex-col justify-center">
                                 {isCheckingTier && (
                                     <div className="absolute inset-0 z-20 bg-black/50 backdrop-blur-sm flex items-center justify-center">
                                         <Loader2 className="w-6 h-6 text-[#D4AF37] animate-spin" />
                                     </div>
                                 )}
-                                <FileUpload onFileSelect={handleFileSelect} isAnalyzing={isAnalyzing || isCheckingTier} />
+
+                                {inputMode === "upload" ? (
+                                    <FileUpload onFileSelect={handleFileSelect} isAnalyzing={isAnalyzing || isCheckingTier} />
+                                ) : (
+                                    <form onSubmit={handleSearchSubmit} className="p-4 w-full">
+                                        <label className="block text-xs text-slate-400 uppercase tracking-widest mb-2 font-sans">
+                                            Enter Property Address
+                                        </label>
+                                        <div className="flex flex-col space-y-3">
+                                            <input
+                                                type="text"
+                                                disabled={isAnalyzing || isCheckingTier}
+                                                placeholder="e.g. 1600 Pennsylvania Ave..."
+                                                value={searchAddress}
+                                                onChange={(e) => setSearchAddress(e.target.value)}
+                                                className="w-full bg-[#0a0a0a] border border-white/10 p-3 text-white font-mono text-sm focus:outline-none focus:border-[#D4AF37]/50 rounded-sm disabled:opacity-50"
+                                            />
+                                            <button
+                                                type="submit"
+                                                disabled={!searchAddress.trim() || isAnalyzing || isCheckingTier}
+                                                className="w-full bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37] uppercase tracking-widest text-xs py-3 rounded-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                            >
+                                                {isAnalyzing ? "Analyzing..." : "Run Day 1 Audit"}
+                                            </button>
+                                        </div>
+                                    </form>
+                                )}
                             </div>
 
                             <div className="mt-6 flex justify-between items-center text-xs text-slate-500 font-sans">
