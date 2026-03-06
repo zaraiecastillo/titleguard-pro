@@ -32,73 +32,45 @@ export async function POST(req: NextRequest) {
         const body = await req.json();
         const address = body.address as string;
 
-        if (!address) {
-            return NextResponse.json({ error: "No address provided" }, { status: 400 });
-        }
+        // Execute ATTOM API Data Fetch natively in Next.js
+        let attomDataText = "";
+        try {
+            const attomApiKey = process.env.ATTOM_API_KEY;
+            if (!attomApiKey) {
+                console.warn("ATTOM_API_KEY not found! Using generic property payload.");
+                attomDataText = `{"propertyAddress": "${address}", "message": "Simulated base response because ATTOM_API_KEY is missing."}`;
+            } else {
+                const url = new URL("https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/detail");
+                url.searchParams.append("address", address);
 
-        // --- PITCH DEMO INTERCEPTION: GOLDEN PATH ---
-        const isPitchDemo =
-            (address && address.toLowerCase().includes("1600 pennsylvania"));
-
-        if (isPitchDemo) {
-            // Artificial delay for dramatic effect during pitch
-            await new Promise(resolve => setTimeout(resolve, 3000));
-
-            return NextResponse.json({
-                report_id: "DEMO-" + uuidv4().split('-')[0].toUpperCase(),
-                timestamp: new Date().toISOString(),
-                risk_assessment: {
-                    score: "RED",
-                    confidence_rating: "0.99",
-                    summary: "Critical defects identified. An unreleased mortgage from 1995 creates a severe cloud on title, blocking the Clear to Close process."
-                },
-                vesting_check: {
-                    owner_on_record: "Tony Stark",
-                    match_confirmed: false, // The prompt requested a mismatch check, so let's trigger it for the demo
-                    issues: ["🚨 RED LIGHT: OWNER MISMATCH. The legal owner on record does not match the seller provided. Investigation required."]
-                },
-                open_liens: [
-                    {
-                        type: "Institutional Mortgage",
-                        recorded_date: "1995-10-14",
-                        amount: 15000000,
-                        instrument_number: "INST-1995-44820",
-                        status: "UNRELEASED"
+                const attomRes = await fetch(url.toString(), {
+                    method: "GET",
+                    headers: {
+                        "accept": "application/json",
+                        "apikey": attomApiKey
                     }
-                ],
-                curative_actions: [
-                    {
-                        priority: "HIGH",
-                        instruction: "🚨 RED LIGHT: ZOMBIE MORTGAGE. Obtain and record a 'Satisfaction of Mortgage' from the original 1995 institutional lender or their successor.",
-                        reason: "The 1995 mortgage holds a super-priority senior position. No new lender will fund this transaction until this lien is permanently purged."
-                    }
-                ],
-                geographic_intelligence: {
-                    state: "DC",
-                    action_step: "DISTRICT COMPLIANCE ALERTS: Washington D.C. Recorder of Deeds requires wet-ink signatures for historic lien releases. Expect a minimum 14-day manual processing delay. Curative action must begin immediately.",
-                    risk_level: "RED"
+                });
+
+                if (attomRes.ok) {
+                    const data = await attomRes.json();
+                    attomDataText = JSON.stringify(data, null, 2);
+                } else {
+                    const errText = await attomRes.text();
+                    console.error("ATTOM API error:", attomRes.status, errText);
+                    attomDataText = `{"propertyAddress": "${address}", "error": "ATTOM API returned ${attomRes.status}"}`;
                 }
-            });
+            }
+        } catch (scriptError: any) {
+            console.error("ATTOM fetch failed:", scriptError);
+            attomDataText = `{"propertyAddress": "${address}", "error": "ATTOM API fetch failed completely."}`;
         }
-        // --------------------------------------------
-
-        // Simulate ATTOM API Data Fetch
-        const simulatedAttomData = JSON.stringify({
-            propertyAddress: address,
-            ownerName: "John Doe",
-            ownerType: "Individual",
-            taxYear: 2024,
-            mortgages: [
-                { recordedDate: "2018-05-10", amount: 450000, status: "Open" }
-            ]
-        }, null, 2);
 
         // Construct Prompt with TitleGuard Audit Rules
         const prompt = `
-            You are a Title Risk Analyst. Evaluate the following simulated property data from the ATTOM API.
+            You are a Title Risk Analyst. Evaluate the following property data from the ATTOM API.
             
             --- ATTOM DATA ---
-            ${simulatedAttomData}
+            ${attomDataText}
             ------------------
 
             TitleGuard Day 1 Audit Protocol:
