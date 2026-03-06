@@ -1,31 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 import { v4 as uuidv4 } from 'uuid';
 
-// Initialize Gemini
+// Initialize Gemini Key
 const apiKey = process.env.GEMINI_API_KEY;
-const genAI = new GoogleGenerativeAI(apiKey || "mock-key");
-const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-pro",
-    safetySettings: [
-        {
-            category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-            threshold: HarmBlockThreshold.BLOCK_NONE,
-        },
-        {
-            category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-            threshold: HarmBlockThreshold.BLOCK_NONE,
-        },
-        {
-            category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-            threshold: HarmBlockThreshold.BLOCK_NONE,
-        },
-        {
-            category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-            threshold: HarmBlockThreshold.BLOCK_NONE,
-        }
-    ]
-});
 
 export async function POST(req: NextRequest) {
     try {
@@ -147,9 +124,35 @@ export async function POST(req: NextRequest) {
             });
         }
 
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        const jsonString = response.text().replace(/```json/g, "").replace(/```/g, "").trim();
+        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${apiKey}`;
+        const geminiBody = {
+            contents: [{ parts: [{ text: prompt }] }],
+            safetySettings: [
+                { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_NONE" },
+                { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_NONE" },
+                { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_NONE" },
+                { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_NONE" }
+            ],
+            generationConfig: {
+                temperature: 0.2
+            }
+        };
+
+        const result = await fetch(geminiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(geminiBody)
+        });
+
+        const response = await result.json();
+
+        if (!result.ok) {
+            console.error("Gemini REST API Error:", response);
+            throw new Error(response.error?.message || "Gemini API rejected the request.");
+        }
+
+        const rawText = response.candidates?.[0]?.content?.parts?.[0]?.text || "";
+        const jsonString = rawText.replace(/```json/g, "").replace(/```/g, "").trim();
 
         let analysis;
         try {
