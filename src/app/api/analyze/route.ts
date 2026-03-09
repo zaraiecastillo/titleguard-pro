@@ -247,34 +247,51 @@ export async function POST(req: NextRequest) {
             });
         }
 
-        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-        const geminiBody = {
-            contents: [{ parts: [{ text: prompt }] }],
-            safetySettings: [
-                { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_NONE" },
-                { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_NONE" },
-                { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_NONE" },
-                { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_NONE" }
-            ],
-            generationConfig: {
-                temperature: 0.2
+        const modelsToTry = ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-pro"];
+        let responseJson: any = null;
+        let fetchSuccess = false;
+
+        for (const modelName of modelsToTry) {
+            const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+            const geminiBody = {
+                contents: [{ parts: [{ text: prompt }] }],
+                safetySettings: [
+                    { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_NONE" },
+                    { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_NONE" },
+                    { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_NONE" },
+                    { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_NONE" }
+                ],
+                generationConfig: {
+                    temperature: 0.2
+                }
+            };
+
+            const result = await fetch(geminiUrl, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(geminiBody)
+            });
+
+            const resData = await result.json();
+
+            if (result.ok) {
+                responseJson = resData;
+                fetchSuccess = true;
+                break;
+            } else if (resData.error && resData.error.code === 404) {
+                console.warn(`[Fallback] Model ${modelName} not found or restricted. Trying next...`);
+                continue;
+            } else {
+                console.error(`Gemini REST API Error on ${modelName}:`, resData);
+                throw new Error(resData.error?.message || `Gemini API rejected request on ${modelName}`);
             }
-        };
-
-        const result = await fetch(geminiUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(geminiBody)
-        });
-
-        const response = await result.json();
-
-        if (!result.ok) {
-            console.error("Gemini REST API Error:", response);
-            throw new Error(response.error?.message || "Gemini API rejected the request.");
         }
 
-        const rawText = response.candidates?.[0]?.content?.parts?.[0]?.text || "";
+        if (!fetchSuccess || !responseJson) {
+            throw new Error("All Gemini model fallbacks failed. Your API key may lack generative access.");
+        }
+
+        const rawText = responseJson.candidates?.[0]?.content?.parts?.[0]?.text || "";
         const jsonString = rawText.replace(/```json/g, "").replace(/```/g, "").trim();
 
         let analysis;
