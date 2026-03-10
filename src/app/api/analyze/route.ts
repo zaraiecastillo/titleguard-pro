@@ -247,72 +247,40 @@ export async function POST(req: NextRequest) {
             });
         }
 
-        const modelsToTry = ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-pro"];
-        let responseJson: any = null;
-        let fetchSuccess = false;
+        const openAiUrl = "https://api.openai.com/v1/chat/completions";
+        const openAiApiKey = process.env.OPENAI_API_KEY;
 
-        for (const modelName of modelsToTry) {
-            const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
-            const geminiBody = {
-                contents: [{ parts: [{ text: prompt }] }],
-                safetySettings: [
-                    { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_NONE" },
-                    { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_NONE" },
-                    { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_NONE" },
-                    { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_NONE" }
-                ],
-                generationConfig: {
-                    temperature: 0.2
-                }
-            };
-
-            const result = await fetch(geminiUrl, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(geminiBody)
-            });
-
-            const resData = await result.json();
-
-            if (result.ok) {
-                responseJson = resData;
-                fetchSuccess = true;
-                break;
-            } else if (resData.error && resData.error.code === 404) {
-                console.warn(`[Fallback] Model ${modelName} not found or restricted. Trying next...`);
-                continue;
-            } else {
-                console.error(`Gemini REST API Error on ${modelName}:`, resData);
-                throw new Error(resData.error?.message || `Gemini API rejected request on ${modelName}`);
-            }
+        if (!openAiApiKey) {
+            throw new Error("OPENAI_API_KEY is not configured in environment variables.");
         }
 
-        if (!fetchSuccess || !responseJson) {
-            console.error("All Gemini model fallbacks failed. Your API key may lack generative access. Running Ultimate Simulation Fallback.");
-            return NextResponse.json({
-                report_id: "SIM-FALLBACK-" + Date.now().toString().slice(-6),
-                timestamp: new Date().toISOString(),
-                risk_assessment: {
-                    score: "YELLOW",
-                    confidence_rating: "0.80",
-                    summary: "System running in simulation due to Engine restrictions. Basic property scan complete. No critical flags detected, but manual review is advised."
-                },
-                vesting_check: {
-                    owner_on_record: "Unverified Document Owner",
-                    match_confirmed: true,
-                    issues: []
-                },
-                open_liens: [],
-                curative_actions: [],
-                geographic_intelligence: {
-                    state: "US",
-                    action_step: "General Compliance: Obtain a standard title policy prior to closing.",
-                    risk_level: "YELLOW"
-                }
-            });
+        const openAiBody = {
+            model: "gpt-4o",
+            messages: [
+                { role: "system", content: "You are a Title Risk Analyst. Follow all instructions strictly and output only valid JSON." },
+                { role: "user", content: prompt }
+            ],
+            response_format: { type: "json_object" },
+            temperature: 0.2
+        };
+
+        const result = await fetch(openAiUrl, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${openAiApiKey}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(openAiBody)
+        });
+
+        const resData = await result.json();
+
+        if (!result.ok) {
+            console.error("OpenAI REST API Error:", resData);
+            throw new Error(resData.error?.message || "OpenAI API rejected the request.");
         }
 
-        const rawText = responseJson.candidates?.[0]?.content?.parts?.[0]?.text || "";
+        const rawText = resData.choices?.[0]?.message?.content || "";
         const jsonString = rawText.replace(/```json/g, "").replace(/```/g, "").trim();
 
         let analysis;
