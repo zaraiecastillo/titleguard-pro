@@ -30,13 +30,13 @@ export default function FAQPage() {
             items: [
                 {
                     id: "prod-1",
-                    q: "Can you read handwritten or blurry title documents?",
-                    a: "To ensure 100% accuracy, our Reasoning Engine is currently optimized for search-enabled PDFs. This allows us to perform a deterministic audit of the text rather than 'guessing' at unreadable scans."
+                    q: "Do I have to wait for a Title Commitment to run an audit?",
+                    a: "No. Our new Upfront Intelligence framework allows you to simply enter the property address. We instantly parse public and proprietary data streams to generate a Day 1 Title Audit, identifying massive 'Closing Table Killers' (like Zombie Mortgages) weeks before a formal commitment is drafted."
                 },
                 {
                     id: "prod-2",
                     q: "Does this replace my Title Officer or Underwriter?",
-                    a: "Not at all. TitleGuard is a 'Co-Pilot.' We provide the Day 1 Certainty by flagging risks the moment a commitment is issued, giving your human team weeks of lead time to solve curative issues."
+                    a: "Not at all. TitleGuard is a 'Co-Pilot.' By front-loading the property search and flagging systemic risks at the moment of contract execution, we give your human curative team weeks of lead time to solve issues without slowing down the pipeline."
                 }
             ]
         },
