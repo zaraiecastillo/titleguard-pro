@@ -124,7 +124,7 @@ export default function PricingPage() {
                             onClick={() => handleCheckout("The Trial")}
                             className="w-full py-4 text-xs flex items-center justify-center font-bold uppercase tracking-[0.2em] transition-all border border-white/10 text-white hover:bg-white/5 hover:border-white/20"
                         >
-                            Claim My Free Scan
+                            Claim My Free Search
                         </button>
                     </motion.div>
 

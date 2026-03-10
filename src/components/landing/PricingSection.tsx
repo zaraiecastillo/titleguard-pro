@@ -87,7 +87,7 @@ export function PricingSection() {
                             onClick={() => handleCheckout("The Trial")}
                             className="w-full py-3 border border-white/20 text-white hover:bg-white/5 transition-colors text-xs uppercase tracking-widest"
                         >
-                            Claim My Free Scan
+                            Claim My Free Search
                         </button>
                     </div>
 
