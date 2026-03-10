@@ -1,7 +1,7 @@
 "use client";
 
 import { Navbar } from "@/components/Navbar";
-import { Upload, Cpu, FileCheck, ScanLine, Database, Scale, ArrowRight, ShieldAlert, Check, TriangleAlert, CircleX, Handshake } from "lucide-react";
+import { Search, Cpu, FileCheck, ScanLine, Database, Scale, ArrowRight, ShieldAlert, Check, TriangleAlert, CircleX, Handshake } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { JurisdictionalLogicTabs } from "@/components/intelligence/JurisdictionalLogicTabs";
@@ -20,7 +20,7 @@ export default function IntelligencePage() {
             icon: ScanLine,
             title: "High-Fidelity Textual Ingestion",
             subtitle: "High-Fidelity Ingestion",
-            description: "Our engine performs a deterministic audit of search-enabled PDF documents. By mapping requirement chains and Schedule B exceptions into structured data, we eliminate the risk of human oversight.",
+            description: "Our engine performs a deterministic audit of live property records. By mapping requirement chains and public lien data into structured profiles, we eliminate the risk of human oversight.",
         },
         {
             icon: Scale,
@@ -37,7 +37,7 @@ export default function IntelligencePage() {
     ];
 
     const pipeline = [
-        { label: "Raw PDF Input", icon: Upload },
+        { label: "Address Search", icon: Search },
         { label: "Entity Mapping", icon: Database },
         { label: "Statutory Check", icon: Scale },
         { label: "Stoplight Output", icon: FileCheck },
@@ -194,7 +194,7 @@ export default function IntelligencePage() {
                                     The Ambient Intelligence <span className="text-[#D4AF37] italic">Layer</span>
                                 </h3>
                                 <p className="text-slate-300 font-sans leading-relaxed mb-6">
-                                    For firms requiring background analysis without manual file uploads, we are designing a Chrome Extension to live within your CRM or Gmail.
+                                    For firms requiring background analysis without manual property searches, we are designing a Chrome Extension to live within your CRM or Gmail.
                                 </p>
 
                                 <div className="bg-black/40 border border-[#D4AF37]/10 p-5 rounded-sm">
