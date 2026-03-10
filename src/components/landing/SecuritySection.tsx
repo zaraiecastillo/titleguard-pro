@@ -20,8 +20,8 @@ export function SecuritySection() {
                         <p className="text-slate-400 text-lg font-sans">
                             We built TitleGuard with a radical privacy philosophy:
                             <span className="text-white"> Zero Permanent Retention.</span> <br />
-                            We do not store your PDFs long-term or save your client’s PII.
-                            Once the report is generated and you choose to purge, the data ceases to exist in our active environment.
+                            We do not permanently store your property searches or save your client’s PII.
+                            Once the report is generated and you choose to purge it, the data ceases to exist in our active environment.
                         </p>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 font-sans">
@@ -49,9 +49,9 @@ export function SecuritySection() {
                                     <Shield className="w-12 h-12 text-[#D4AF37]" />
                                 </div>
                                 <div className="bg-[#0a0a0a] border border-[#D4AF37]/20 p-4 font-mono text-xs text-[#D4AF37] mb-4">
-                                    <p>{">"} Uploading PDF...</p>
+                                    <p>{">"} Locating Address Data...</p>
                                     <p>{">"} Initializing Privacy Filter...</p>
-                                    <p>{">"} Redacting SSN: ***-**-****...</p>
+                                    <p>{">"} Auditing Statutory Records...</p>
                                     <p>{">"} Analysis Complete.</p>
                                     <p className="text-rose-500">{">"} PURGING MEMORY... DONE.</p>
                                 </div>

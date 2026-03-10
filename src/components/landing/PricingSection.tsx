@@ -63,21 +63,21 @@ export function PricingSection() {
                         <div className="mb-2">
                             <span className="text-3xl font-serif text-white">$0</span>
                         </div>
-                        <p className="text-slate-500 text-xs mb-8 font-sans">1 Manual PDF Scan. Experience the 2026 Statutory Logic firsthand with a full Stoplight Report for one property.</p>
+                        <p className="text-slate-500 text-xs mb-8 font-sans">1 Instant Address Search. Experience the 2026 Statutory Logic firsthand with a full Stoplight Report for one property.</p>
 
                         <ul className="space-y-3 mb-8 flex-1 font-sans border-t border-white/5 pt-6">
                             <li className="flex items-start text-slate-300 text-sm">
                                 <Check className="w-4 h-4 text-[#D4AF37] mr-3 mt-0.5 flex-shrink-0" />
-                                <span>Web-Based PDF Analysis</span>
+                                <span>Day 1 Stoplight Report</span>
                             </li>
                             <li className="flex items-start pt-4 mt-2 border-t border-white/5">
                                 <div className="bg-black/40 border border-white/10 p-3 rounded-sm w-full">
                                     <h4 className="text-slate-400 text-[10px] uppercase tracking-widest font-sans mb-1 flex items-center">
                                         <Info className="w-3 h-3 mr-1.5" />
-                                        OCR Note
+                                        Data Source
                                     </h4>
                                     <p className="text-slate-500 font-sans text-[11px] leading-relaxed italic">
-                                        Optimized for search-enabled PDFs. Handwritten scan support coming in Phase 3.
+                                        Powered by live public record and proprietary statutory databases.
                                     </p>
                                 </div>
                             </li>
@@ -98,12 +98,12 @@ export function PricingSection() {
                             <span className="text-3xl font-serif text-white">$49</span>
                             <span className="text-slate-500 text-sm ml-2">/scan</span>
                         </div>
-                        <p className="text-slate-500 text-xs mb-8 font-sans">Transactional Access. No commitment. 1 Full PDF Analysis with 24-hour cloud report retention.</p>
+                        <p className="text-slate-500 text-xs mb-8 font-sans">Transactional Access. No commitment. 1 Full Instant Address Search with 24-hour cloud report retention.</p>
 
                         <ul className="space-y-3 mb-8 flex-1 font-sans border-t border-white/5 pt-6">
                             <li className="flex items-start text-slate-300 text-sm">
                                 <Check className="w-4 h-4 text-[#D4AF37] mr-3 mt-0.5 flex-shrink-0" />
-                                <span>Web-Based PDF Analysis</span>
+                                <span>Day 1 Stoplight Report</span>
                             </li>
                             <li className="flex items-start text-slate-400 text-sm">
                                 <Check className="w-4 h-4 text-slate-600 mr-3 mt-0.5 flex-shrink-0" />
@@ -113,10 +113,10 @@ export function PricingSection() {
                                 <div className="bg-black/40 border border-white/10 p-3 rounded-sm w-full">
                                     <h4 className="text-slate-400 text-[10px] uppercase tracking-widest font-sans mb-1 flex items-center">
                                         <Info className="w-3 h-3 mr-1.5" />
-                                        OCR Note
+                                        Data Source
                                     </h4>
                                     <p className="text-slate-500 font-sans text-[11px] leading-relaxed italic">
-                                        Optimized for search-enabled PDFs. Handwritten scan support coming in Phase 3.
+                                        Powered by live public record and proprietary statutory databases.
                                     </p>
                                 </div>
                             </li>
@@ -140,12 +140,12 @@ export function PricingSection() {
                             <span className="text-3xl font-serif text-[#D4AF37]">$150</span>
                             <span className="text-slate-500 text-sm ml-2">/mo</span>
                         </div>
-                        <p className="text-slate-500 text-xs mb-8 font-sans">Unlimited PDF Analysis. Full Web Dashboard access for NJ, NY, FL, TX, & CA. Priority access to the Chrome Extension Beta waitlist.</p>
+                        <p className="text-slate-500 text-xs mb-8 font-sans">Unlimited Instant Address Searches. Full Web Dashboard access for NJ, NY, FL, TX, & CA. Priority access to the Chrome Extension Beta waitlist.</p>
 
                         <ul className="space-y-3 mb-8 flex-1 font-sans border-t border-white/5 pt-6">
                             <li className="flex items-start text-white text-sm">
                                 <Check className="w-4 h-4 text-[#D4AF37] mr-3 mt-0.5 flex-shrink-0" />
-                                <span>Unlimited Web-Based PDF Analysis</span>
+                                <span>Unlimited Address Searches</span>
                             </li>
                             <li className="flex items-start text-white text-sm">
                                 <Check className="w-4 h-4 text-[#D4AF37] mr-3 mt-0.5 flex-shrink-0" />
@@ -185,7 +185,7 @@ export function PricingSection() {
                         <ul className="space-y-3 mb-8 flex-1 font-sans border-t border-white/5 pt-6">
                             <li className="flex items-start text-slate-300 text-sm">
                                 <Check className="w-4 h-4 text-slate-600 mr-3 mt-0.5 flex-shrink-0" />
-                                <span>Bulk Web-Based PDF Analysis</span>
+                                <span>Bulk Institutional Address Searches</span>
                             </li>
                             <li className="flex items-start text-slate-300 text-sm">
                                 <Check className="w-4 h-4 text-slate-600 mr-3 mt-0.5 flex-shrink-0" />

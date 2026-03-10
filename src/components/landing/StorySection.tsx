@@ -47,7 +47,7 @@ export function StorySection() {
                                 <span className="text-rose-500 mr-4 font-serif text-lg">03.</span>
                                 <div>
                                     <span className="text-slate-400 block text-xs uppercase tracking-widest mb-1">Format</span>
-                                    <span className="text-white">Static PDFs</span>
+                                    <span className="text-white">Waiting on Title Company</span>
                                 </div>
                             </li>
                         </ul>

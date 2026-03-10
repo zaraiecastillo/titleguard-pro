@@ -229,7 +229,7 @@ export function HeroSection({ onFileSelect, onPropertySearch, isAnalyzing }: Her
                 isOpen={isUpgradeModalOpen}
                 onClose={() => setIsUpgradeModalOpen(false)}
                 title="Premium Intelligence Required"
-                description="Secure PDF uploading and analysis require an active Pro Membership or a One-Time pass. Upgrade your account to unlock."
+                description="Instant Address Searches and Title Audits require an active Pro Membership or a One-Time pass. Upgrade your account to unlock."
             />
         </section>
     );

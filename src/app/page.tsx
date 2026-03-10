@@ -39,7 +39,6 @@ export default function Home() {
       setLoading(false);
     }
   };
-
   const handlePropertySearch = async (address: string) => {
     setLoading(true);
     setError(null);
@@ -49,7 +48,7 @@ export default function Home() {
       const response = await fetch("/api/fetch-property", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ address })
+        body: JSON.stringify({ "address": address }), // Explicitly define the key
       });
       if (!response.ok) throw new Error("Property search failed");
       const data = await response.json();
