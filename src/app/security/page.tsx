@@ -1,7 +1,7 @@
 "use client";
 
 import { Navbar } from "@/components/Navbar";
-import { Shield, Lock, Server, FileX, ShieldCheck } from "lucide-react";
+import { Shield, Lock, Server, Database, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function SecurityPage() {
@@ -142,9 +142,9 @@ export default function SecurityPage() {
                     className="glass-gold p-12 md:p-16 text-center max-w-4xl mx-auto relative overflow-hidden mb-24"
                 >
                     <div className="relative z-10">
-                        <FileX className="w-12 h-12 text-[#D4AF37] mx-auto mb-6 opacity-80" />
+                        <Database className="w-12 h-12 text-[#D4AF37] mx-auto mb-6 opacity-80" />
                         <h3 className="text-2xl md:text-3xl font-serif text-white leading-relaxed italic">
-                            "Our AI sees the risk, reports the reality, and then forgets the file.
+                            "Our AI sees the risk, reports the reality, and then forgets the search data.
                             We provide the intelligence without the liability of data storage."
                         </h3>
                     </div>
