@@ -79,7 +79,7 @@ export default function AboutPage() {
                             <div className="pt-6 border-t border-white/5">
                                 <h3 className="text-xl text-[#D4AF37] font-serif mb-4 italic">The Philosophy</h3>
                                 <p className="text-base text-slate-300">
-                                    TitleGuard isn't just a project; it's a commitment to my family's industry. We provide institutional-grade reasoning so that brokerages can focus on building communities, not chasing curative paperwork.
+                                    TitleGuard isn't just a project; it's a dedication to my family's industry. We provide institutional-grade reasoning so that brokerages can focus on building communities, not chasing curative paperwork.
                                 </p>
                             </div>
 

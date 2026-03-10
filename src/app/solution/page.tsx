@@ -81,7 +81,7 @@ export default function SolutionPage() {
                         <h2 className="text-4xl font-serif text-white mb-6">Day 1 <span className="text-emerald-500">Certainty</span>.</h2>
                         <h3 className="text-xl text-slate-300 mb-6 italic">Turn Every Red Light Into a Closed Commission.</h3>
                         <p className="text-slate-400 text-lg leading-relaxed font-sans border-l-2 border-emerald-500/20 pl-6">
-                            TitleGuard AI flips the script. By analyzing the Title Commitment the moment it is issued, we identify closing-killers on Day 1. Our Reasoning Engine provides an instant curative roadmap, giving you weeks—not hours—to secure the deal.
+                            TitleGuard AI flips the script. By analyzing real-time property records the moment a deal is signed, we identify closing-killers on Day 1. Our Reasoning Engine provides an instant curative roadmap, giving you weeks—not hours—to secure the deal.
                         </p>
                     </div>
                     <div className="relative">

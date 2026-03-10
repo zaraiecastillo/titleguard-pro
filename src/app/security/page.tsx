@@ -63,7 +63,7 @@ export default function SecurityPage() {
                         </div>
                         <h2 className="text-4xl font-serif text-white mb-6">Privacy-First Data Handling</h2>
                         <p className="text-slate-300 text-lg leading-relaxed font-sans">
-                            We minimize data liability. Uploaded Title Commitments are held in encrypted temporary storage only for the duration of the analysis. Once your Stoplight Report is generated, you have the power to manually purge the source file from our secure cloud.
+                            We minimize data liability. Fetched property records and public lien data are held in encrypted temporary storage only for the duration of the analysis. Once your Stoplight Report is generated, you have the power to manually purge the session from our secure cloud.
                         </p>
                     </div>
                     {/* Visual representation of data purging */}
@@ -75,7 +75,7 @@ export default function SecurityPage() {
                             </div>
                             <div className="space-y-2 font-mono text-xs">
                                 <div className="flex justify-between text-slate-400">
-                                    <span>Ingesting Title Commitment...</span>
+                                    <span>Ingesting Property Data...</span>
                                     <span>DONE</span>
                                 </div>
                                 <div className="flex justify-between text-slate-400">

@@ -28,7 +28,7 @@ export default function PrivacyPage() {
                         <h2 className="text-2xl font-serif text-[#D4AF37] mb-4">2. The Zero-Retention Protocol</h2>
                         <p>
                             TitleGuard AI operates on a strict <strong>Zero-Retention Protocol</strong>.
-                            All documents uploaded to our platform—including Title Commitments, Deeds, Mortgages, and Tax Records—are processed entirely in volatile memory (RAM).
+                            All data parsed by our platform—including public property records, deeds, mortgages, and tax data—is processed entirely in volatile memory (RAM).
                         </p>
                         <p>
                             Once the actionable intelligence report is generated and delivered to your session, all source files, extracted text, and personally identifiable information (PII) are immediately and permanently purged from our computational environment. We do not store, archive, or train our models on your clients' sensitive transaction data.
