@@ -168,7 +168,7 @@ export default function SolutionPage() {
                             </div>
                             <h2 className="text-3xl font-serif text-white mb-4">Centralized Intelligence</h2>
                             <p className="text-slate-400 text-lg leading-relaxed font-sans border-l-2 border-[#D4AF37]/20 pl-6">
-                                Our core solution is delivered through a high-fidelity Web Dashboard. Users upload search-enabled PDFs and receive a deterministic Stoplight Report in under 60 seconds.
+                                Our core solution is delivered through a high-fidelity Web Dashboard. Users enter live property addresses and receive a deterministic Day 1 Stoplight Report in under 60 seconds.
                             </p>
                         </div>
                         {/* The Roadmap */}
@@ -179,7 +179,7 @@ export default function SolutionPage() {
                             </div>
                             <h2 className="text-3xl font-serif text-white mb-4">Future Integration: The Ambient Layer</h2>
                             <p className="text-slate-400 text-lg leading-relaxed font-sans border-l-2 border-slate-500/20 pl-6">
-                                In Phase 2 (Q4 2026), we are bringing this intelligence directly into your workflow via a Chrome Extension. This will enable automatic analysis within your CRM and email without manual uploads.
+                                In Phase 2 (Q4 2026), we are bringing this intelligence directly into your workflow via a Chrome Extension. This will enable automatic analysis within your CRM and email without manual property searches.
                             </p>
                         </div>
                     </div>
