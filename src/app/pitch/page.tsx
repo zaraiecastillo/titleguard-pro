@@ -71,25 +71,33 @@ const getSlides = (activeStep: number) => [
     {
         id: "demo",
         content: (
-            <div className="flex flex-col items-center justify-center h-full text-center max-w-6xl mx-auto px-6">
+            <div className="flex flex-col items-center justify-center h-full w-full text-center max-w-7xl mx-auto px-6">
                 <span className="text-[#D4AF37] text-sm font-sans uppercase tracking-[0.2em] mb-4 block">The Engine</span>
-                <h2 className="text-4xl md:text-5xl font-serif text-white mb-12">No Uploads. No Waiting.</h2>
+                <h2 className="text-4xl md:text-5xl font-serif text-white mb-8">No Uploads. No Waiting.</h2>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-                    <div className="glass-card p-8 flex flex-col items-center text-center">
-                        <Search className="w-10 h-10 text-[#D4AF37] mb-6" />
-                        <h3 className="text-xl font-serif text-white mb-4">1. Live Input</h3>
-                        <p className="text-slate-400 text-sm font-sans">Enter an address. We tap directly into live public property records nationwide.</p>
+                <div className="flex flex-col md:flex-row items-center gap-12 w-full h-[60vh]">
+                    <div className="flex-1 flex flex-col justify-center space-y-6 text-left h-full">
+                        <div className="glass-card p-6 border-l border-[#D4AF37]/30 hover:bg-white/[0.02] transition-colors">
+                            <h3 className="text-xl font-serif text-white mb-2 flex items-center"><Search className="w-5 h-5 text-[#D4AF37] mr-3" /> 1. Live Input</h3>
+                            <p className="text-slate-400 text-sm font-sans">Enter an address. We tap directly into live public property records nationwide.</p>
+                        </div>
+                        <div className="glass-card p-6 border-l border-emerald-500/30 hover:bg-white/[0.02] transition-colors">
+                            <h3 className="text-xl font-serif text-white mb-2 flex items-center"><Database className="w-5 h-5 text-emerald-500 mr-3" /> 2. AI Reasoning</h3>
+                            <p className="text-slate-400 text-sm font-sans">Our AI maps entities and liens against statutory code to isolate deal-killers.</p>
+                        </div>
+                        <div className="glass-card p-6 border-l border-emerald-500/30 hover:bg-white/[0.02] transition-colors">
+                            <h3 className="text-xl font-serif text-white mb-2 flex items-center"><Activity className="w-5 h-5 text-emerald-500 mr-3" /> 3. Stoplight Output</h3>
+                            <p className="text-slate-400 text-sm font-sans">Instantly receive a clear Red, Yellow, or Green risk profile to act upon.</p>
+                        </div>
                     </div>
-                    <div className="glass-card p-8 flex flex-col items-center text-center relative">
-                        <Database className="w-10 h-10 text-emerald-500 mb-6" />
-                        <h3 className="text-xl font-serif text-white mb-4">2. AI Reasoning</h3>
-                        <p className="text-slate-400 text-sm font-sans">Our AI maps entities and liens against statutory code to isolate deal-killers.</p>
-                    </div>
-                    <div className="glass-card p-8 flex flex-col items-center text-center">
-                        <Activity className="w-10 h-10 text-emerald-500 mb-6" />
-                        <h3 className="text-xl font-serif text-white mb-4">3. Stoplight Output</h3>
-                        <p className="text-slate-400 text-sm font-sans">Instantly receive a clear Red, Yellow, or Green risk profile to act upon.</p>
+                    
+                    <div className="w-full md:w-[800px] h-full relative glass-card p-2 bg-black/50 border-white/10 rounded-sm overflow-hidden flex items-center justify-center">
+                        <img 
+                            src="/demo.webp" 
+                            alt="TitleGuard Address Search Demo" 
+                            className="w-full h-auto max-h-full object-contain rounded-sm shadow-[0_0_50px_rgba(0,0,0,0.8)]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                     </div>
                 </div>
             </div>
@@ -290,12 +298,8 @@ const getSlides = (activeStep: number) => [
                         <h3 className="text-2xl font-serif text-white mb-4">Join The Exclusive Beta</h3>
                         <p className="text-slate-400 font-sans mb-8">Scan the code below or join our waitlist to be first in line.</p>
                         
-                        <div className="w-48 h-48 bg-white p-2 rounded-sm mb-8 flex items-center justify-center relative overflow-hidden group">
-                            {/* Placeholder for QR Code - In production this would be next/image pointing to a real QR */}
-                            <div className="w-full h-full border-4 border-black border-dashed flex items-center justify-center">
-                                <span className="text-black font-mono font-bold text-center leading-tight">SCAN<br/>ME</span>
-                            </div>
-                            <div className="absolute inset-0 bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="w-48 h-48 bg-black/80 p-3 rounded-sm mb-8 flex items-center justify-center border border-[#D4AF37]/50 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                            <img src="/waitlist-qr.png" alt="Scan to join Waitlist" className="w-full h-full object-cover" />
                         </div>
                         
                         <Link href="/waitlist" className="px-8 py-4 border border-[#D4AF37] text-[#D4AF37] text-xs font-bold uppercase tracking-[0.2em] hover:bg-[#D4AF37] hover:text-black transition-all">
