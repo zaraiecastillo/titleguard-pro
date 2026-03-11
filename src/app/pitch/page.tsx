@@ -165,10 +165,10 @@ const getSlides = (activeStep: number) => [
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full">
                     {[
-                        { tier: "The Trial", price: "Free", text: "5 Audits / Seat" },
-                        { tier: "The Professional", price: "$250 /mo", text: "50 Audits / Seat" },
-                        { tier: "The Syndicate", price: "$900 /mo", text: "15-Seat Dashboard" },
-                        { tier: "The Institution", price: "API", text: "Transactional Scale" }
+                        { tier: "The Trial", price: "Free", text: "1 Address Search" },
+                        { tier: "The Single Audit", price: "$49 /scan", text: "Transactional Access" },
+                        { tier: "The Professional", price: "$150 /mo", text: "Unlimited Searches" },
+                        { tier: "Enterprise", price: "Custom", text: "API & Bulk Scale" }
                     ].map((item, i) => (
                         <div key={i} className={`glass-card p-6 border-t ${i === 1 ? 'border-[#D4AF37]' : 'border-white/10'} flex flex-col items-center justify-center h-48`}>
                             <h4 className="text-sm font-sans text-[#D4AF37] uppercase tracking-widest mb-4">{item.tier}</h4>
