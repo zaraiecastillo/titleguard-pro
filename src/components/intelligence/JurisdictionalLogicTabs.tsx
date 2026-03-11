@@ -159,7 +159,7 @@ export function JurisdictionalLogicTabs() {
                 </h4>
 
                 <p className="text-slate-400 font-sans text-sm md:text-base leading-relaxed relative z-10 max-w-4xl">
-                    TitleGuard PRO is a High-Fidelity Early Warning System. All logic is manually verified against 2026 legislative sessions. As we scale, we plan to transition to an automated statutory sync (Project Sentinel). Until then, we provide the most accurate manual logic-layer available for the Big 5 markets.
+                    TitleGuard AI is a High-Fidelity Early Warning System. All logic is manually verified against 2026 legislative sessions. As we scale, we plan to transition to an automated statutory sync (Project Sentinel). Until then, we provide the most accurate manual logic-layer available for the Big 5 markets.
                 </p>
             </motion.div>
         </div>

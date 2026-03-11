@@ -14,10 +14,10 @@ const slides = [
             <div className="flex flex-col items-center justify-center h-full text-center max-w-5xl mx-auto px-6">
                 <ShieldCheck className="w-24 h-24 text-[#D4AF37] mb-8" />
                 <h1 className="text-5xl md:text-7xl font-serif text-white mb-6 leading-tight">
-                    TitleGuard <span className="text-[#D4AF37] italic">PRO</span>
+                    TitleGuard <span className="text-[#D4AF37] italic">AI</span>
                 </h1>
                 <p className="text-[#D4AF37] text-sm md:text-base font-sans uppercase tracking-[0.3em] mb-8">
-                    Instant Title Intelligence for Modern Brokerages
+                    The AI-Powered Early Warning System For Real Estate
                 </p>
                 <p className="text-xl md:text-3xl text-slate-300 font-sans leading-relaxed">
                     Turning every red light into a closed commission.
@@ -352,7 +352,7 @@ export default function PitchDeck() {
             <div className="absolute top-0 w-full z-50 p-6 flex justify-between items-center mix-blend-difference text-slate-300">
                 <div className="flex items-center space-x-2">
                     <ShieldCheck className="w-5 h-5 text-[#D4AF37]" />
-                    <span className="font-serif italic tracking-wide">TitleGuard <span className="text-[#D4AF37]">PRO</span></span>
+                    <span className="font-serif italic tracking-wide">TitleGuard <span className="text-[#D4AF37]">AI</span></span>
                 </div>
                 <div className="flex items-center space-x-6">
                     <span className="font-mono text-xs opacity-50 tracking-widest">{String(currentSlide + 1).padStart(2, '0')} / {slides.length}</span>

@@ -84,7 +84,7 @@ export function Footer() {
                 {/* Bottom Bar */}
                 <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
                     <p className="text-slate-500 text-xs font-sans">
-                        &copy; {new Date().getFullYear()} TitleGuard PRO AI. All rights reserved.
+                        &copy; {new Date().getFullYear()} TitleGuard AI. All rights reserved.
                     </p>
                     <div className="flex space-x-6">
                         <Link href="/privacy" className="text-slate-500 hover:text-white transition-colors text-xs font-sans">Privacy Policy</Link>

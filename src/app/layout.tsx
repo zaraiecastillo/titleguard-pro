@@ -28,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${playfair.variable} ${montserrat.variable} antialiased bg-slate-950 font-sans relative min-h-screen`}
       >
         {/* Global Background */}

@@ -114,7 +114,7 @@ export default function SecurityPage() {
                             {
                                 icon: Shield,
                                 title: "Designed for Compliance",
-                                desc: "TitleGuard PRO is built with the rigorous confidentiality standards of legal and financial institutions in mind. We are currently architecting our systems to meet SOC2 Type I standards as we scale toward enterprise-wide deployment."
+                                desc: "TitleGuard AI is built with the rigorous confidentiality standards of legal and financial institutions in mind. We are currently architecting our systems to meet SOC2 Type I standards as we scale toward enterprise-wide deployment."
                             }
                         ].map((item, i) => (
                             <motion.div

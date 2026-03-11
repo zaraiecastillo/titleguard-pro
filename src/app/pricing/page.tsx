@@ -294,7 +294,7 @@ export default function PricingPage() {
                 {/* Global Footnote */}
                 <div className="text-center max-w-3xl mx-auto pt-16 mt-8 border-t border-white/5">
                     <p className="text-slate-500 font-mono text-[11px] leading-relaxed uppercase tracking-wider">
-                        TitleGuard PRO is an Early Warning System. Our 2026 logic is currently active for NJ, NY, FL, TX, and CA. We are currently raising seed capital to automate our statutory sync and release our ambient browser integration.
+                        TitleGuard AI is an Early Warning System. Our 2026 logic is currently active for NJ, NY, FL, TX, and CA. We are currently raising seed capital to automate our statutory sync and release our ambient browser integration.
                     </p>
                 </div>
 

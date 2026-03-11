@@ -40,14 +40,14 @@ export default function TermsPage() {
                     <section>
                         <h2 className="text-2xl font-serif text-white mb-4">3. Authorized Use</h2>
                         <p>
-                            Access to the TitleGuard PRO AI platform is restricted to licensed real estate professionals, brokerages, and verified title entities. You agree not to reverse-engineer, exploit, or attempt to extract the underlying prompts or architecture of our Intelligence Engine.
+                            Access to the TitleGuard AI platform is restricted to licensed real estate professionals, brokerages, and verified title entities. You agree not to reverse-engineer, exploit, or attempt to extract the underlying prompts or architecture of our Intelligence Engine.
                         </p>
                     </section>
 
                     <section>
                         <h2 className="text-2xl font-serif text-white mb-4">4. Limitation of Liability</h2>
                         <p>
-                            To the maximal extent permitted by applicable law, TitleGuard PRO AI shall not be liable for any delayed closings, lost commissions, or damages arising from reliance on the platform's analysis. The platform is provided "as is," serving as a sophisticated secondary audit tool, not a primary guarantor of title integrity.
+                            To the maximal extent permitted by applicable law, TitleGuard AI shall not be liable for any delayed closings, lost commissions, or damages arising from reliance on the platform's analysis. The platform is provided "as is," serving as a sophisticated secondary audit tool, not a primary guarantor of title integrity.
                         </p>
                     </section>
 

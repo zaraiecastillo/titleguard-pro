@@ -107,7 +107,7 @@ export function GeographicIntelligenceSection() {
                         </button>
                     </Link>
                     <p className="text-slate-500 font-mono text-[11px] leading-relaxed uppercase tracking-wider text-center">
-                        Transparency is our policy. TitleGuard PRO provides risk detection based on specific 2026 statutes, intended to augment—not replace—professional legal counsel.
+                        Transparency is our policy. TitleGuard AI provides risk detection based on specific 2026 statutes, intended to augment—not replace—professional legal counsel.
                     </p>
                 </motion.div>
             </div>

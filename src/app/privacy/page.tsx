@@ -20,7 +20,7 @@ export default function PrivacyPage() {
                     <section>
                         <h2 className="text-2xl font-serif text-white mb-4">1. Scope of Intelligence</h2>
                         <p>
-                            TitleGuard PRO AI ("Company", "we", "us", or "our") operates as a secure, pre-underwriting intelligence platform tailored exclusively for real estate professionals and institutional brokerages. We prioritize the absolute confidentiality of your transaction files and client data.
+                            TitleGuard AI ("Company", "we", "us", or "our") operates as a secure, pre-underwriting intelligence platform tailored exclusively for real estate professionals and institutional brokerages. We prioritize the absolute confidentiality of your transaction files and client data.
                         </p>
                     </section>
 
