@@ -6,7 +6,8 @@ import { ArrowRight, ArrowLeft, X, ShieldCheck, Search, Activity, Lock, Maximize
 import Link from "next/link";
 import Image from "next/image";
 
-const slides = [
+// We convert slides to a function so it can receive `activeStep` for intra-slide animations.
+const getSlides = (activeStep: number) => [
     // Slide 1: Hook
     {
         id: "hook",
@@ -110,9 +111,10 @@ const slides = [
             </div>
         )
     },
-    // Slide 6: Market Size
+    // Slide 6: Market Size (Animated)
     {
         id: "tam",
+        maxSteps: 3, // 0 = empty, 1 = TAM, 2 = SAM, 3 = SOM
         content: (
             <div className="flex flex-col items-center justify-center h-full text-center max-w-5xl mx-auto px-6">
                 <span className="text-[#D4AF37] text-sm font-sans uppercase tracking-[0.2em] mb-4 block">The Opportunity</span>
@@ -120,20 +122,35 @@ const slides = [
                 
                 <div className="relative w-full max-w-3xl aspect-square md:aspect-[2/1] flex items-center justify-center">
                     {/* Concentric Circles Visualization */}
-                    <div className="absolute w-[100%] aspect-square md:aspect-auto md:w-full md:h-full border border-white/5 rounded-full flex items-center justify-center">
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: activeStep >= 1 ? 1 : 0, scale: activeStep >= 1 ? 1 : 0.9 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="absolute w-[100%] aspect-square md:aspect-auto md:w-full md:h-full border border-white/5 rounded-full flex items-center justify-center"
+                    >
                         <div className="absolute top-4 text-xs font-sans tracking-widest text-slate-500 uppercase">TAM: Total US Real Estate</div>
                         
-                        <div className="w-[70%] aspect-square border border-white/10 rounded-full flex items-center justify-center bg-[#D4AF37]/5">
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: activeStep >= 2 ? 1 : 0, scale: activeStep >= 2 ? 1 : 0.8 }}
+                            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                            className="w-[70%] aspect-square border border-white/10 rounded-full flex items-center justify-center bg-[#D4AF37]/5"
+                        >
                             <div className="absolute top-[20%] text-xs font-sans tracking-widest text-[#D4AF37]/70 uppercase">SAM: Tech Brokerages & Agencies</div>
                             
-                            <div className="w-[40%] aspect-square border border-[#D4AF37]/40 rounded-full flex items-center justify-center bg-[#D4AF37]/20 shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+                            <motion.div 
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                animate={{ opacity: activeStep >= 3 ? 1 : 0, scale: activeStep >= 3 ? 1 : 0.5 }}
+                                transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.1 }}
+                                className="w-[40%] aspect-square border border-[#D4AF37]/40 rounded-full flex items-center justify-center bg-[#D4AF37]/20 shadow-[0_0_30px_rgba(212,175,55,0.2)]"
+                            >
                                 <div className="text-center">
                                     <div className="text-xs font-sans tracking-widest text-white font-bold uppercase mb-1">SOM</div>
                                     <div className="text-[10px] text-slate-300">NY, NJ, FL, TX, CA</div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </motion.div>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </div>
         )
@@ -293,29 +310,44 @@ const slides = [
 
 export default function PitchDeck() {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [currentStep, setCurrentStep] = useState(0);
     const [direction, setDirection] = useState(0);
+
+    const slides = getSlides(currentStep);
+    
+    // Explicit return type to fix TypeScript error implicitly assuming ReactNode
+    const maxStepsForCurrentSlide = (slides[currentSlide] as { maxSteps?: number }).maxSteps || 0;
 
     const paginate = useCallback((newDirection: number) => {
         const nextSlide = currentSlide + newDirection;
         if (nextSlide >= 0 && nextSlide < slides.length) {
             setDirection(newDirection);
             setCurrentSlide(nextSlide);
+            setCurrentStep(0); // Reset intra-slide steps when changing slides
         }
-    }, [currentSlide]);
+    }, [currentSlide, slides.length]);
 
-    // Keyboard navigation
+    // Keyboard navigation with intra-slide step support
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === "ArrowRight" || e.key === "Space" || e.key === "Enter") {
-                paginate(1);
+                if (currentStep < maxStepsForCurrentSlide) {
+                    setCurrentStep(prev => prev + 1);
+                } else {
+                    paginate(1);
+                }
             } else if (e.key === "ArrowLeft") {
-                paginate(-1);
+                if (currentStep > 0) {
+                    setCurrentStep(prev => prev - 1);
+                } else {
+                    paginate(-1); // Go back to previous slide, ideally to its maxStep (but simpler to just go to 0 for now)
+                }
             }
         };
 
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [paginate]);
+    }, [paginate, currentStep, maxStepsForCurrentSlide]);
 
     const variants = {
         enter: (direction: number) => {
@@ -409,8 +441,14 @@ export default function PitchDeck() {
                 </div>
 
                 <button 
-                    onClick={() => paginate(1)}
-                    disabled={currentSlide === slides.length - 1}
+                    onClick={() => {
+                        if (currentStep < maxStepsForCurrentSlide) {
+                            setCurrentStep(prev => prev + 1);
+                        } else {
+                            paginate(1);
+                        }
+                    }}
+                    disabled={currentSlide === slides.length - 1 && currentStep === maxStepsForCurrentSlide}
                     className="p-3 rounded-full hover:bg-white/10 disabled:opacity-20 disabled:hover:bg-transparent transition-all"
                 >
                     <ArrowRight className="w-6 h-6" />
