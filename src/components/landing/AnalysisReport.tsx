@@ -30,6 +30,15 @@ export interface AnalysisResult {
         instruction: string;
         reason: string;
     }>;
+    property_details?: {
+        owner_name: string;
+        year_built: number | null;
+        lot_size_sqft: number | null;
+        living_area_sqft: number | null;
+        bedrooms: number | null;
+        bathrooms: number | null;
+        property_type: string;
+    };
     geographic_intelligence?: {
         state: string;
         action_step: string;
@@ -72,6 +81,42 @@ export function AnalysisReport({ result }: AnalysisReportProps) {
                                 <RiskGauge score={result.risk_assessment.score} confidence={result.risk_assessment.confidence_rating} />
                             </div>
                         </div>
+
+                        {result.property_details && (
+                            <div className="space-y-4">
+                                <h3 className="text-lg font-serif text-white flex items-center">
+                                    <MapPin className="w-4 h-4 mr-3 text-emerald-400" /> Property Profile
+                                </h3>
+                                <div className="border border-white/5 bg-[#0a0a0a]/50 p-6 space-y-4">
+                                    <div className="flex justify-between items-center pb-4 border-b border-white/5">
+                                        <span className="text-slate-500 text-sm font-sans">Primary Owner</span>
+                                        <span className="text-white font-serif">{result.property_details.owner_name}</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <span className="text-slate-500 text-xs uppercase tracking-widest block mb-1">Property Type</span>
+                                            <span className="text-slate-300 font-sans text-sm">{result.property_details.property_type || "Unknown"}</span>
+                                        </div>
+                                        <div>
+                                            <span className="text-slate-500 text-xs uppercase tracking-widest block mb-1">Year Built</span>
+                                            <span className="text-slate-300 font-mono text-sm">{result.property_details.year_built || "N/A"}</span>
+                                        </div>
+                                        <div>
+                                            <span className="text-slate-500 text-xs uppercase tracking-widest block mb-1">Living Area</span>
+                                            <span className="text-slate-300 font-mono text-sm">
+                                                {result.property_details.living_area_sqft ? `${result.property_details.living_area_sqft.toLocaleString()} sqft` : "N/A"}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span className="text-slate-500 text-xs uppercase tracking-widest block mb-1">Beds / Baths</span>
+                                            <span className="text-slate-300 font-mono text-sm">
+                                                {result.property_details.bedrooms || "-"} / {result.property_details.bathrooms || "-"}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
 
                         <div className="space-y-4">
                             <h3 className="text-lg font-serif text-white flex items-center">
