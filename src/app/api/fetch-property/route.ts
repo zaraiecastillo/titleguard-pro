@@ -9,6 +9,57 @@ export async function POST(req: NextRequest) {
         const body = await req.json();
         const address = body.address as string;
 
+        // Demo Mode Check: If address is exactly 'test', bypass APIs and return mock High Risk data
+        if (address && address.trim().toLowerCase() === "test") {
+            return NextResponse.json({
+                report_id: uuidv4(),
+                timestamp: new Date().toISOString(),
+                risk_assessment: {
+                    score: "RED",
+                    confidence_rating: "0.99",
+                    summary: "AI Analysis: NOT CLEAR FOR CLOSING. This property has a high risk score of 85 due to an unreleased mortgage, tax delinquency, and a probate alert requiring immediate curative action."
+                },
+                vesting_check: {
+                    owner_on_record: "Jane Doe (Estate of)",
+                    match_confirmed: false,
+                    issues: ["🚨 RED LIGHT: PROBATE RISK. Potential missing heir from 2014 transfer."]
+                },
+                open_liens: [
+                    {
+                        type: "Mortgage",
+                        recorded_date: "2008-08-14",
+                        amount: 248000,
+                        instrument_number: "INST-2008-BofA",
+                        status: "UNRELEASED"
+                    },
+                    {
+                        type: "Tax",
+                        recorded_date: "2023-01-15",
+                        amount: 12450,
+                        instrument_number: "TAX-2023-Miami",
+                        status: "UNRELEASED"
+                    }
+                ],
+                curative_actions: [
+                    {
+                        priority: "HIGH",
+                        instruction: "🚨 RED LIGHT: ZOMBIE MORTGAGE. Obtain payoff or release for $248,000 Bank of America mortgage from 2008.",
+                        reason: "Unreleased mortgage blocks clear title transfer."
+                    },
+                    {
+                        priority: "HIGH",
+                        instruction: "🚨 RED LIGHT: TAX GAP. Resolve $12,450 tax delinquency with City of Miami.",
+                        reason: "Outstanding taxes take priority and can lead to a tax deed sale."
+                    },
+                    {
+                        priority: "HIGH",
+                        instruction: "⚠️ YELLOW LIGHT: PROBATE RISK. Verify Letters of Administration or Death Certificate.",
+                        reason: "Cannot confirm signing authority without probate clearance."
+                    }
+                ]
+            });
+        }
+
         // Execute ATTOM API Data Fetch natively in Next.js
         let attomDataText = "";
         try {
