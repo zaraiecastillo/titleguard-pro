@@ -124,41 +124,113 @@ const getSlides = (activeStep: number) => [
         id: "tam",
         maxSteps: 3, // 0 = empty, 1 = TAM, 2 = SAM, 3 = SOM
         content: (
-            <div className="flex flex-col items-center justify-center h-full text-center max-w-5xl mx-auto px-6">
-                <span className="text-[#D4AF37] text-sm font-sans uppercase tracking-[0.2em] mb-4 block">The Opportunity</span>
-                <h2 className="text-5xl md:text-6xl font-serif text-white mb-16">Market Size</h2>
+            <div className="flex flex-col items-center justify-center h-full w-full max-w-7xl mx-auto px-6">
+                <div className="text-center mb-12">
+                    <span className="text-[#D4AF37] text-sm font-sans uppercase tracking-[0.2em] mb-4 block">The Opportunity</span>
+                    <h2 className="text-4xl md:text-5xl font-serif text-white">Market Size</h2>
+                </div>
                 
-                <div className="relative w-full max-w-3xl aspect-square md:aspect-[2/1] flex items-center justify-center">
-                    {/* Concentric Circles Visualization */}
-                    <motion.div 
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: activeStep >= 1 ? 1 : 0, scale: activeStep >= 1 ? 1 : 0.9 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="absolute w-[100%] aspect-square md:aspect-auto md:w-full md:h-full border border-white/5 rounded-full flex items-center justify-center"
-                    >
-                        <div className="absolute top-4 text-xs font-sans tracking-widest text-slate-500 uppercase">TAM: Total US Real Estate</div>
-                        
+                <div className="flex flex-col md:flex-row items-center justify-between w-full gap-12">
+                    {/* Left: Concentric Circles */}
+                    <div className="relative w-full md:w-1/2 aspect-square flex items-center justify-center max-w-lg mx-auto">
                         <motion.div 
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: activeStep >= 2 ? 1 : 0, scale: activeStep >= 2 ? 1 : 0.8 }}
-                            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-                            className="w-[70%] aspect-square border border-white/10 rounded-full flex items-center justify-center bg-[#D4AF37]/5"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: activeStep >= 1 ? 1 : 0, scale: activeStep >= 1 ? 1 : 0.9 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="absolute w-full h-full border border-white/10 rounded-full flex items-center justify-center bg-white/[0.02]"
                         >
-                            <div className="absolute top-[20%] text-xs font-sans tracking-widest text-[#D4AF37]/70 uppercase">SAM: Tech Brokerages & Agencies</div>
+                            <div className="absolute top-[8%] text-xs font-sans tracking-widest text-slate-400 uppercase font-bold">TAM ($26.2B)</div>
                             
                             <motion.div 
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                animate={{ opacity: activeStep >= 3 ? 1 : 0, scale: activeStep >= 3 ? 1 : 0.5 }}
-                                transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.1 }}
-                                className="w-[40%] aspect-square border border-[#D4AF37]/40 rounded-full flex items-center justify-center bg-[#D4AF37]/20 shadow-[0_0_30px_rgba(212,175,55,0.2)]"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: activeStep >= 2 ? 1 : 0, scale: activeStep >= 2 ? 1 : 0.8 }}
+                                transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                                className="w-[65%] aspect-square border border-[#D4AF37]/30 rounded-full flex items-center justify-center bg-[#D4AF37]/5"
                             >
-                                <div className="text-center">
-                                    <div className="text-xs font-sans tracking-widest text-white font-bold uppercase mb-1">SOM</div>
-                                    <div className="text-[10px] text-slate-300">NY, NJ, FL, TX, CA</div>
-                                </div>
+                                <div className="absolute top-[15%] text-xs font-sans tracking-widest text-[#D4AF37] uppercase font-bold">SAM ($4.8B)</div>
+                                
+                                <motion.div 
+                                    initial={{ opacity: 0, scale: 0.5 }}
+                                    animate={{ opacity: activeStep >= 3 ? 1 : 0, scale: activeStep >= 3 ? 1 : 0.5 }}
+                                    transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.1 }}
+                                    className="w-[45%] aspect-square border border-[#D4AF37] rounded-full flex items-center justify-center bg-[#D4AF37]/20 shadow-[0_0_30px_rgba(212,175,55,0.3)]"
+                                >
+                                    <div className="text-center">
+                                        <div className="text-sm font-sans tracking-widest text-white font-bold uppercase mb-1">SOM</div>
+                                        <div className="text-sm text-white font-serif font-bold drop-shadow-[0_0_5px_rgba(212,175,55,1)]">$240M</div>
+                                    </div>
+                                </motion.div>
                             </motion.div>
                         </motion.div>
-                    </motion.div>
+                    </div>
+
+                    {/* Right: Contextual Info */}
+                    <div className="w-full md:w-1/2 flex flex-col justify-center max-w-xl mx-auto md:mx-0 relative h-[450px]">
+                        
+                        {/* Empty/Intro State */}
+                        <motion.div 
+                            initial={{ opacity: 1 }}
+                            animate={{ opacity: activeStep === 0 ? 1 : 0, pointerEvents: activeStep === 0 ? "auto" : "none" }}
+                            transition={{ duration: 0.3 }}
+                            className="absolute inset-0 flex flex-col items-center justify-center text-center"
+                        >
+                            <p className="text-slate-500 font-sans italic tracking-wide">Press SPACE to reveal market analysis</p>
+                        </motion.div>
+
+                        {/* TAM Details */}
+                        <motion.div 
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: activeStep === 1 ? 1 : 0, x: activeStep === 1 ? 0 : 20, pointerEvents: activeStep === 1 ? "auto" : "none" }}
+                            transition={{ duration: 0.5 }}
+                            className="absolute inset-0 flex flex-col justify-center glass-card p-8 border-l border-white/20"
+                        >
+                            <div className="flex justify-between items-end mb-2">
+                                <h3 className="text-2xl font-serif text-white">Total Addressable Market</h3>
+                                <span className="text-3xl font-serif text-slate-300">$26.2B</span>
+                            </div>
+                            <p className="text-[#D4AF37] text-xs font-sans uppercase tracking-widest mb-6">Entire U.S. Title & Settlement Services</p>
+                            <div className="space-y-4 text-slate-400 text-sm font-sans leading-relaxed">
+                                <p><strong className="text-white">Context:</strong> In 2026, the industry is seeing a recovery in transaction volume. Title insurance premiums written are up 14.2% year-over-year, driven by rising home prices and a projected 4.8 million total home sales (existing + new).</p>
+                                <p><strong className="text-white">Why it matters:</strong> This represents the total amount of money currently being spent on the problem we are solving (ensuring clear title).</p>
+                            </div>
+                        </motion.div>
+
+                        {/* SAM Details */}
+                        <motion.div 
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: activeStep === 2 ? 1 : 0, x: activeStep === 2 ? 0 : 20, pointerEvents: activeStep === 2 ? "auto" : "none" }}
+                            transition={{ duration: 0.5 }}
+                            className="absolute inset-0 flex flex-col justify-center glass-card p-8 border-l border-[#D4AF37]/50 bg-[#D4AF37]/5"
+                        >
+                            <div className="flex justify-between items-end mb-2">
+                                <h3 className="text-2xl font-serif text-white">Serviceable Available Market</h3>
+                                <span className="text-3xl font-serif text-[#D4AF37]">$4.8B</span>
+                            </div>
+                            <p className="text-[#D4AF37] text-xs font-sans uppercase tracking-widest mb-6">"Title Search & Examination" Segment</p>
+                            <div className="space-y-4 text-slate-400 text-sm font-sans leading-relaxed">
+                                <p><strong className="text-white">Context:</strong> Traditional title searches currently cost between $200 and $400 per transaction in labor and data fees. With ~5 million transactions per year, the "labor" portion of the title industry—which our AI replaces—is a nearly $5B opportunity.</p>
+                                <p><strong className="text-white">Why it matters:</strong> We aren't trying to be an insurance underwriter (yet); we are capturing the fees currently paid to human examiners and abstractors.</p>
+                            </div>
+                        </motion.div>
+
+                        {/* SOM Details */}
+                        <motion.div 
+                            initial={{ opacity: 0, x: 20, scale: 0.95 }}
+                            animate={{ opacity: activeStep === 3 ? 1 : 0, x: activeStep === 3 ? 0 : 20, scale: activeStep === 3 ? 1 : 0.95, pointerEvents: activeStep === 3 ? "auto" : "none" }}
+                            transition={{ duration: 0.5 }}
+                            className="absolute inset-0 flex flex-col justify-center glass-card p-8 border-l-4 border-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-transparent shadow-[0_0_30px_rgba(212,175,55,0.1)]"
+                        >
+                            <div className="flex justify-between items-end mb-2">
+                                <h3 className="text-2xl font-serif text-white font-bold">Serviceable Obtainable Market</h3>
+                                <span className="text-4xl font-serif text-white font-bold drop-shadow-[0_0_10px_rgba(212,175,55,0.8)]">$240M</span>
+                            </div>
+                            <p className="text-emerald-400 text-xs font-sans uppercase tracking-widest mb-6">Day 1 Users: Wholesalers, I-Buyers, Digital Title Agencies</p>
+                            <div className="space-y-4 text-slate-300 text-sm font-sans leading-relaxed">
+                                <p><strong className="text-white">Context:</strong> Our initial target is the 15-20% of the market that is "distressed" or "investor-led," where speed is the only thing that matters. Capturing just 5% of the search market by 2028 is a realistic, venture-scale goal.</p>
+                                <p><strong className="text-white">Why it matters:</strong> This shows investors we have a grounded "Go-To-Market" strategy. We aren't "boiling the ocean"—we are starting with the people who need a 60-second audit the most.</p>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         )
