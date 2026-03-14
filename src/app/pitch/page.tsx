@@ -139,23 +139,26 @@ const getSlides = (activeStep: number) => [
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="absolute w-full h-full border border-white/10 rounded-full flex items-center justify-center bg-white/[0.02]"
                         >
-                            <div className="absolute top-[8%] text-xs font-sans tracking-widest text-slate-400 uppercase font-bold">TAM ($26.2B)</div>
+                            {/* TAM Label */}
+                            <div className="absolute top-6 text-xs font-sans tracking-widest text-slate-400 uppercase font-bold">TAM ($26.2B)</div>
                             
                             <motion.div 
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: activeStep >= 2 ? 1 : 0, scale: activeStep >= 2 ? 1 : 0.8 }}
                                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-                                className="w-[65%] aspect-square border border-[#D4AF37]/30 rounded-full flex items-center justify-center bg-[#D4AF37]/5"
+                                className="w-[65%] aspect-square border border-[#D4AF37]/30 rounded-full flex items-center justify-center bg-[#D4AF37]/5 relative"
                             >
-                                <div className="absolute top-[5%] text-xs font-sans tracking-widest text-[#D4AF37] uppercase font-bold">SAM ($4.8B)</div>
+                                {/* SAM Label */}
+                                <div className="absolute top-6 text-xs font-sans tracking-widest text-[#D4AF37] uppercase font-bold">SAM ($4.8B)</div>
                                 
                                 <motion.div 
                                     initial={{ opacity: 0, scale: 0.5 }}
                                     animate={{ opacity: activeStep >= 3 ? 1 : 0, scale: activeStep >= 3 ? 1 : 0.5 }}
                                     transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.1 }}
-                                    className="w-[45%] aspect-square border border-[#D4AF37] rounded-full flex items-center justify-center bg-[#D4AF37]/20 shadow-[0_0_30px_rgba(212,175,55,0.3)]"
+                                    className="w-[45%] aspect-square border border-[#D4AF37] rounded-full flex items-center justify-center bg-[#D4AF37]/20 shadow-[0_0_30px_rgba(212,175,55,0.3)] relative"
                                 >
-                                    <div className="text-center">
+                                    {/* SOM Label */}
+                                    <div className="text-center mt-2">
                                         <div className="text-sm font-sans tracking-widest text-white font-bold uppercase mb-1">SOM</div>
                                         <div className="text-sm text-white font-serif font-bold drop-shadow-[0_0_5px_rgba(212,175,55,1)]">$240M</div>
                                     </div>
