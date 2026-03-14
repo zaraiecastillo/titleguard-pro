@@ -14,6 +14,15 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({
                 report_id: uuidv4(),
                 timestamp: new Date().toISOString(),
+                property_details: {
+                    owner_name: "Jane Doe (Estate of) & John Doe",
+                    year_built: 1985,
+                    lot_size_sqft: 8500,
+                    living_area_sqft: 2200,
+                    bedrooms: 4,
+                    bathrooms: 2.5,
+                    property_type: "Single Family Residential"
+                },
                 risk_assessment: {
                     score: "RED",
                     confidence_rating: "0.99",
@@ -118,6 +127,15 @@ export async function POST(req: NextRequest) {
             {
               "report_id": "string (uuid)",
               "timestamp": "iso8601",
+              "property_details": {
+                  "owner_name": "string (Combined owner 1 and 2 if available, or 'Unknown')",
+                  "year_built": number | null,
+                  "lot_size_sqft": number | null,
+                  "living_area_sqft": number | null,
+                  "bedrooms": number | null,
+                  "bathrooms": number | null,
+                  "property_type": "string (e.g. Single Family, Multi-Family, Commercial)"
+              },
               "risk_assessment": {
                   "score": "GREEN" | "YELLOW" | "RED",
                   "confidence_rating": "0.00-1.00",
