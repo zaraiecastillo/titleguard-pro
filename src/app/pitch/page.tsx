@@ -147,7 +147,7 @@ const getSlides = (activeStep: number) => [
                                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
                                 className="w-[65%] aspect-square border border-[#D4AF37]/30 rounded-full flex items-center justify-center bg-[#D4AF37]/5"
                             >
-                                <div className="absolute top-[15%] text-xs font-sans tracking-widest text-[#D4AF37] uppercase font-bold">SAM ($4.8B)</div>
+                                <div className="absolute top-[5%] text-xs font-sans tracking-widest text-[#D4AF37] uppercase font-bold">SAM ($4.8B)</div>
                                 
                                 <motion.div 
                                     initial={{ opacity: 0, scale: 0.5 }}
