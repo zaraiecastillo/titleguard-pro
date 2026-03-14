@@ -142,7 +142,7 @@ export default function PricingPage() {
                         </div>
                         <div className="mb-6">
                             <div className="flex items-baseline">
-                                <span className="text-4xl font-serif text-white">$49</span>
+                                <span className="text-4xl font-serif text-white">$99</span>
                                 <span className="text-slate-500 text-sm ml-2">/scan</span>
                             </div>
                             <p className="text-slate-500 text-xs mt-2 font-sans">
@@ -199,11 +199,11 @@ export default function PricingPage() {
                         </div>
                         <div className="mb-6">
                             <div className="flex items-baseline">
-                                <span className="text-4xl font-serif text-[#D4AF37]">$150</span>
+                                <span className="text-4xl font-serif text-[#D4AF37]">$499</span>
                                 <span className="text-slate-500 text-sm ml-2">/mo</span>
                             </div>
                             <p className="text-slate-500 text-xs mt-2 font-sans">
-                                Unlimited Instant Address Searches. Full Web Dashboard access for NJ, NY, FL, TX, & CA. Priority access to the Chrome Extension Beta waitlist.
+                                10 Included Instant Address Searches per month ($39/additional). Full Web Dashboard access for NJ, NY, FL, TX, & CA. Priority access to the Chrome Extension Beta waitlist.
                             </p>
                         </div>
                         <div className="flex-1 mb-8">

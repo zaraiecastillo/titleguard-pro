@@ -95,7 +95,7 @@ export function PricingSection() {
                     <div className="p-8 border border-white/5 bg-white/[0.02] flex flex-col hover:border-white/10 transition-colors">
                         <h3 className="text-sm font-sans uppercase tracking-widest text-slate-300 mb-6">The Single Audit</h3>
                         <div className="mb-2">
-                            <span className="text-3xl font-serif text-white">$49</span>
+                            <span className="text-3xl font-serif text-white">$99</span>
                             <span className="text-slate-500 text-sm ml-2">/scan</span>
                         </div>
                         <p className="text-slate-500 text-xs mb-8 font-sans">Transactional Access. No commitment. 1 Full Instant Address Search with 24-hour cloud report retention.</p>
@@ -137,10 +137,10 @@ export function PricingSection() {
                         <div className="absolute top-0 right-0 bg-[#D4AF37] text-black text-[10px] font-bold px-3 py-1 uppercase tracking-wider">Best Value</div>
                         <h3 className="text-sm font-sans uppercase tracking-widest text-white mb-6">The Professional</h3>
                         <div className="mb-2">
-                            <span className="text-3xl font-serif text-[#D4AF37]">$150</span>
+                            <span className="text-3xl font-serif text-[#D4AF37]">$499</span>
                             <span className="text-slate-500 text-sm ml-2">/mo</span>
                         </div>
-                        <p className="text-slate-500 text-xs mb-8 font-sans">Unlimited Instant Address Searches. Full Web Dashboard access for NJ, NY, FL, TX, & CA. Priority access to the Chrome Extension Beta waitlist.</p>
+                        <p className="text-slate-500 text-xs mb-8 font-sans">10 Included Instant Address Searches per month ($39/additional). Full Web Dashboard access for NJ, NY, FL, TX, & CA. Priority access to the Chrome Extension Beta waitlist.</p>
 
                         <ul className="space-y-3 mb-8 flex-1 font-sans border-t border-white/5 pt-6">
                             <li className="flex items-start text-white text-sm">
