@@ -128,7 +128,7 @@ export async function POST(req: NextRequest) {
               "report_id": "string (uuid)",
               "timestamp": "iso8601",
               "property_details": {
-                  "owner_name": "string (Combined owner 1 and 2 if available, or 'Unknown')",
+                  "owner_name": "string (Extract from 'assessment.owner.owner1.fullName' or 'summary.ownerName'. Combine owner 1 and 2 if available. Do NOT return 'Unknown' unless the data is truly missing.)",
                   "year_built": number | null,
                   "lot_size_sqft": number | null,
                   "living_area_sqft": number | null,
