@@ -65,11 +65,13 @@ export function AnalysisReport({ result }: AnalysisReportProps) {
                     {/* Column 1: Risk Gauge & Summary (Width 4) */}
                     <div className="lg:col-span-4 space-y-12">
                         <div className="bg-[#0a0a0a] border border-white/5 p-8 relative">
-                            <div className="absolute top-0 right-0 p-4">
+                            <div className="absolute top-4 right-4">
                                 <RiskGauge score={result.risk_assessment.score} confidence={result.risk_assessment.confidence_rating} />
                             </div>
-                            <h3 className="text-xl font-serif text-white mb-6">Executive Summary</h3>
-                            <p className="text-slate-400 font-sans leading-relaxed text-sm">{result.risk_assessment.summary}</p>
+                            <div className="pr-32 md:pr-40">
+                                <h3 className="text-xl font-serif text-white mb-6">Executive Summary</h3>
+                                <p className="text-slate-400 font-sans leading-relaxed text-sm">{result.risk_assessment.summary}</p>
+                            </div>
                         </div>
 
                         <div className="space-y-4">
